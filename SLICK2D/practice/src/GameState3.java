@@ -8,23 +8,26 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class GameState extends BasicGameState{
+public class GameState3 extends BasicGameState{
     private ArrayList<Circle> balls;
     private Circle mouseBall;
-    private Image ms = null;
-    private Image cursor = null;
-    private Image cursortail = null;
+    private Image cursor = null; private Image cursormiddle = null; private Image cursortail = null;
+    private Image[] slider = new Image[10];
+
     private int timePassed;
     private Random random;
     @Override
     public void init(GameContainer gameContainer, StateBasedGame sbg) throws SlickException {
-        balls = new ArrayList<Circle>();
         mouseBall = new Circle(0,0,25);
-                timePassed = 0;
+        timePassed = 0;
         random = new Random();
-        ms = new Image("res/cursormiddle.png");
         cursor = new Image("res/cursor.png");
+        cursormiddle = new Image("res/cursormiddle.png");
         cursortail = new Image("res/cursortrail.png");
+//        slider = new Image("res/sliderb"+i+".png");
+        for (int i =0 ;i<=9;i++){
+            slider[i] = new Image("res/sliderb"+i+".png");
+        }
         gameContainer.setMouseCursor(cursor, 0, 0);
         //gameContainer.setMouseGrabbed(true); //移除鼠標
     }
@@ -37,27 +40,9 @@ public class GameState extends BasicGameState{
 
         if(timePassed > 500){
             timePassed = 0;
-            balls.add(new Circle(200+random.nextInt(400),0,10));
         }
-        for (Circle c : balls){
-            System.out.println(delta);
-            c.setCenterY(c.getCenterY()+(delta/5));
-        }
-        for(int i = balls.size()-1;i>=0;i--){
-            Circle c = balls.get(i);
-            if(c.getCenterY()>610){
-                balls.remove(i);
-                Gametest1.live--;
-            }else if(c.intersects(mouseBall)){
-                balls.remove(i);
-                Gametest1.gameScore++;
-            }
 
-            if(Gametest1.live <= 0){
-                    sbg.enterState(1,new FadeOutTransition(),new FadeInTransition());
-                    //id FadeOutTransition 和 in 可以轉場做漸進漸出
-            }
-        }
+
     }
 
     @Override
@@ -65,20 +50,17 @@ public class GameState extends BasicGameState{
         float MouseX = gameContainer.getInput().getMouseX();
         float MouseY = gameContainer.getInput().getMouseY();
         //g.setColor(new Color(0x9ADFF6));
-        //g.fill(mouseBall);
-        g.setColor(Color.red);
-        for (Circle c : balls){
-            g.fill(c);
-        }
-        cursor.rotate(1);
-        cursor.draw(MouseX - cursor.getWidth()/2,MouseY - cursor.getHeight()/2);
-        cursortail.draw(MouseX - cursortail.getWidth()/2,MouseY - cursortail.getHeight()/2);
-        ms.draw(MouseX - ms.getWidth()/2,MouseY - ms.getHeight()/2);
-        //g.drawString("Current balls: "+balls.size(),20,50);
-        g.drawString("Score: "+ Gametest1.gameScore,20,35);
-        g.drawString("Lives: "+ Gametest1.live,20,55);
-    }
 
+        cursor.rotate(1);
+        cursor.draw(MouseX - cursor.getWidth() / 2, MouseY - cursor.getHeight() / 2);
+        cursortail.draw(MouseX - cursortail.getWidth() / 2, MouseY - cursortail.getHeight() / 2);
+        cursormiddle.draw(MouseX - cursormiddle.getWidth() / 2, MouseY - cursormiddle.getHeight() / 2);
+        //g.drawString("Current balls: "+balls.size(),20,50);
+
+        slider[(int) ((MouseY/5) % 9 + 1)].setRotation(90);
+        slider[(int) ((MouseY/5) % 9 + 1)].draw(MouseX - 150, MouseY + 15);
+
+    }
     @Override
     public int getID() {
         return 0;
