@@ -15,7 +15,7 @@ public class Gametest1 extends StateBasedGame {
 
     @Override
     public void initStatesList(GameContainer gameContainer) throws SlickException {
-        this.addState(new GameState3());
+        this.addState(new GameState4());
     }
 
     public static void main(String[] args) throws SlickException {

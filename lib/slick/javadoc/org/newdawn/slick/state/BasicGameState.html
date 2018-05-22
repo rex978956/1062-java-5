@@ -56,7 +56,7 @@ function windowTitle()
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
 &nbsp;PREV CLASS&nbsp;
-&nbsp;<A HREF="../../../../org/newdawn/slick/state/test.GameState.html" title="interface in org.newdawn.slick.state"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../org/newdawn/slick/state/GameState.html" title="interface in org.newdawn.slick.state"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../index.html?org/newdawn/slick/state/BasicGameState.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="BasicGameState.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
@@ -96,14 +96,14 @@ java.lang.Object
   <IMG SRC="../../../../resources/inherit.gif" ALT="extended by "><B>org.newdawn.slick.state.BasicGameState</B>
 </PRE>
 <DL>
-<DT><B>All Implemented Interfaces:</B> <DD><A HREF="../../../../org/newdawn/slick/ControlledInputReciever.html" title="interface in org.newdawn.slick">ControlledInputReciever</A>, <A HREF="../../../../org/newdawn/slick/ControllerListener.html" title="interface in org.newdawn.slick">ControllerListener</A>, <A HREF="../../../../org/newdawn/slick/InputListener.html" title="interface in org.newdawn.slick">InputListener</A>, <A HREF="../../../../org/newdawn/slick/KeyListener.html" title="interface in org.newdawn.slick">KeyListener</A>, <A HREF="../../../../org/newdawn/slick/MouseListener.html" title="interface in org.newdawn.slick">MouseListener</A>, <A HREF="../../../../org/newdawn/slick/state/test.GameState.html" title="interface in org.newdawn.slick.state">test.GameState</A></DD>
+<DT><B>All Implemented Interfaces:</B> <DD><A HREF="../../../../org/newdawn/slick/ControlledInputReciever.html" title="interface in org.newdawn.slick">ControlledInputReciever</A>, <A HREF="../../../../org/newdawn/slick/ControllerListener.html" title="interface in org.newdawn.slick">ControllerListener</A>, <A HREF="../../../../org/newdawn/slick/InputListener.html" title="interface in org.newdawn.slick">InputListener</A>, <A HREF="../../../../org/newdawn/slick/KeyListener.html" title="interface in org.newdawn.slick">KeyListener</A>, <A HREF="../../../../org/newdawn/slick/MouseListener.html" title="interface in org.newdawn.slick">MouseListener</A>, <A HREF="../../../../org/newdawn/slick/state/GameState.html" title="interface in org.newdawn.slick.state">GameState</A></DD>
 </DL>
 <DL>
 <DT><B>Direct Known Subclasses:</B> <DD><A HREF="../../../../org/newdawn/slick/tests/states/TestState1.html" title="class in org.newdawn.slick.tests.states">TestState1</A>, <A HREF="../../../../org/newdawn/slick/tests/states/TestState2.html" title="class in org.newdawn.slick.tests.states">TestState2</A>, <A HREF="../../../../org/newdawn/slick/tests/states/TestState3.html" title="class in org.newdawn.slick.tests.states">TestState3</A></DD>
 </DL>
 <HR>
 <DL>
-<DT><PRE>public abstract class <B>BasicGameState</B><DT>extends java.lang.Object<DT>implements <A HREF="../../../../org/newdawn/slick/state/test.GameState.html" title="interface in org.newdawn.slick.state">test.GameState</A></DL>
+<DT><PRE>public abstract class <B>BasicGameState</B><DT>extends java.lang.Object<DT>implements <A HREF="../../../../org/newdawn/slick/state/GameState.html" title="interface in org.newdawn.slick.state">GameState</A></DL>
 </PRE>
 
 <P>
@@ -386,10 +386,10 @@ A simple state used an adapter so we don't have to implement all the event metho
 &nbsp;<A NAME="methods_inherited_from_class_org.newdawn.slick.state.GameState"><!-- --></A>
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
 <TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
-<TH ALIGN="left"><B>Methods inherited from interface org.newdawn.slick.state.<A HREF="../../../../org/newdawn/slick/state/test.GameState.html" title="interface in org.newdawn.slick.state">test.GameState</A></B></TH>
+<TH ALIGN="left"><B>Methods inherited from interface org.newdawn.slick.state.<A HREF="../../../../org/newdawn/slick/state/GameState.html" title="interface in org.newdawn.slick.state">GameState</A></B></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD><CODE><A HREF="../../../../org/newdawn/slick/state/test.GameState.html#init(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)">init</A>, <A HREF="../../../../org/newdawn/slick/state/test.GameState.html#render(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.Graphics)">render</A>, <A HREF="../../../../org/newdawn/slick/state/test.GameState.html#update(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame, int)">update</A></CODE></TD>
+<TD><CODE><A HREF="../../../../org/newdawn/slick/state/GameState.html#init(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)">init</A>, <A HREF="../../../../org/newdawn/slick/state/GameState.html#render(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.Graphics)">render</A>, <A HREF="../../../../org/newdawn/slick/state/GameState.html#update(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame, int)">update</A></CODE></TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -496,15 +496,15 @@ getID</H3>
 <PRE>
 public abstract int <B>getID</B>()</PRE>
 <DL>
-<DD><B>Description copied from interface: <CODE><A HREF="../../../../org/newdawn/slick/state/test.GameState.html#getID()">test.GameState</A></CODE></B></DD>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../org/newdawn/slick/state/GameState.html#getID()">GameState</A></CODE></B></DD>
 <DD>Get the ID of this state
 <P>
 <DD><DL>
-<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../org/newdawn/slick/state/test.GameState.html#getID()">getID</A></CODE> in interface <CODE><A HREF="../../../../org/newdawn/slick/state/test.GameState.html" title="interface in org.newdawn.slick.state">test.GameState</A></CODE></DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../org/newdawn/slick/state/GameState.html#getID()">getID</A></CODE> in interface <CODE><A HREF="../../../../org/newdawn/slick/state/GameState.html" title="interface in org.newdawn.slick.state">GameState</A></CODE></DL>
 </DD>
 <DD><DL>
 
-<DT><B>Returns:</B><DD>The game unique ID of this state<DT><B>See Also:</B><DD><A HREF="../../../../org/newdawn/slick/state/test.GameState.html#getID()"><CODE>test.GameState.getID()</CODE></A></DL>
+<DT><B>Returns:</B><DD>The game unique ID of this state<DT><B>See Also:</B><DD><A HREF="../../../../org/newdawn/slick/state/GameState.html#getID()"><CODE>GameState.getID()</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -846,17 +846,17 @@ public void <B>enter</B>(<A HREF="../../../../org/newdawn/slick/GameContainer.ht
                   <A HREF="../../../../org/newdawn/slick/state/StateBasedGame.html" title="class in org.newdawn.slick.state">StateBasedGame</A>&nbsp;game)
            throws <A HREF="../../../../org/newdawn/slick/SlickException.html" title="class in org.newdawn.slick">SlickException</A></PRE>
 <DL>
-<DD><B>Description copied from interface: <CODE><A HREF="../../../../org/newdawn/slick/state/test.GameState.html#enter(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)">test.GameState</A></CODE></B></DD>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../org/newdawn/slick/state/GameState.html#enter(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)">GameState</A></CODE></B></DD>
 <DD>Notification that we've entered this game state
 <P>
 <DD><DL>
-<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../org/newdawn/slick/state/test.GameState.html#enter(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)">enter</A></CODE> in interface <CODE><A HREF="../../../../org/newdawn/slick/state/test.GameState.html" title="interface in org.newdawn.slick.state">test.GameState</A></CODE></DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../org/newdawn/slick/state/GameState.html#enter(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)">enter</A></CODE> in interface <CODE><A HREF="../../../../org/newdawn/slick/state/GameState.html" title="interface in org.newdawn.slick.state">GameState</A></CODE></DL>
 </DD>
 <DD><DL>
 <DT><B>Parameters:</B><DD><CODE>container</CODE> - The container holding the game<DD><CODE>game</CODE> - The game holding this state
 <DT><B>Throws:</B>
 <DD><CODE><A HREF="../../../../org/newdawn/slick/SlickException.html" title="class in org.newdawn.slick">SlickException</A></CODE> - Indicates an internal error that will be reported through the
- standard framework mechanism<DT><B>See Also:</B><DD><A HREF="../../../../org/newdawn/slick/state/test.GameState.html#enter(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)"><CODE>test.GameState.enter(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)</CODE></A></DL>
+ standard framework mechanism<DT><B>See Also:</B><DD><A HREF="../../../../org/newdawn/slick/state/GameState.html#enter(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)"><CODE>GameState.enter(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -868,17 +868,17 @@ public void <B>leave</B>(<A HREF="../../../../org/newdawn/slick/GameContainer.ht
                   <A HREF="../../../../org/newdawn/slick/state/StateBasedGame.html" title="class in org.newdawn.slick.state">StateBasedGame</A>&nbsp;game)
            throws <A HREF="../../../../org/newdawn/slick/SlickException.html" title="class in org.newdawn.slick">SlickException</A></PRE>
 <DL>
-<DD><B>Description copied from interface: <CODE><A HREF="../../../../org/newdawn/slick/state/test.GameState.html#leave(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)">test.GameState</A></CODE></B></DD>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../org/newdawn/slick/state/GameState.html#leave(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)">GameState</A></CODE></B></DD>
 <DD>Notification that we're leaving this game state
 <P>
 <DD><DL>
-<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../org/newdawn/slick/state/test.GameState.html#leave(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)">leave</A></CODE> in interface <CODE><A HREF="../../../../org/newdawn/slick/state/test.GameState.html" title="interface in org.newdawn.slick.state">test.GameState</A></CODE></DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../org/newdawn/slick/state/GameState.html#leave(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)">leave</A></CODE> in interface <CODE><A HREF="../../../../org/newdawn/slick/state/GameState.html" title="interface in org.newdawn.slick.state">GameState</A></CODE></DL>
 </DD>
 <DD><DL>
 <DT><B>Parameters:</B><DD><CODE>container</CODE> - The container holding the game<DD><CODE>game</CODE> - The game holding this state
 <DT><B>Throws:</B>
 <DD><CODE><A HREF="../../../../org/newdawn/slick/SlickException.html" title="class in org.newdawn.slick">SlickException</A></CODE> - Indicates an internal error that will be reported through the
- standard framework mechanism<DT><B>See Also:</B><DD><A HREF="../../../../org/newdawn/slick/state/test.GameState.html#leave(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)"><CODE>test.GameState.leave(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)</CODE></A></DL>
+ standard framework mechanism<DT><B>See Also:</B><DD><A HREF="../../../../org/newdawn/slick/state/GameState.html#leave(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)"><CODE>GameState.leave(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -930,7 +930,7 @@ public void <B>mouseWheelMoved</B>(int&nbsp;newValue)</PRE>
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
 &nbsp;PREV CLASS&nbsp;
-&nbsp;<A HREF="../../../../org/newdawn/slick/state/test.GameState.html" title="interface in org.newdawn.slick.state"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../org/newdawn/slick/state/GameState.html" title="interface in org.newdawn.slick.state"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../index.html?org/newdawn/slick/state/BasicGameState.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="BasicGameState.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
