@@ -1,9 +1,12 @@
+package test;
+
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Circle;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
+import test.Gametest1;
 
 import java.util.ArrayList;
 import java.util.Random;
