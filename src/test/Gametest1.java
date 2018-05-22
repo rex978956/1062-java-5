@@ -2,6 +2,7 @@
 import org.newdawn.slick.*;
 
 import org.newdawn.slick.state.StateBasedGame;
+import test.GameState3;
 
 public class Gametest1 extends StateBasedGame {
 
