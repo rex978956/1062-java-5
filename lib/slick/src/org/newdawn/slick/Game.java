@@ -1,7 +1,7 @@
 package org.newdawn.slick;
 
 /**
- * The main game interface that should be implemented by any game being developed
+ * The game game interface that should be implemented by any game being developed
  * using the container system. There will be some utility type sub-classes as development
  * continues.
  * 

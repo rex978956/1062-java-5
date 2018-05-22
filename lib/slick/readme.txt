@@ -2,7 +2,7 @@ Slick - A 2D LWJGL Java Utility Library
 -----------------------------------------------------------
 
 This is a very early version. The tests work but no demo has been written yet. All the natives
-are included in the main distribution in the right place. This is just meant to make it easier for quick
+are included in the game distribution in the right place. This is just meant to make it easier for quick
 start users. All the natives required can be found in jars in the 'lib' directory.
 
 

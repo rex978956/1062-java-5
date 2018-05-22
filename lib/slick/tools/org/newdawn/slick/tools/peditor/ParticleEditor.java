@@ -39,7 +39,7 @@ import org.newdawn.slick.util.InputAdapter;
 import org.newdawn.slick.util.Log;
 
 /**
- * The bootstrap and main frame for the particle editor Pedigree.
+ * The bootstrap and game frame for the particle editor Pedigree.
  *
  * @author kevin
  */

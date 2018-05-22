@@ -1554,7 +1554,7 @@ public class TTFFile {
     }
     
     /**
-     * Static main method to get info about a TrueType font.
+     * Static game method to get info about a TrueType font.
      * @param args The command line arguments
      */
     public static void main(String[] args) {

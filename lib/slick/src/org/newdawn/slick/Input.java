@@ -50,7 +50,7 @@ public class Input {
 	/** */
 	public static final int KEY_0               = 0x0B;
 	/** */
-	public static final int KEY_MINUS           = 0x0C; /* - on main keyboard */
+	public static final int KEY_MINUS           = 0x0C; /* - on game keyboard */
 	/** */
 	public static final int KEY_EQUALS          = 0x0D;
 	/** */
@@ -82,9 +82,9 @@ public class Input {
 	/** */
 	public static final int KEY_RBRACKET        = 0x1B;
 	/** */
-	public static final int KEY_RETURN          = 0x1C; /* Enter on main keyboard */
+	public static final int KEY_RETURN          = 0x1C; /* Enter on game keyboard */
 	/** */
-	public static final int KEY_ENTER           = 0x1C; /* Enter on main keyboard */
+	public static final int KEY_ENTER           = 0x1C; /* Enter on game keyboard */
 	/** */
 	public static final int KEY_LCONTROL        = 0x1D;
 	/** */
@@ -132,9 +132,9 @@ public class Input {
 	/** */
 	public static final int KEY_COMMA           = 0x33;
 	/** */
-	public static final int KEY_PERIOD          = 0x34; /* . on main keyboard */
+	public static final int KEY_PERIOD          = 0x34; /* . on game keyboard */
 	/** */
-	public static final int KEY_SLASH           = 0x35; /* / on main keyboard */
+	public static final int KEY_SLASH           = 0x35; /* / on game keyboard */
 	/** */
 	public static final int KEY_RSHIFT          = 0x36;
 	/** */

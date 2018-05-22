@@ -51,7 +51,7 @@ public class GraphEditorWindow extends JPanel {
 	private Hashtable values;
 	/** The properties listed in the top left */
 	private JComboBox properties;
-	/** The panel with the main controls on */
+	/** The panel with the game controls on */
 	private DefaultPanel top;
 	/** The panel displaying the current graph */
 	private GraphPanel panel;
