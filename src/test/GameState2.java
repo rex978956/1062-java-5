@@ -1,5 +1,3 @@
-package test;
-
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -21,7 +19,7 @@ public class GameState2 extends BasicGameState{
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g) throws SlickException {
-        g.drawString("test.GameState2",300,300);
+        g.drawString("GameState2",300,300);
     }
 
     @Override

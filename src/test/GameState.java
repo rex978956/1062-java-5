@@ -1,5 +1,3 @@
-package test;
-
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Circle;
 import org.newdawn.slick.state.BasicGameState;
@@ -27,8 +25,8 @@ public class GameState extends BasicGameState{
         ms = new Image("res/cursormiddle.png");
         cursor = new Image("res/cursor.png");
         cursortail = new Image("res/cursortrail.png");
-       // gameContainer.setMouseCursor(cursor, 0, 0);
-        gameContainer.setMouseGrabbed(true); //移除鼠標
+        gameContainer.setMouseCursor(cursor, 0, 0);
+        //gameContainer.setMouseGrabbed(true); //移除鼠標
     }
 
     @Override
@@ -36,6 +34,7 @@ public class GameState extends BasicGameState{
         mouseBall.setCenterX(gameContainer.getInput().getMouseX());
         mouseBall.setCenterY(gameContainer.getInput().getMouseY());
         timePassed+=delta;
+
         if(timePassed > 500){
             timePassed = 0;
             balls.add(new Circle(200+random.nextInt(400),0,10));
@@ -63,15 +62,18 @@ public class GameState extends BasicGameState{
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame sbg, Graphics g) throws SlickException {
+        float MouseX = gameContainer.getInput().getMouseX();
+        float MouseY = gameContainer.getInput().getMouseY();
         //g.setColor(new Color(0x9ADFF6));
         //g.fill(mouseBall);
         g.setColor(Color.red);
         for (Circle c : balls){
             g.fill(c);
         }
-        cursor.draw(gameContainer.getInput().getMouseX()-cursor.getWidth()/2,gameContainer.getInput().getMouseY()-cursor.getHeight()/2);
-        cursortail.draw(gameContainer.getInput().getMouseX()-cursortail.getWidth()/2,gameContainer.getInput().getMouseY()-cursortail.getHeight()/2);
-        ms.draw(gameContainer.getInput().getMouseX()-ms.getWidth()/2,gameContainer.getInput().getMouseY()-ms.getHeight()/2);
+        cursor.rotate(1);
+        cursor.draw(MouseX - cursor.getWidth()/2,MouseY - cursor.getHeight()/2);
+        cursortail.draw(MouseX - cursortail.getWidth()/2,MouseY - cursortail.getHeight()/2);
+        ms.draw(MouseX - ms.getWidth()/2,MouseY - ms.getHeight()/2);
         //g.drawString("Current balls: "+balls.size(),20,50);
         g.drawString("Score: "+ Gametest1.gameScore,20,35);
         g.drawString("Lives: "+ Gametest1.live,20,55);
