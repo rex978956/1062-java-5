@@ -3,9 +3,9 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class game extends StateBasedGame {
+public class startgame extends StateBasedGame {
 
-    private game(String title){
+    private startgame(String title){
         super(title);
     }
 
@@ -15,7 +15,7 @@ public class game extends StateBasedGame {
     }
 
     public static void main(String[] args) throws SlickException {
-        AppGameContainer app = new AppGameContainer(new game("Game Title"));
+        AppGameContainer app = new AppGameContainer(new startgame("Game Title"));
         app.setDisplayMode(800,600,false);
         app.setTargetFrameRate(60);
         app.setAlwaysRender(true);

@@ -3,6 +3,7 @@ import org.newdawn.slick.state.GameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class gameState1 implements GameState {
+
     private Image cursor = null;
     private Image[] slider = new Image[10];
 
