@@ -7,11 +7,7 @@ import misc.Map;
 import misc.MapLoader;
 
 import org.lwjgl.input.Mouse;
-import org.newdawn.slick.Color;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
+import org.newdawn.slick.*;
 import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -69,7 +65,7 @@ public class MapMenu extends BasicGameState {
 	}
 
 	@Override
-	public void update(GameContainer gc, StateBasedGame sbg, int delta) {
+	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		Input input = gc.getInput();
 		if(input.isKeyPressed(Input.KEY_ESCAPE)) {
 			sbg.enterState(1,new FadeOutTransition(), new FadeInTransition());

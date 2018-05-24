@@ -29,7 +29,6 @@ public class Map implements TileBasedMap {
 	private Game game;
 	private int[][] towerList = new int[22][15];
 
-    /**新增AIRBOSS**/
     Map(TiledMap map, Image preview, String name,
         int startMoney, int killMoney, int waveMoney,
         int startHpGround, int startHpAir, int startHpGroundBoss, int startHpAirBoss,
@@ -163,7 +162,7 @@ public class Map implements TileBasedMap {
 
 				/*在重生點加入 地面軍*/
 				entityList.add(new Enemy(game, new Vector2f(spawnPoint.getX()*48+24,spawnPoint.getY()*48+24),
-						startHpGround+(wave)*waveHealthMultiplier, 1.5f, false, false, ImageManager.getImage(ImageManager.ENEMY_GROUND)));
+						startHpGround+(wave)*waveHealthMultiplier, 1.5f, false, ImageManager.getImage(ImageManager.ENEMY_GROUND)));
 			}
 			
 			/*獲取空中單位的數量並創建其對象*/
@@ -179,41 +178,20 @@ public class Map implements TileBasedMap {
 				Point spawnPoint = spawnList.get(spawn);
 
 				entityList.add(new Enemy(game, new Vector2f(spawnPoint.getX()*48+24,spawnPoint.getY()*48+24),
-						startHpAir+(wave)*waveHealthMultiplier, 2, true, false, ImageManager.getImage(ImageManager.ENEMY_AIR)));
+						startHpAir+(wave)*waveHealthMultiplier, 2, true, ImageManager.getImage(ImageManager.ENEMY_AIR)));
 			}
-			
-			/* Nehme die Anzahl der Bosseinheiten und erstelle deren Objekte */
 			for(int g = 0; g < numbers[2];g++) {
-				/* Erh�he den Index des zu benutzenden Spawnpunktes */
 				if(spawn < spawnList.size()-1) {
 					spawn++;
 				} else {
 					spawn = 0;
 				}
-				
-				/* Hole den Spawnpunkt mit dem Index */
+
 				Point spawnPoint = spawnList.get(spawn);
-				
-				/* Erstelle eine Einheit an dem Spawnpunkt und f�ge sie der Liste hinzu */
+
 				entityList.add(new Enemy(game, new Vector2f(spawnPoint.getX()*48+24,spawnPoint.getY()*48+24),
-                        startHpGroundBoss+(wave)*waveHealthMultiplier, 1.5f, false, true, ImageManager.getImage(ImageManager.ENEMY_GROUND)));
+                        startHpGroundBoss+(wave)*waveHealthMultiplier, 1.5f, false,ImageManager.getImage(ImageManager.ENEMY_GROUND)));
 			}
-			/*AIRBOSS*/
-            for(int g = 0; g < numbers[3];g++) {
-                /* Erh�he den Index des zu benutzenden Spawnpunktes */
-                if(spawn < spawnList.size()-1) {
-                    spawn++;
-                } else {
-                    spawn = 0;
-                }
-
-                /* Hole den Spawnpunkt mit dem Index */
-                Point spawnPoint = spawnList.get(spawn);
-
-                /* Erstelle eine Einheit an dem Spawnpunkt und f�ge sie der Liste hinzu */
-                entityList.add(new Enemy(game, new Vector2f(spawnPoint.getX()*48+24,spawnPoint.getY()*48+24),
-                        startHpAirBoss+(wave)*waveHealthMultiplier, 1.5f, true, true, ImageManager.getImage(ImageManager.ENEMY_BIG)));
-            }
 			return entityList;
 		}
 		return null;

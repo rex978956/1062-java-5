@@ -43,7 +43,7 @@ public class MapLoader {
 						Document doc = db.parse(xml);
 						Element root = doc.getDocumentElement();
 
-						/* Einige Eigenschaften lesen */
+
 						String mapName = root.getElementsByTagName("Name").item(0).getTextContent();
 						int startMoney = Integer.parseInt(root.getElementsByTagName("StartMoney").item(0).getTextContent());
 						int killMoney = Integer.parseInt(root.getElementsByTagName("MoneyPerKill").item(0).getTextContent());
@@ -54,7 +54,7 @@ public class MapLoader {
                         int startHpAirBoss = Integer.parseInt(root.getElementsByTagName("BaseHealthAirBoss").item(0).getTextContent()); /*自己加的*/
 						int waveHpMultiplier = Integer.parseInt(root.getElementsByTagName("HealthMultiplier").item(0).getTextContent());
 
-						/* Spawnpunkte auslesen */
+
 						ArrayList<Point> spawnList = new ArrayList<>();
 						NodeList spawnNodes = root.getElementsByTagName("Spawn");
 						for(int i = 0; i < spawnNodes.getLength(); i++) {
@@ -64,13 +64,11 @@ public class MapLoader {
 							spawnList.add(new Point(x,y));
 						}
 
-						/* Basiskoordinaten auslesen */
 						Element baseNode = (Element)root.getElementsByTagName("Base").item(0);
 						int baseX = Integer.parseInt(baseNode.getElementsByTagName("PosX").item(0).getTextContent());
 						int baseY = Integer.parseInt(baseNode.getElementsByTagName("PosY").item(0).getTextContent());
 						Point base = new Point(baseX,baseY);
 
-						/* Waves auslesen */
 						ArrayList<Integer[]> waveList = new ArrayList<>();
 						NodeList waveNodes = root.getElementsByTagName("Wave");
 						for(int i = 0; i < waveNodes.getLength(); i++) {

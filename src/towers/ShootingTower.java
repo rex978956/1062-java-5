@@ -73,14 +73,7 @@ public abstract class ShootingTower extends Tower {
 	public int getDamage() {
 		return damage[upgradeLevel];
 	}
-	
-	public int getShootInterval() {
-		return shootInterval[upgradeLevel];
-	}
 
-	public int getKillCount() {
-		return killCount;
-	}
 
 	@Override
 	public void update(GameContainer gc, int delta) {
@@ -125,7 +118,7 @@ public abstract class ShootingTower extends Tower {
 
             	if(t.getHealth() <= 0) {
             		game.removeEntity(t);
-            		game.setGold(game.getGold()+game.getMap().getKillMoney());
+            		//game.setGold(game.getGold()+game.getMap().getKillMoney());
             		killCount++;
             	}
             	

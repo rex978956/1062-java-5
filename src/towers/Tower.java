@@ -69,7 +69,7 @@ public abstract class Tower {
 
     ArrayList<Enemy> getEntitiesInRange() {
 		ArrayList<Enemy> entityList = game.getEntityList();
-		ArrayList<Enemy> entitiesInRange = new ArrayList<Enemy>();
+		ArrayList<Enemy> entitiesInRange = new ArrayList<>();
 		for(Enemy entity: entityList) {
 
 			Vector2f entityPos = entity.getPosition();

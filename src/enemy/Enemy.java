@@ -21,14 +21,14 @@ public class Enemy implements Mover {
 	
 	private int health, maxhp, radius;
 	private float speed;
-	private boolean isFlying, isBoss;
+	private boolean isBoss;
 	private float slowValue;
 	private Image texture;
 	
 	private AStarPathFinder pathfinder;
 	private Point targetPoint;
 
-    public Enemy(Game game, Vector2f position, int hp, float speed, boolean isFlying, boolean isBoss, Image texture) {
+    public Enemy(Game game, Vector2f position, int hp, float speed, boolean isBoss, Image texture) {
 		this.game = game;
 		
 		this.position = position;
@@ -40,7 +40,6 @@ public class Enemy implements Mover {
 		this.radius = 20;
 		this.speed = speed;
 		this.slowValue = 1;
-		this.isFlying = isFlying;
 		this.isBoss = isBoss;
 		this.texture = texture;
 		
@@ -49,8 +48,8 @@ public class Enemy implements Mover {
 			radius = 10;
 		}
 
-		this.targetPoint = game.getMap().getBase();		
-		this.pathfinder = new AStarPathFinder(game.getMap(), 200, false);
+		//this.targetPoint = game.getMap().getBase();
+		//this.pathfinder = new AStarPathFinder(game.getMap(), 200, false);
 	}
 	
 	public int getHealth() {
@@ -67,15 +66,6 @@ public class Enemy implements Mover {
 
 	public Vector2f getPosition() {
 	    return position;
-	}
-
-	public boolean isFlying() {
-	    return isFlying;
-	}
-	
-	public void setSlowValue(float slowValue) {
-		if(slowValue < this.slowValue)
-			this.slowValue = slowValue;
 	}
 
 	public void update(int delta) {
@@ -104,14 +94,14 @@ public class Enemy implements Mover {
 			}
 		}
 		/*當對手在基地*/
-		else {
-			Point base = game.getMap().getBase();
-			if(base.getX() == tileposx && base.getY() == tileposy) {
-				/*消除敵人+扣血*/
-				game.removeEntity(this);
-				game.setHealth(game.getHealth() - ((isBoss)? 5 : 1));
-			}
-		}
+//		else {
+//			Point base = game.getMap().getBase();
+//			if(base.getX() == tileposx && base.getY() == tileposy) {
+//				/*消除敵人+扣血*/
+//				game.removeEntity(this);
+//				game.setHealth(game.getHealth() - ((isBoss)? 5 : 1));
+//			}
+//		}
 	}
 
 	public void render(Graphics g) {
