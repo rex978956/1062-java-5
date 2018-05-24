@@ -1,15 +1,29 @@
 package map;
 
+import org.newdawn.slick.Image;
+import org.newdawn.slick.geom.Point;
 import org.newdawn.slick.tiled.TiledMap;
 import org.newdawn.slick.util.pathfinding.PathFindingContext;
 import org.newdawn.slick.util.pathfinding.TileBasedMap;
+
+import java.util.ArrayList;
 
 /**
  * Map instance
  */
 public class map implements TileBasedMap {
 
+    private String name;
+    private Image preview;
     private TiledMap map;
+    private int startMoney, killMoney, bonusMoney;
+    private int multiplierHealth;
+    private int startHealth;
+    private ArrayList<Point> spawnList;
+    private Point base;
+    private ArrayList<Integer[]> waveList;
+
+    private int[][] towerList;
 
     /**
      * Get the width of the tile map. The slightly odd name is used

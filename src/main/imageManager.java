@@ -9,6 +9,9 @@ public class imageManager {
 
     public static final int TEST = 0;
 
+    public static final int BTN_ARROW_LEFT = 1;
+    public static final int BTN_ARROW_RIGHT = 2;
+
     private static ArrayList<Image> imageList;
 
     static {
@@ -16,6 +19,9 @@ public class imageManager {
 
         try {
             imageList.add(new Image("res/asd.png"));
+
+            imageList.add(new Image("res/images/menus/button-arrow-left.png"));
+            imageList.add(new Image("res/images/menus/button-arrow-right.png"));
 
         } catch (SlickException e) {
             e.printStackTrace();
