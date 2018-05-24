@@ -13,31 +13,24 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 
 public class MainMenu extends BasicGameState {
 
-	private Image background,logo;
-	private MouseOverArea playButton,creditsButton,exitButton;
+	private Image background;
+	private MouseOverArea playButton,exitButton;
 	
 	@Override
 	public void init(GameContainer gc, final StateBasedGame sbg) {
-		logo = ImageManager.getImage(ImageManager.MENU_LOGO);
 		background = ImageManager.getImage(ImageManager.MENU_BACKGROUND);
 		
 		playButton = new MouseOverArea(gc,ImageManager.getImage(ImageManager.MENU_BUTTON_PLAY),454,260);
-		playButton.addListener(cmp -> sbg.enterState(2,new FadeOutTransition(), new FadeInTransition()));
+		playButton.addListener(cmp -> sbg.enterState(3,new FadeOutTransition(), new FadeInTransition()));
 		
-		creditsButton = new MouseOverArea(gc,ImageManager.getImage(ImageManager.MENU_BUTTON_CREDITS),454,370);
-		creditsButton.addListener(cmp -> sbg.enterState(5,new FadeOutTransition(), new FadeInTransition()));
-		
-		exitButton = new MouseOverArea(gc,ImageManager.getImage(ImageManager.MENU_BUTTON_EXIT),454,480);
+		exitButton = new MouseOverArea(gc,ImageManager.getImage(ImageManager.MENU_BUTTON_EXIT),454,370);
 		exitButton.addListener(cmp -> System.exit(0));
 	}
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) {
 		background.draw(0,0);
-		logo.draw(445,130);
-		
 		playButton.render(gc, g);
-		creditsButton.render(gc, g);
 		exitButton.render(gc, g);
 	}
 
