@@ -86,11 +86,6 @@ public class Game extends BasicGameState {
         button_startWave =  new MouseOverArea(gc,ImageManager.getImage(ImageManager.GAME_BUTTON_STARTWAVE),1100,755);
 
         button_normalTower = new MouseOverArea(gc,ImageManager.getImage(ImageManager.NORMAL_TOWER_1),1104,48);
-        button_groundTower = new MouseOverArea(gc,ImageManager.getImage(ImageManager.GROUND_TOWER_1),1154,48);
-        button_airTower = new MouseOverArea(gc,ImageManager.getImage(ImageManager.AIR_TOWER_1),1104,96);
-        button_slowTower = new MouseOverArea(gc,ImageManager.getImage(ImageManager.SLOW_TOWER_1),1154,96);
-        /*++*/
-        button_normalTower2 = new MouseOverArea(gc,ImageManager.getImage(ImageManager.NORMAL_TOWER2_1),1104,144);
 
         button_quitGame = new MouseOverArea(gc,ImageManager.getImage(ImageManager.GAME_BUTTON_QUITGAME),550,287);
         button_cancel = new MouseOverArea(gc,ImageManager.getImage(ImageManager.GAME_BUTTON_CANCEL),550,345);
@@ -102,10 +97,11 @@ public class Game extends BasicGameState {
     }
 
     @Override
-    public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
+    public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
         Input input = gc.getInput();
         int mouseX = Mouse.getX();
         int mouseY = 800-Mouse.getY();
+
         if(buyTower != null) {
             if(mouseX < 1056 && mouseY < 720) {
                 int tileposx = (int)Math.floor((mouseX)/48);
@@ -162,6 +158,15 @@ public class Game extends BasicGameState {
                 }
             }
         }
+
+        if(input.isKeyPressed(Input.KEY_ESCAPE)) {
+            if(buyTower != null) {
+                buyTower = null;
+                selectedTower = null;
+            } else {
+                pause = !pause;
+            }
+        }
     }
 
     @Override
@@ -182,8 +187,6 @@ public class Game extends BasicGameState {
             g.draw(rangeCircle);
 
 
-            info.draw(1100,180);
-
             if(selectedTower instanceof ShootingTower) {
                 ShootingTower shTower = (ShootingTower) selectedTower;
             }
@@ -196,6 +199,10 @@ public class Game extends BasicGameState {
             }
         }
 
+        if(buyTower != null) {
+            buyTower.render(gc, g);
+        }
+
 
 
     }
@@ -203,9 +210,11 @@ public class Game extends BasicGameState {
     public void removeEntity(Enemy t) {
     }
 
-    public void getGold() {
+    public void setGold(int gold) {
+        this.gold = gold;
     }
-    public void setGold() {
+    public int getGold() {
+        return gold;
     }
 
     public void getMap() {
