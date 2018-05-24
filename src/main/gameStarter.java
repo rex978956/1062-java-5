@@ -2,11 +2,16 @@ package main;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 import states.mapMenu;
 
 public class gameStarter extends StateBasedGame {
+
+    private static final int WINDOWED_WIDTH = 1024;
+    private static final int WINDOWED_HEIGHT = 768;
+    private AppGameContainer container;
 
     /**
      * Create a new state based game
@@ -20,8 +25,7 @@ public class gameStarter extends StateBasedGame {
     public static void main(String[] args) throws SlickException {
 
         AppGameContainer game = new AppGameContainer(new gameStarter("Final Tower Defense"));
-        game.setDisplayMode(640, 480, false);
-        game.setMouseGrabbed(false);
+        game.setDisplayMode(WINDOWED_WIDTH, WINDOWED_HEIGHT, false);
         game.setAlwaysRender(true);
         game.setShowFPS(true);
         game.setVSync(true);
@@ -36,6 +40,23 @@ public class gameStarter extends StateBasedGame {
      */
     @Override
     public void initStatesList(GameContainer container) throws SlickException {
+        this.container = (AppGameContainer) container;
         addState(new mapMenu());
+    }
+
+    @Override
+    public void keyPressed(int key, char c) {
+        super.keyPressed(key, c);
+        if (key == Input.KEY_F11) {
+            try {
+                if (container.isFullscreen()) {
+                    container.setDisplayMode(WINDOWED_WIDTH, WINDOWED_HEIGHT, false);
+                } else {
+                    container.setDisplayMode(container.getScreenWidth(), container.getScreenHeight(), true);
+                }
+            } catch (SlickException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

@@ -1,6 +1,8 @@
 package states;
 
 import main.imageManager;
+import map.map;
+import map.mapLoader;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -8,6 +10,8 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.GameState;
 import org.newdawn.slick.state.StateBasedGame;
+
+import java.util.ArrayList;
 
 /**
  * Map select menu state
@@ -18,6 +22,8 @@ public class mapMenu extends BasicGameState {
     private Image cursorTail;
     private Image cursorMiddle;
     private Image test;
+
+    private ArrayList<map> mapList;
 
     /**
      * Initialise the state. It should load any resources it needs at this stage
@@ -30,10 +36,12 @@ public class mapMenu extends BasicGameState {
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         test = imageManager.getImage(imageManager.TEST);
 
+        mapList = mapLoader.loadMaps();
+
         cursor = new Image("res/cursor.png");
         cursorMiddle = new Image("res/cursorMiddle.png");
         cursorTail = new Image("res/cursorTail.png");
-        container.setMouseCursor(cursor, 0, 0);
+//        container.setDefaultMouseCursor();
         container.setMouseGrabbed(true);
     }
 
@@ -49,6 +57,8 @@ public class mapMenu extends BasicGameState {
         float x = container.getWidth() / 2;
         float y = container.getHeight() / 2;
         test.drawCentered(x, y);
+
+
 
         float MouseX = container.getInput().getMouseX();
         float MouseY = container.getInput().getMouseY();
