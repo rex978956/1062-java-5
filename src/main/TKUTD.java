@@ -16,6 +16,7 @@ public class TKUTD extends StateBasedGame {
 	public void initStatesList(GameContainer gc) {
 				addState(new MainMenu());
 				addState(new MapMenu());
+				addState(new Credits());
 	}
 	
 	public static void main(String[] args) {
