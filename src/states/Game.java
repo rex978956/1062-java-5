@@ -102,6 +102,13 @@ public class Game extends BasicGameState {
         int mouseX = Mouse.getX();
         int mouseY = 800-Mouse.getY();
 
+        for(Tower tower : towerList) {
+            tower.update(gc, delta);
+        }
+        for(Enemy entity : entityList) {
+            entity.update(delta);
+        }
+
         if(buyTower != null) {
             if(mouseX < 1056 && mouseY < 720) {
                 int tileposx = (int)Math.floor((mouseX)/48);
@@ -120,8 +127,11 @@ public class Game extends BasicGameState {
                 int tileposy = (int)Math.floor((mouseY)/48);
 
                 if(buyTower != null) {
-                    if(!map.isTower(tileposx, tileposy)) {
+
+                    if(true||!map.isTower(tileposx, tileposy)) {
+
                         if(buyTower.getCost() <= gold) {
+
                             boolean blocking = false;
 
                             if(!blocking) {
@@ -203,6 +213,12 @@ public class Game extends BasicGameState {
             buyTower.render(gc, g);
         }
 
+        for(Tower tower : towerList) {
+            tower.render(gc, g);
+        }
+        for(Enemy entity : entityList) {
+            entity.render(g);
+        }
 
 
     }

@@ -15,15 +15,15 @@ import states.Game;
 import enemy.Enemy;
 
 public abstract class ShootingTower extends Tower {
-	private Image projectile; //攻擊img
+	private Image projectile;
 	
 	private int[] damage, shootInterval;
 	private int lastShot;
 	private int angle;
 	
 	private Enemy target;
-	private ArrayList<Bullet> bullets; //子彈
-	
+	private ArrayList<Bullet> bullets;
+
 	private int killCount;
 
 	ShootingTower(Point position, int[] damage, int[] shootInterval, int[] range, int[] cost, Image[] textures, Image projectile, Game game) {
@@ -90,11 +90,11 @@ public abstract class ShootingTower extends Tower {
 
 			double distanceToTarget = Math.sqrt(Math.pow(Math.abs(target.getPosition().getX()-position.getX()), 
 					2)+Math.pow(Math.abs(target.getPosition().getY()-position.getY()), 2));
-			if(distanceToTarget > getRange()) { //超過範圍 就 不是目標所以 null
+			if(distanceToTarget > getRange()) {
 				target = null;
 			}
 		} else {
-			target = lookForTarget(); //反之就是找到目標
+			target = lookForTarget();
 		}
 		
 
