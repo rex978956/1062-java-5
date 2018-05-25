@@ -49,7 +49,7 @@ public class MapLoader {
 
                         // TODO: Load Wave Settings
 
-                        mapList.add(new Map(tiledMap, mapName));
+//                        mapList.add(new Map(tiledMap, mapName));
 
                         System.out.println("Maps Loaded!");
                     } catch (Exception e) {
@@ -60,7 +60,6 @@ public class MapLoader {
                 }
             }
         }
-
         return mapList;
     }
 }

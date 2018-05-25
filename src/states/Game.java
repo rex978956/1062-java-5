@@ -1,17 +1,10 @@
 package states;
 
-import java.util.ArrayList;
-
 import enemy.Enemy;
 import main.ImageManager;
-import misc.Map;
-
+import map.Map;
 import org.lwjgl.input.Mouse;
-import org.newdawn.slick.Color;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
+import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Circle;
 import org.newdawn.slick.geom.Point;
 import org.newdawn.slick.gui.MouseOverArea;
@@ -20,19 +13,19 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 import org.newdawn.slick.util.pathfinding.AStarPathFinder;
-
-
 import towers.NormalTower;
 import towers.ShootingTower;
 import towers.Tower;
+
+import java.util.ArrayList;
 
 public class Game extends BasicGameState {
 
 
     private Image sidebarBackground, info;
 
-    private MouseOverArea buttonUpgrade,buttonSell, buttonStartWave,
-            buttonNormalTower, buttonGroundTower, buttonAirTower, buttonSlowTower,buttonNormalTower2,
+    private MouseOverArea buttonUpgrade, buttonSell, buttonStartWave,
+            buttonNormalTower, buttonGroundTower, buttonAirTower, buttonSlowTower, buttonNormalTower2,
             buttonQuitGame, buttonCancel;
 
     private boolean pause;
@@ -68,7 +61,7 @@ public class Game extends BasicGameState {
 
         map.setGame(this);
 
-        buyTowerPathfinder = new AStarPathFinder(map,200,false);
+        buyTowerPathfinder = new AStarPathFinder(map, 200, false);
 
         this.map = map;
         this.entityList = new ArrayList<>();
@@ -80,8 +73,8 @@ public class Game extends BasicGameState {
         this.baseHealth = 20;
         this.currentHealth = baseHealth;
 
-        this.selectedFill =  new Color(41,136,255,40);
-        this.selectedRing =  new Color(41,136,255,180);
+        this.selectedFill = new Color(41, 136, 255, 40);
+        this.selectedRing = new Color(41, 136, 255, 180);
     }
 
     public Map getMap() {
@@ -89,8 +82,8 @@ public class Game extends BasicGameState {
     }
 
     public ArrayList<Enemy> getEntityList() {
-        if(!entityRemovalList.isEmpty()) {
-            for(Enemy e : entityRemovalList) {
+        if (!entityRemovalList.isEmpty()) {
+            for (Enemy e : entityRemovalList) {
                 entityList.remove(e);
             }
         }
@@ -111,31 +104,31 @@ public class Game extends BasicGameState {
 
     @Override
     public void init(GameContainer gc, final StateBasedGame sbg) {
-        buttonUpgrade = new MouseOverArea(gc,ImageManager.getImage(ImageManager.GAME_BUTTON_UPGRADE),1100,332);
-        buttonSell =  new MouseOverArea(gc,ImageManager.getImage(ImageManager.GAME_BUTTON_SELL),1100,378);
-        buttonStartWave =  new MouseOverArea(gc,ImageManager.getImage(ImageManager.GAME_BUTTON_STARTWAVE),1100,755);
+        buttonUpgrade = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_UPGRADE), 1100, 332);
+        buttonSell = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_SELL), 1100, 378);
+        buttonStartWave = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_STARTWAVE), 1100, 755);
 
-        buttonNormalTower = new MouseOverArea(gc,ImageManager.getImage(ImageManager.NORMAL_TOWER_1),1104,48);
-        buttonGroundTower = new MouseOverArea(gc,ImageManager.getImage(ImageManager.GROUND_TOWER_1),1154,48);
-        buttonAirTower = new MouseOverArea(gc,ImageManager.getImage(ImageManager.AIR_TOWER_1),1104,96);
-        buttonSlowTower = new MouseOverArea(gc,ImageManager.getImage(ImageManager.SLOW_TOWER_1),1154,96);
+        buttonNormalTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.NORMAL_TOWER_1), 1104, 48);
+        buttonGroundTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GROUND_TOWER_1), 1154, 48);
+        buttonAirTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.AIR_TOWER_1), 1104, 96);
+        buttonSlowTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.SLOW_TOWER_1), 1154, 96);
         /*++*/
-        buttonNormalTower2 = new MouseOverArea(gc,ImageManager.getImage(ImageManager.NORMAL_TOWER2_1),1104,144);
+        buttonNormalTower2 = new MouseOverArea(gc, ImageManager.getImage(ImageManager.NORMAL_TOWER2_1), 1104, 144);
 
-        buttonQuitGame = new MouseOverArea(gc,ImageManager.getImage(ImageManager.GAME_BUTTON_QUITGAME),550,287);
-        buttonCancel = new MouseOverArea(gc,ImageManager.getImage(ImageManager.GAME_BUTTON_CANCEL),550,345);
+        buttonQuitGame = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_QUITGAME), 550, 287);
+        buttonCancel = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_CANCEL), 550, 345);
 
         buttonNormalTower.addListener(arg0 -> {
-            buyTower = new NormalTower(new Point(-1000,-1000), Game.this);
+            buyTower = new NormalTower(new Point(-1000, -1000), Game.this);
             selectedTower = buyTower;
         });
 
         buttonStartWave.addListener(arg0 -> {
-            if(spawnList.isEmpty() && wave < map.getWaveList().size()) {
+            if (spawnList.isEmpty() && wave < map.getWaveList().size()) {
                 wave++;
                 spawnList = map.getEntityList(wave);
 
-                if(!gotMoneyForWave) {
+                if (!gotMoneyForWave) {
                     gold += map.getWaveMoney();
                 } else {
                     gotMoneyForWave = false;
@@ -146,30 +139,30 @@ public class Game extends BasicGameState {
         buttonUpgrade.addListener(arg0 -> {
             int upgradeLevel = selectedTower.getUpgradeLevel();
             int cost = selectedTower.getUpgradeCost();
-            if(upgradeLevel < 2 && gold >= cost) {
-                selectedTower.setUpgradeLevel(upgradeLevel+1);
+            if (upgradeLevel < 2 && gold >= cost) {
+                selectedTower.setUpgradeLevel(upgradeLevel + 1);
                 gold -= cost;
             }
         });
 
         buttonSell.addListener(arg0 -> {
             int reward = 0;
-            for(int i = 0; i <= selectedTower.getUpgradeLevel();i++) {
-                reward += selectedTower.getCost(i)/2;
+            for (int i = 0; i <= selectedTower.getUpgradeLevel(); i++) {
+                reward += selectedTower.getCost(i) / 2;
             }
 
             gold += reward;
 
             Game.this.removeTower(selectedTower);
             Point position = selectedTower.getTilePosition();
-            map.setTower((int)position.getX(), (int)position.getY(), false);
+            map.setTower((int) position.getX(), (int) position.getY(), false);
 
             selectedTower = null;
         });
 
         buttonQuitGame.addListener(arg0 -> {
             map.resetTowerList();
-            sbg.enterState(1,new FadeOutTransition(), new FadeInTransition());
+            sbg.enterState(1, new FadeOutTransition(), new FadeInTransition());
         });
 
         buttonCancel.addListener(arg0 -> pause = false);
@@ -178,102 +171,102 @@ public class Game extends BasicGameState {
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
 
-        if(lost) {
+        if (lost) {
             System.out.println("LOST");
         }
 
         Input input = gc.getInput();
-        if(!pause) {
+        if (!pause) {
             lastSpawn += delta;
 
             int spawnInterval = 1000;
-            if(!spawnList.isEmpty() && lastSpawn > spawnInterval) {
+            if (!spawnList.isEmpty() && lastSpawn > spawnInterval) {
 
                 entityList.add(spawnList.get(0));
                 spawnList.remove(0);
                 lastSpawn = 0;
 
-            } else if(spawnList.isEmpty() && entityList.isEmpty()) {
+            } else if (spawnList.isEmpty() && entityList.isEmpty()) {
 
-                if(!gotMoneyForWave) {
+                if (!gotMoneyForWave) {
                     gold += map.getWaveMoney();
                     gotMoneyForWave = true;
                 }
 
-                if(wave == map.getWaveList().size()) {
+                if (wave == map.getWaveList().size()) {
 
                     System.out.println("WIN");
                 }
             }
 
-            if(!entityRemovalList.isEmpty()) {
-                for(Enemy e : entityRemovalList) {
+            if (!entityRemovalList.isEmpty()) {
+                for (Enemy e : entityRemovalList) {
                     entityList.remove(e);
                 }
             }
-            if(!towerRemovalList.isEmpty()) {
-                for(Tower t : towerRemovalList) {
+            if (!towerRemovalList.isEmpty()) {
+                for (Tower t : towerRemovalList) {
                     towerList.remove(t);
                 }
             }
 
-            for(Tower tower : towerList) {
+            for (Tower tower : towerList) {
                 tower.update(gc, delta);
             }
-            for(Enemy entity : entityList) {
+            for (Enemy entity : entityList) {
                 entity.update(delta);
             }
 
             int mouseX = Mouse.getX();
-            int mouseY = 800-Mouse.getY();
+            int mouseY = 800 - Mouse.getY();
 
-            if(buyTower != null) {
+            if (buyTower != null) {
 
-                if(mouseX < 1056 && mouseY < 720) {
-                    int tileposx = (int)Math.floor((mouseX)/48);
-                    int tileposy = (int)Math.floor((mouseY)/48);
+                if (mouseX < 1056 && mouseY < 720) {
+                    int tileposx = (int) Math.floor((mouseX) / 48);
+                    int tileposy = (int) Math.floor((mouseY) / 48);
 
-                    int towerPosX = tileposx*48+24;
-                    int towerPosY = tileposy*48+24;
-                    buyTower.setPosition(new Point(towerPosX,towerPosY));
+                    int towerPosX = tileposx * 48 + 24;
+                    int towerPosY = tileposy * 48 + 24;
+                    buyTower.setPosition(new Point(towerPosX, towerPosY));
                 }
             }
 
 
-            if(input.isMousePressed(0)) {
+            if (input.isMousePressed(0)) {
 
-                if(mouseX < 1056 && mouseY < 720) {
+                if (mouseX < 1056 && mouseY < 720) {
 
-                    int tileposx = (int)Math.floor((mouseX)/48);
-                    int tileposy = (int)Math.floor((mouseY)/48);
+                    int tileposx = (int) Math.floor((mouseX) / 48);
+                    int tileposy = (int) Math.floor((mouseY) / 48);
 
-                    if(buyTower != null) {
+                    if (buyTower != null) {
 
-                        if(!map.isTower(tileposx, tileposy)) {
+                        if (!map.isTower(tileposx, tileposy)) {
 
-                            if(buyTower.getCost() <= gold) {
+                            if (buyTower.getCost() <= gold) {
 
                                 boolean blocking = false;
                                 Point base = map.getBase();
-                                for(Point spawn : map.getSpawnList()) {
-                                    if(buyTowerPathfinder.findPath(null,(int)spawn.getX(),(int)spawn.getY(),(int)base.getX(),(int)base.getY()) == null) {
+                                for (Point spawn : map.getSpawnList()) {
+                                    if (buyTowerPathfinder.findPath(null, (int) spawn.getX(), (int) spawn.getY(), (int) base.getX(), (int) base.getY()) == null) {
                                         blocking = true;
                                         break;
-                                    } else if(tileposx == spawn.getX() && tileposy == spawn.getY()) {
+                                    } else if (tileposx == spawn.getX() && tileposy == spawn.getY()) {
                                         blocking = true;
                                     }
                                 }
 
-                                if(!blocking) {
+                                if (!blocking) {
                                     gold -= buyTower.getCost();
                                     towerList.add(buyTower);
                                     map.setTower(tileposx, tileposy, true);
 
                                     selectedTower = null;
 
-                                    if(input.isKeyDown(Input.KEY_LSHIFT)) {
-                                        if(buyTower instanceof NormalTower) {
-                                            buyTower = new NormalTower(new Point(-1000,-1000), Game.this);
+                                    if (input.isKeyDown(Input.KEY_LSHIFT)) {
+                                        if (buyTower instanceof NormalTower) {
+                                            buyTower = new NormalTower(new Point(-1000, -1000), Game.this);
 
                                         }
                                         selectedTower = buyTower;
@@ -284,13 +277,13 @@ public class Game extends BasicGameState {
                             }
                         }
 
-                    } else if(map.isTower(tileposx, tileposy)) {
+                    } else if (map.isTower(tileposx, tileposy)) {
                         Tower clickedTower = null;
 
                         Point clickedTilePos = new Point(tileposx, tileposy);
-                        for(Tower t: towerList) {
+                        for (Tower t : towerList) {
                             Point towerTilePos = t.getTilePosition();
-                            if(clickedTilePos.getX() == towerTilePos.getX() && clickedTilePos.getY() == towerTilePos.getY()) {
+                            if (clickedTilePos.getX() == towerTilePos.getX() && clickedTilePos.getY() == towerTilePos.getY()) {
                                 clickedTower = t;
                             }
                         }
@@ -304,8 +297,8 @@ public class Game extends BasicGameState {
             }
         }
 
-        if(input.isKeyPressed(Input.KEY_ESCAPE)) {
-            if(buyTower != null) {
+        if (input.isKeyPressed(Input.KEY_ESCAPE)) {
+            if (buyTower != null) {
                 buyTower = null;
                 selectedTower = null;
             } else {
@@ -317,32 +310,32 @@ public class Game extends BasicGameState {
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) {
 
-        map.getMap().render(0,0);
+        map.getMap().render(0, 0);
 
-        sidebarBackground.draw(0,0);
-        g.drawString("gold: "+gold,66,763);
-        g.drawString(currentHealth+"/"+baseHealth,215,763);
-        g.drawString("Wave "+wave+"/"+map.getWaveList().size(),960,763);
+        sidebarBackground.draw(0, 0);
+        g.drawString("gold: " + gold, 66, 763);
+        g.drawString(currentHealth + "/" + baseHealth, 215, 763);
+        g.drawString("Wave " + wave + "/" + map.getWaveList().size(), 960, 763);
 
-        buttonStartWave.render(gc,g);
+        buttonStartWave.render(gc, g);
 
-        Integer[] nextWave = map.getWaveUnits(wave+1);
-        if(nextWave != null) {
-            g.drawString("Next Wave:",1105,660);
-            g.drawString("Ground: "+nextWave[0],1105,680);
-            g.drawString("Air: "+nextWave[1],1105,700);
-            g.drawString("GroundBoss: "+nextWave[2],1105,720);
-            g.drawString("AirBoss: "+nextWave[3],1105,740);
+        Integer[] nextWave = map.getWaveUnits(wave + 1);
+        if (nextWave != null) {
+            g.drawString("Next Wave:", 1105, 660);
+            g.drawString("Ground: " + nextWave[0], 1105, 680);
+            g.drawString("Air: " + nextWave[1], 1105, 700);
+            g.drawString("GroundBoss: " + nextWave[2], 1105, 720);
+            g.drawString("AirBoss: " + nextWave[3], 1105, 740);
         } else {
-            g.drawString("Last Wave!",1105,720);
+            g.drawString("Last Wave!", 1105, 720);
         }
 
 
-        buttonNormalTower.render(gc,g);
+        buttonNormalTower.render(gc, g);
 
-        if(selectedTower != null) {
+        if (selectedTower != null) {
             Point position = selectedTower.getPosition();
-            Circle rangeCircle = new Circle(position.getX(),position.getY(),selectedTower.getRange());
+            Circle rangeCircle = new Circle(position.getX(), position.getY(), selectedTower.getRange());
 
             g.setColor(selectedFill);
             g.fill(rangeCircle);
@@ -351,35 +344,34 @@ public class Game extends BasicGameState {
             g.draw(rangeCircle);
 
 
+            info.draw(1100, 180);
 
-            info.draw(1100,180);
-
-            if(selectedTower instanceof ShootingTower) {
+            if (selectedTower instanceof ShootingTower) {
                 ShootingTower shTower = (ShootingTower) selectedTower;
             }
 
-            if(selectedTower != buyTower && selectedTower != null) {
-                if(selectedTower.getUpgradeLevel() < 2) {
+            if (selectedTower != buyTower && selectedTower != null) {
+                if (selectedTower.getUpgradeLevel() < 2) {
                     buttonUpgrade.render(gc, g);
                 }
                 buttonSell.render(gc, g);
             }
         }
 
-        if(buyTower != null) {
+        if (buyTower != null) {
             buyTower.render(gc, g);
         }
 
-        for(Tower tower : towerList) {
+        for (Tower tower : towerList) {
             tower.render(gc, g);
         }
-        for(Enemy entity : entityList) {
+        for (Enemy entity : entityList) {
             entity.render(g);
         }
 
-        if(pause) {
+        if (pause) {
             g.setColor(new Color(0, 15, 35, 198));
-            g.fillRect(0,0,1280,800);
+            g.fillRect(0, 0, 1280, 800);
 
             buttonQuitGame.render(gc, g);
             buttonCancel.render(gc, g);
@@ -396,7 +388,7 @@ public class Game extends BasicGameState {
     }
 
     public void setHealth(int health) {
-        if(health > 0) {
+        if (health > 0) {
             currentHealth = health;
         } else {
 
@@ -413,10 +405,10 @@ public class Game extends BasicGameState {
         entityRemovalList.add(entity);
 
 
-        for(Tower t : towerList) {
-            if(t instanceof ShootingTower) {
+        for (Tower t : towerList) {
+            if (t instanceof ShootingTower) {
                 ShootingTower st = (ShootingTower) t;
-                if(st.getTarget() == entity) {
+                if (st.getTarget() == entity) {
                     st.clearTarget();
                 }
             }

@@ -4,7 +4,6 @@ import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
-import states.MainMenu;
 import states.MapMenu;
 
 public class TKUTD extends StateBasedGame {
@@ -14,7 +13,7 @@ public class TKUTD extends StateBasedGame {
     }
 
     public void initStatesList(GameContainer gc) {
-        addState(new MainMenu());
+//        addState(new MainMenu());
         addState(new MapMenu());
     }
 
