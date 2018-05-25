@@ -118,7 +118,7 @@ public abstract class ShootingTower extends Tower {
 
             	if(t.getHealth() <= 0) {
             		game.removeEntity(t);
-            		//game.setGold(game.getGold()+game.getMap().getKillMoney());
+            		game.setGold(game.getGold()+game.getMap().getKillMoney());
             		killCount++;
             	}
             	

@@ -41,7 +41,7 @@ public class Bullet {
 
     public void render() {
         texture.setRotation(180 + (float) direction.getTheta());
-        texture.drawCentered(position.x, position.y); /*畫子彈的圖*/
+        texture.drawCentered(position.x, position.y);
     }
 
     public boolean hitsTarget() {
