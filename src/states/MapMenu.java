@@ -62,7 +62,7 @@ public class MapMenu extends BasicGameState {
         cursorMiddle = new Image("res/cursorMiddle.png");
         cursorTail = new Image("res/cursorTail.png");
 //        container.setDefaultMouseCursor();
-        container.setMouseGrabbed(true);
+//        container.setMouseGrabbed(true);
     }
 
     /**
