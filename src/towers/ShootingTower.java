@@ -1,142 +1,140 @@
 package towers;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
+import enemy.Enemy;
 import misc.Bullet;
-
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Point;
 import org.newdawn.slick.geom.Vector2f;
-
 import states.Game;
-import enemy.Enemy;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public abstract class ShootingTower extends Tower {
-	private Image projectile;
-	
-	private int[] damage, shootInterval;
-	private int lastShot;
-	private int angle;
-	
-	private Enemy target;
-	private ArrayList<Bullet> bullets;
+    private Image projectile;
 
-	private int killCount;
+    private int[] damage, shootInterval;
+    private int lastShot;
+    private int angle;
 
-	ShootingTower(Point position, int[] damage, int[] shootInterval, int[] range, int[] cost, Image[] textures, Image projectile, Game game) {
-		super(position, range, cost, textures, game);
-		this.projectile = projectile;
-		this.damage = damage;
-		this.shootInterval = shootInterval;		
-		this.bullets = new ArrayList<>();
-	}
+    private Enemy target;
+    private ArrayList<Bullet> bullets;
 
-	private Enemy lookForTarget() {
-		ArrayList<Enemy> entitiesInRange = getEntitiesInRange();
+    private int killCount;
 
-		if(!entitiesInRange.isEmpty()) {	
-			
+    ShootingTower(Point position, int[] damage, int[] shootInterval, int[] range, int[] cost, Image[] textures, Image projectile, Game game) {
+        super(position, range, cost, textures, game);
+        this.projectile = projectile;
+        this.damage = damage;
+        this.shootInterval = shootInterval;
+        this.bullets = new ArrayList<>();
+    }
 
-			int index = -1;
-			
+    private Enemy lookForTarget() {
+        ArrayList<Enemy> entitiesInRange = getEntitiesInRange();
 
-			for(int i = 0; i < entitiesInRange.size();i++) {
-				if(canTarget(entitiesInRange.get(i))) {
-
-					if(index == -1 || entitiesInRange.get(i).getHealth() < entitiesInRange.get(index).getHealth()) {
-						index = i;
-					}
-				}
-			}
-
-			if(index != -1) {
-				return entitiesInRange.get(index);
-			}
-		}
-		return null;
-	}
-	
-	public Enemy getTarget() {
-		return target;
-	}
-
-	public void clearTarget() {
-		target = null;
-		for(Bullet b : bullets) {
-			b.setTarget(null);
-		}
-	}
-	
-	public int getDamage() {
-		return damage[upgradeLevel];
-	}
+        if (!entitiesInRange.isEmpty()) {
 
 
-	@Override
-	public void update(GameContainer gc, int delta) {
-		lastShot += delta;
+            int index = -1;
 
-		if(target != null) {
 
-			angle = (int)new Vector2f(target.getPosition().getX()-position.getX(),target.getPosition().getY() - position.getY()).getTheta();
+            for (int i = 0; i < entitiesInRange.size(); i++) {
+                if (canTarget(entitiesInRange.get(i))) {
 
-			if(lastShot >= shootInterval[upgradeLevel]) {
-				bullets.add(new Bullet(new Vector2f(position.getX(),position.getY()),new Vector2f(angle), target,projectile.copy()));
-				lastShot = 0;
-			}
+                    if (index == -1 || entitiesInRange.get(i).getHealth() < entitiesInRange.get(index).getHealth()) {
+                        index = i;
+                    }
+                }
+            }
 
-			double distanceToTarget = Math.sqrt(Math.pow(Math.abs(target.getPosition().getX()-position.getX()), 
-					2)+Math.pow(Math.abs(target.getPosition().getY()-position.getY()), 2));
-			if(distanceToTarget > getRange()) {
-				target = null;
-			}
-		} else {
-			target = lookForTarget();
-		}
-		
-
-		Iterator<Bullet> iterator = bullets.iterator();
-		while(iterator.hasNext()){
-           	Bullet b = iterator.next();
-           	
-            b.update(delta);
-            
-            if(b.getLifeTime() > 10000) {
-				iterator.remove();
-			}
-            
-
-            if(b.hitsTarget()) {
-            	
-
-            	Enemy t = b.getTarget();
-            	t.setHealth(t.getHealth()-damage[upgradeLevel]);
-            	
-
-            	if(t.getHealth() <= 0) {
-            		game.removeEntity(t);
-            		game.setGold(game.getGold()+game.getMap().getKillMoney());
-            		killCount++;
-            	}
-            	
-            	iterator.remove();
+            if (index != -1) {
+                return entitiesInRange.get(index);
             }
         }
-	}
+        return null;
+    }
 
-	@Override
-	public void render(GameContainer gc, Graphics g) {
-		Image tower = this.textures[upgradeLevel];
-		tower.setRotation(angle);
-		tower.drawCentered(position.getX(), position.getY());
+    public Enemy getTarget() {
+        return target;
+    }
 
-		for(Bullet b : bullets) {
-			b.render();
-		}
-	}
+    public void clearTarget() {
+        target = null;
+        for (Bullet b : bullets) {
+            b.setTarget(null);
+        }
+    }
+
+    public int getDamage() {
+        return damage[upgradeLevel];
+    }
+
+
+    @Override
+    public void update(GameContainer gc, int delta) {
+        lastShot += delta;
+
+        if (target != null) {
+
+            angle = (int) new Vector2f(target.getPosition().getX() - position.getX(), target.getPosition().getY() - position.getY()).getTheta();
+
+            if (lastShot >= shootInterval[upgradeLevel]) {
+                bullets.add(new Bullet(new Vector2f(position.getX(), position.getY()), new Vector2f(angle), target, projectile.copy()));
+                lastShot = 0;
+            }
+
+            double distanceToTarget = Math.sqrt(Math.pow(Math.abs(target.getPosition().getX() - position.getX()),
+                    2) + Math.pow(Math.abs(target.getPosition().getY() - position.getY()), 2));
+            if (distanceToTarget > getRange()) {
+                target = null;
+            }
+        } else {
+            target = lookForTarget();
+        }
+
+
+        Iterator<Bullet> iterator = bullets.iterator();
+        while (iterator.hasNext()) {
+            Bullet b = iterator.next();
+
+            b.update(delta);
+
+            if (b.getLifeTime() > 10000) {
+                iterator.remove();
+            }
+
+
+            if (b.hitsTarget()) {
+
+
+                Enemy t = b.getTarget();
+                t.setHealth(t.getHealth() - damage[upgradeLevel]);
+
+
+                if (t.getHealth() <= 0) {
+                    game.removeEntity(t);
+                    game.setGold(game.getGold() + game.getMap().getKillMoney());
+                    killCount++;
+                }
+
+                iterator.remove();
+            }
+        }
+    }
+
+    @Override
+    public void render(GameContainer gc, Graphics g) {
+        Image tower = this.textures[upgradeLevel];
+        tower.setRotation(angle);
+        tower.drawCentered(position.getX(), position.getY());
+
+        for (Bullet b : bullets) {
+            b.render();
+        }
+    }
 }
 
 
