@@ -48,8 +48,8 @@ public class Enemy implements Mover {
 			radius = 10;
 		}
 
-		//this.targetPoint = game.getMap().getBase();
-		//this.pathfinder = new AStarPathFinder(game.getMap(), 200, false);
+		this.targetPoint = game.getMap().getBase();
+		this.pathfinder = new AStarPathFinder(game.getMap(), 200, false);
 	}
 	
 	public int getHealth() {
@@ -81,27 +81,27 @@ public class Enemy implements Mover {
 
 		Path p = pathfinder.findPath(this, tileposx, tileposy , (int)targetPoint.getX(), (int)targetPoint.getY());
 		if(p != null) {
-			/*如果路徑上有下一個點*/
+
 			if(p.getLength() > 0) {
-				/*創建一個向量到下一個點，用delta對其進行縮放並設置新的位置*/
+
 				Step step = p.getStep(1);
 				Vector2f nextPoint = new Vector2f(step.getX() - tileposx, step.getY() - tileposy);			
 				nextPoint = nextPoint.scale((delta/1000.f)*48*speed*slowValue);
 				position.add(nextPoint);
 				
-				/*移動後，slowValue 將再次init*/
+
 				slowValue = 1;
 			}
 		}
-		/*當對手在基地*/
-//		else {
-//			Point base = game.getMap().getBase();
-//			if(base.getX() == tileposx && base.getY() == tileposy) {
-//				/*消除敵人+扣血*/
-//				game.removeEntity(this);
-//				game.setHealth(game.getHealth() - ((isBoss)? 5 : 1));
-//			}
-//		}
+
+		else {
+			Point base = game.getMap().getBase();
+			if(base.getX() == tileposx && base.getY() == tileposy) {
+
+				game.removeEntity(this);
+				game.setHealth(game.getHealth() - ((isBoss)? 5 : 1));
+			}
+		}
 	}
 
 	public void render(Graphics g) {
@@ -111,10 +111,10 @@ public class Enemy implements Mover {
 			texture.draw(position.x-24, position.y-24, 48, 48);
 		}
 
-		g.setColor(Color.red); /*血條顏色*/
+		g.setColor(Color.red);
 		g.fillRect(position.x-18, position.y-24, 36, 2);
 		
-		g.setColor(Color.green); /*血條顏色*/
+		g.setColor(Color.green);
 		float width = 36*((float)health/(float)maxhp);
 		if(width > 0) {	
 			g.fillRect(position.x-18, position.y-24, (int)width, 2);	

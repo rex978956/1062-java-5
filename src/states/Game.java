@@ -1,30 +1,39 @@
 package states;
 
+import java.util.ArrayList;
+
 import enemy.Enemy;
 import main.ImageManager;
 import misc.Map;
+
 import org.lwjgl.input.Mouse;
-import org.newdawn.slick.*;
+import org.newdawn.slick.Color;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.geom.Circle;
 import org.newdawn.slick.geom.Point;
 import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 import org.newdawn.slick.util.pathfinding.AStarPathFinder;
+
+
 import towers.NormalTower;
 import towers.ShootingTower;
 import towers.Tower;
 
-import java.util.ArrayList;
-
 public class Game extends BasicGameState {
 
 
-    private Image sidebar_background, info;
+    private Image sidebarBackground, info;
 
-    private MouseOverArea button_upgrade,button_sell, button_startWave,
-            button_normalTower, button_groundTower, button_airTower, button_slowTower,button_normalTower2,
-            button_quitGame, button_cancel;
+    private MouseOverArea buttonUpgrade,buttonSell, buttonStartWave,
+            buttonNormalTower, buttonGroundTower, buttonAirTower, buttonSlowTower,buttonNormalTower2,
+            buttonQuitGame, buttonCancel;
 
     private boolean pause;
 
@@ -42,6 +51,11 @@ public class Game extends BasicGameState {
 
     private ArrayList<Enemy> spawnList;
 
+    private boolean lost;
+
+    private int wave;
+    private int lastSpawn;
+
     private int gold;
     private int baseHealth, currentHealth;
 
@@ -49,7 +63,7 @@ public class Game extends BasicGameState {
 
     public Game(Map map) {
 
-        sidebar_background = ImageManager.getImage(ImageManager.GAME_SIDEBAR_BG);
+        sidebarBackground = ImageManager.getImage(ImageManager.GAME_SIDEBAR_BG);
         info = ImageManager.getImage(ImageManager.GAME_INFO);
 
         map.setGame(this);
@@ -70,101 +84,222 @@ public class Game extends BasicGameState {
         this.selectedRing =  new Color(41,136,255,180);
     }
 
-    public Game() {
+    public Map getMap() {
+        return map;
+    }
 
+    public ArrayList<Enemy> getEntityList() {
+        if(!entityRemovalList.isEmpty()) {
+            for(Enemy e : entityRemovalList) {
+                entityList.remove(e);
+            }
+        }
+        return entityList;
+    }
+
+    public Tower getBuyTower() {
+        return buyTower;
+    }
+
+    public int getGold() {
+        return gold;
+    }
+
+    public void setGold(int gold) {
+        this.gold = gold;
     }
 
     @Override
-    public int getID() {
-        return 3;
-    }
+    public void init(GameContainer gc, final StateBasedGame sbg) {
+        buttonUpgrade = new MouseOverArea(gc,ImageManager.getImage(ImageManager.GAME_BUTTON_UPGRADE),1100,332);
+        buttonSell =  new MouseOverArea(gc,ImageManager.getImage(ImageManager.GAME_BUTTON_SELL),1100,378);
+        buttonStartWave =  new MouseOverArea(gc,ImageManager.getImage(ImageManager.GAME_BUTTON_STARTWAVE),1100,755);
 
-    @Override
-    public void init(GameContainer gc, final StateBasedGame sbg) throws SlickException {
-        button_upgrade = new MouseOverArea(gc,ImageManager.getImage(ImageManager.GAME_BUTTON_UPGRADE),1100,332);
-        button_sell =  new MouseOverArea(gc,ImageManager.getImage(ImageManager.GAME_BUTTON_SELL),1100,378);
-        button_startWave =  new MouseOverArea(gc,ImageManager.getImage(ImageManager.GAME_BUTTON_STARTWAVE),1100,755);
+        buttonNormalTower = new MouseOverArea(gc,ImageManager.getImage(ImageManager.NORMAL_TOWER_1),1104,48);
+        buttonGroundTower = new MouseOverArea(gc,ImageManager.getImage(ImageManager.GROUND_TOWER_1),1154,48);
+        buttonAirTower = new MouseOverArea(gc,ImageManager.getImage(ImageManager.AIR_TOWER_1),1104,96);
+        buttonSlowTower = new MouseOverArea(gc,ImageManager.getImage(ImageManager.SLOW_TOWER_1),1154,96);
+        /*++*/
+        buttonNormalTower2 = new MouseOverArea(gc,ImageManager.getImage(ImageManager.NORMAL_TOWER2_1),1104,144);
 
-        button_normalTower = new MouseOverArea(gc,ImageManager.getImage(ImageManager.NORMAL_TOWER_1),1104,48);
+        buttonQuitGame = new MouseOverArea(gc,ImageManager.getImage(ImageManager.GAME_BUTTON_QUITGAME),550,287);
+        buttonCancel = new MouseOverArea(gc,ImageManager.getImage(ImageManager.GAME_BUTTON_CANCEL),550,345);
 
-        button_quitGame = new MouseOverArea(gc,ImageManager.getImage(ImageManager.GAME_BUTTON_QUITGAME),550,287);
-        button_cancel = new MouseOverArea(gc,ImageManager.getImage(ImageManager.GAME_BUTTON_CANCEL),550,345);
-
-        button_normalTower.addListener(arg0 -> {
+        buttonNormalTower.addListener(arg0 -> {
             buyTower = new NormalTower(new Point(-1000,-1000), Game.this);
             selectedTower = buyTower;
         });
+
+        buttonStartWave.addListener(arg0 -> {
+            if(spawnList.isEmpty() && wave < map.getWaveList().size()) {
+                wave++;
+                spawnList = map.getEntityList(wave);
+
+                if(!gotMoneyForWave) {
+                    gold += map.getWaveMoney();
+                } else {
+                    gotMoneyForWave = false;
+                }
+            }
+        });
+
+        buttonUpgrade.addListener(arg0 -> {
+            int upgradeLevel = selectedTower.getUpgradeLevel();
+            int cost = selectedTower.getUpgradeCost();
+            if(upgradeLevel < 2 && gold >= cost) {
+                selectedTower.setUpgradeLevel(upgradeLevel+1);
+                gold -= cost;
+            }
+        });
+
+        buttonSell.addListener(arg0 -> {
+            int reward = 0;
+            for(int i = 0; i <= selectedTower.getUpgradeLevel();i++) {
+                reward += selectedTower.getCost(i)/2;
+            }
+
+            gold += reward;
+
+            Game.this.removeTower(selectedTower);
+            Point position = selectedTower.getTilePosition();
+            map.setTower((int)position.getX(), (int)position.getY(), false);
+
+            selectedTower = null;
+        });
+
+        buttonQuitGame.addListener(arg0 -> {
+            map.resetTowerList();
+            sbg.enterState(1,new FadeOutTransition(), new FadeInTransition());
+        });
+
+        buttonCancel.addListener(arg0 -> pause = false);
     }
 
     @Override
-    public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+    public void update(GameContainer gc, StateBasedGame sbg, int delta) {
+
+        if(lost) {
+            System.out.println("LOST");
+        }
+
         Input input = gc.getInput();
-        int mouseX = Mouse.getX();
-        int mouseY = 800-Mouse.getY();
+        if(!pause) {
+            lastSpawn += delta;
 
-        for(Tower tower : towerList) {
-            tower.update(gc, delta);
-        }
-        for(Enemy entity : entityList) {
-            entity.update(delta);
-        }
+            int spawnInterval = 1000;
+            if(!spawnList.isEmpty() && lastSpawn > spawnInterval) {
 
-        if(buyTower != null) {
-            if(mouseX < 1056 && mouseY < 720) {
-                int tileposx = (int)Math.floor((mouseX)/48);
-                int tileposy = (int)Math.floor((mouseY)/48);
+                entityList.add(spawnList.get(0));
+                spawnList.remove(0);
+                lastSpawn = 0;
 
-                int towerPosX = tileposx*48+24;
-                int towerPosY = tileposy*48+24;
-                buyTower.setPosition(new Point(towerPosX,towerPosY));
+            } else if(spawnList.isEmpty() && entityList.isEmpty()) {
+
+                if(!gotMoneyForWave) {
+                    gold += map.getWaveMoney();
+                    gotMoneyForWave = true;
+                }
+
+                if(wave == map.getWaveList().size()) {
+
+                    System.out.println("WIN");
+                }
             }
-        }
-        if(input.isMousePressed(0)) {
 
-            if(mouseX < 1056 && mouseY < 720) {
+            if(!entityRemovalList.isEmpty()) {
+                for(Enemy e : entityRemovalList) {
+                    entityList.remove(e);
+                }
+            }
+            if(!towerRemovalList.isEmpty()) {
+                for(Tower t : towerRemovalList) {
+                    towerList.remove(t);
+                }
+            }
 
-                int tileposx = (int)Math.floor((mouseX)/48);
-                int tileposy = (int)Math.floor((mouseY)/48);
+            for(Tower tower : towerList) {
+                tower.update(gc, delta);
+            }
+            for(Enemy entity : entityList) {
+                entity.update(delta);
+            }
 
-                if(buyTower != null) {
+            int mouseX = Mouse.getX();
+            int mouseY = 800-Mouse.getY();
 
-                    if(!map.isTower(tileposx, tileposy)) {
+            if(buyTower != null) {
 
-                        if(buyTower.getCost() <= gold) {
+                if(mouseX < 1056 && mouseY < 720) {
+                    int tileposx = (int)Math.floor((mouseX)/48);
+                    int tileposy = (int)Math.floor((mouseY)/48);
 
-                            boolean blocking = false;
+                    int towerPosX = tileposx*48+24;
+                    int towerPosY = tileposy*48+24;
+                    buyTower.setPosition(new Point(towerPosX,towerPosY));
+                }
+            }
 
-                            if(!blocking) {
-                                gold -= buyTower.getCost();
-                                towerList.add(buyTower);
-                                map.setTower(tileposx, tileposy, true);
 
-                                selectedTower = null;
+            if(input.isMousePressed(0)) {
 
-                                if(input.isKeyDown(Input.KEY_LSHIFT)) {
-                                    if(buyTower instanceof NormalTower) {
-                                        buyTower = new NormalTower(new Point(-1000,-1000), Game.this);
+                if(mouseX < 1056 && mouseY < 720) {
+
+                    int tileposx = (int)Math.floor((mouseX)/48);
+                    int tileposy = (int)Math.floor((mouseY)/48);
+
+                    if(buyTower != null) {
+
+                        if(!map.isTower(tileposx, tileposy)) {
+
+                            if(buyTower.getCost() <= gold) {
+
+                                boolean blocking = false;
+                                Point base = map.getBase();
+                                for(Point spawn : map.getSpawnList()) {
+                                    if(buyTowerPathfinder.findPath(null,(int)spawn.getX(),(int)spawn.getY(),(int)base.getX(),(int)base.getY()) == null) {
+                                        blocking = true;
+                                        break;
+                                    } else if(tileposx == spawn.getX() && tileposy == spawn.getY()) {
+                                        blocking = true;
                                     }
-                                    selectedTower = buyTower;
-                                } else {
-                                    buyTower = null;
+                                }
+
+                                if(!blocking) {
+                                    gold -= buyTower.getCost();
+                                    towerList.add(buyTower);
+                                    map.setTower(tileposx, tileposy, true);
+
+                                    selectedTower = null;
+
+                                    if(input.isKeyDown(Input.KEY_LSHIFT)) {
+                                        if(buyTower instanceof NormalTower) {
+                                            buyTower = new NormalTower(new Point(-1000,-1000), Game.this);
+
+                                        }
+                                        selectedTower = buyTower;
+                                    } else {
+                                        buyTower = null;
+                                    }
                                 }
                             }
                         }
-                    }
 
-                } else if(map.isTower(tileposx, tileposy)) {
-                    Tower clickedTower = null;
-                    Point clickedTilePos = new Point(tileposx, tileposy);
-                    for(Tower t: towerList) {
-                        Point towerTilePos = t.getTilePosition();
-                        if(clickedTilePos.getX() == towerTilePos.getX() && clickedTilePos.getY() == towerTilePos.getY()) {
-                            clickedTower = t;
+                    } else if(map.isTower(tileposx, tileposy)) {
+                        Tower clickedTower = null;
+
+                        Point clickedTilePos = new Point(tileposx, tileposy);
+                        for(Tower t: towerList) {
+                            Point towerTilePos = t.getTilePosition();
+                            if(clickedTilePos.getX() == towerTilePos.getX() && clickedTilePos.getY() == towerTilePos.getY()) {
+                                clickedTower = t;
+                            }
                         }
+
+                        selectedTower = clickedTower;
+
+                    } else {
+                        selectedTower = null;
                     }
-                    selectedTower = clickedTower;
-                } else {
-                    selectedTower = null;
                 }
             }
         }
@@ -180,13 +315,31 @@ public class Game extends BasicGameState {
     }
 
     @Override
-    public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+    public void render(GameContainer gc, StateBasedGame sbg, Graphics g) {
+
         map.getMap().render(0,0);
-        button_normalTower.render(gc,g);
-        button_startWave.render(gc,g);
-        if(buyTower != null) {
-            buyTower.render(gc, g);
+
+        sidebarBackground.draw(0,0);
+        g.drawString("gold: "+gold,66,763);
+        g.drawString(currentHealth+"/"+baseHealth,215,763);
+        g.drawString("Wave "+wave+"/"+map.getWaveList().size(),960,763);
+
+        buttonStartWave.render(gc,g);
+
+        Integer[] nextWave = map.getWaveUnits(wave+1);
+        if(nextWave != null) {
+            g.drawString("Next Wave:",1105,660);
+            g.drawString("Ground: "+nextWave[0],1105,680);
+            g.drawString("Air: "+nextWave[1],1105,700);
+            g.drawString("GroundBoss: "+nextWave[2],1105,720);
+            g.drawString("AirBoss: "+nextWave[3],1105,740);
+        } else {
+            g.drawString("Last Wave!",1105,720);
         }
+
+
+        buttonNormalTower.render(gc,g);
+
         if(selectedTower != null) {
             Point position = selectedTower.getPosition();
             Circle rangeCircle = new Circle(position.getX(),position.getY(),selectedTower.getRange());
@@ -198,15 +351,18 @@ public class Game extends BasicGameState {
             g.draw(rangeCircle);
 
 
+
+            info.draw(1100,180);
+
             if(selectedTower instanceof ShootingTower) {
                 ShootingTower shTower = (ShootingTower) selectedTower;
             }
 
             if(selectedTower != buyTower && selectedTower != null) {
                 if(selectedTower.getUpgradeLevel() < 2) {
-                    button_upgrade.render(gc, g);
+                    buttonUpgrade.render(gc, g);
                 }
-                button_sell.render(gc, g);
+                buttonSell.render(gc, g);
             }
         }
 
@@ -221,29 +377,49 @@ public class Game extends BasicGameState {
             entity.render(g);
         }
 
+        if(pause) {
+            g.setColor(new Color(0, 15, 35, 198));
+            g.fillRect(0,0,1280,800);
 
+            buttonQuitGame.render(gc, g);
+            buttonCancel.render(gc, g);
+        }
     }
 
-    public void removeEntity(Enemy t) {
+    @Override
+    public int getID() {
+        return 3;
     }
 
-    public void setGold(int gold) {
-        this.gold = gold;
-    }
-    public int getGold() {
-        return gold;
+    public int getHealth() {
+        return currentHealth;
     }
 
-    public void getMap() {
+    public void setHealth(int health) {
+        if(health > 0) {
+            currentHealth = health;
+        } else {
 
+            lost = true;
+        }
     }
 
-    public ArrayList<Enemy> getEntityList() {
-        return null;
+    private void removeTower(Tower tower) {
+        towerRemovalList.add(tower);
     }
 
-    public Tower getBuyTower() {
+    public void removeEntity(Enemy entity) {
 
-        return null;
+        entityRemovalList.add(entity);
+
+
+        for(Tower t : towerList) {
+            if(t instanceof ShootingTower) {
+                ShootingTower st = (ShootingTower) t;
+                if(st.getTarget() == entity) {
+                    st.clearTarget();
+                }
+            }
+        }
     }
 }
