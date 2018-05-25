@@ -42,7 +42,7 @@ public class Game extends BasicGameState {
 
     private ArrayList<Enemy> spawnList;
 
-    private int gold = 3000;
+    private int gold;
     private int baseHealth, currentHealth;
 
     private boolean gotMoneyForWave = true;
@@ -98,6 +98,7 @@ public class Game extends BasicGameState {
 
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+        gold = 30000;
         Input input = gc.getInput();
         int mouseX = Mouse.getX();
         int mouseY = 800-Mouse.getY();
@@ -128,7 +129,7 @@ public class Game extends BasicGameState {
 
                 if(buyTower != null) {
 
-                    if(true||!map.isTower(tileposx, tileposy)) {
+                    if(!map.isTower(tileposx, tileposy)) {
 
                         if(buyTower.getCost() <= gold) {
 
