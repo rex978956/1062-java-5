@@ -12,9 +12,9 @@ import org.newdawn.slick.geom.Vector2f;
 import states.Game;
 
 public abstract class Tower {
-	protected Game game; //contanier
+	protected Game game;
 
-	protected Point position; //方向
+	protected Point position;
 
 	int upgradeLevel;
 	private int[] range, cost;
@@ -32,7 +32,7 @@ public abstract class Tower {
 		return position;
 	}
 
-	public Point getTilePosition() { //找座標點
+	public Point getTilePosition() {
 		return new Point(
 				(int)Math.floor(position.getX()/48),
 				(int)Math.floor(position.getY()/48)
@@ -55,10 +55,6 @@ public abstract class Tower {
 		return range[upgradeLevel];
 	}
 
-	public int getUpgradeRange() {
-		return range[(upgradeLevel < 2)? (upgradeLevel+1) : upgradeLevel];
-	}
-
 	public int getCost() {
 		return cost[upgradeLevel];
 	}
@@ -74,11 +70,18 @@ public abstract class Tower {
 	ArrayList<Enemy> getEntitiesInRange() {
 		ArrayList<Enemy> entityList = game.getEntityList();
 		ArrayList<Enemy> entitiesInRange = new ArrayList<>();
+		for(Enemy entity: entityList) {
+
+			Vector2f entityPos = entity.getPosition();
+
+			double distance = Math.sqrt(Math.pow(Math.abs(entityPos.x-position.getX()), 2)+Math.pow(Math.abs(entityPos.y-position.getY()), 2));
+			if(distance <= getRange()) {
+				entitiesInRange.add(entity);
+			}
+		}
 
 		return entitiesInRange;
 	}
-
-
 	public abstract boolean canTarget(Enemy entity);
 
 	public abstract void update(GameContainer gc, int delta);
