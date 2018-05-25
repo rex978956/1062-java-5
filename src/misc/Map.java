@@ -103,10 +103,10 @@ public class Map implements TileBasedMap {
 
 	@Override
 	public boolean blocked(PathFindingContext context, int x, int y) {
-		if(map.getTileId(x, y, 1) == 0) //不在地圖內
+		if(map.getTileId(x, y, 1) == 0)
 			return true;
 		
-		if(towerList[x][y] != 0) //有塔
+		if(towerList[x][y] != 0)
 			return true;
 
 		Mover mover = context.getMover();
@@ -160,21 +160,17 @@ public class Map implements TileBasedMap {
 
 				Point spawnPoint = spawnList.get(spawn);
 
-				/*在重生點加入 地面軍*/
 				entityList.add(new Enemy(game, new Vector2f(spawnPoint.getX()*48+24,spawnPoint.getY()*48+24),
 						startHpGround+(wave)*waveHealthMultiplier, 1.5f, false, ImageManager.getImage(ImageManager.ENEMY_GROUND)));
 			}
-			
-			/*獲取空中單位的數量並創建其對象*/
+
 			for(int g = 0; g < numbers[1];g++) {
-				/*增加使用重生點的索引*/
 				if(spawn < spawnList.size()-1) {
 					spawn++;
 				} else {
 					spawn = 0;
 				}
-				
-				/*用索引獲得重生點*/
+
 				Point spawnPoint = spawnList.get(spawn);
 
 				entityList.add(new Enemy(game, new Vector2f(spawnPoint.getX()*48+24,spawnPoint.getY()*48+24),

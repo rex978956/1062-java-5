@@ -98,7 +98,6 @@ public class Game extends BasicGameState {
 
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
-        gold = 30000;
         Input input = gc.getInput();
         int mouseX = Mouse.getX();
         int mouseY = 800-Mouse.getY();
@@ -182,6 +181,7 @@ public class Game extends BasicGameState {
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+        map.getMap().render(0,0);
         button_normalTower.render(gc,g);
         button_startWave.render(gc,g);
         if(buyTower != null) {
