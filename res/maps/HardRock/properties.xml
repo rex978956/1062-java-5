@@ -6,7 +6,8 @@
      <MoneyPerWave>100</MoneyPerWave>
      <BaseHealthGround>10</BaseHealthGround>
      <BaseHealthAir>9</BaseHealthAir>
-     <BaseHealthBoss>400</BaseHealthBoss>
+     <BaseHealthGroundBoss>400</BaseHealthGroundBoss>
+     <BaseHealthAirBoss>400</BaseHealthAirBoss>
      <HealthMultiplier>10</HealthMultiplier>
      <Spawns>
           <Spawn>
@@ -40,59 +41,10 @@
      </Base>
      <Waves>
           <Wave>
-               <Ground>130</Ground>
-               <Air>20</Air>
-               <Boss>10</Boss>
-          </Wave>
-          <Wave>
-               <Ground>130</Ground>
-               <Air>20</Air>
-               <Boss>10</Boss>
-          </Wave>
-          <Wave>
-               <Ground>130</Ground>
-               <Air>20</Air>
-               <Boss>10</Boss>
-          </Wave>
-          <Wave>
-               <Ground>130</Ground>
-               <Air>20</Air>
-               <Boss>10</Boss>
-          </Wave>
-          <Wave>
-               <Ground>130</Ground>
-               <Air>20</Air>
-               <Boss>10</Boss>
-          </Wave>
-          <Wave>
-               <Ground>130</Ground>
-               <Air>20</Air>
-               <Boss>10</Boss>
-          </Wave>
-          <Wave>
-               <Ground>130</Ground>
-               <Air>20</Air>
-               <Boss>10</Boss>
-          </Wave>
-          <Wave>
-               <Ground>130</Ground>
-               <Air>20</Air>
-               <Boss>10</Boss>
-          </Wave>
-          <Wave>
-               <Ground>130</Ground>
-               <Air>20</Air>
-               <Boss>10</Boss>
-          </Wave>
-          <Wave>
-               <Ground>130</Ground>
-               <Air>20</Air>
-               <Boss>10</Boss>
-          </Wave>
-          <Wave>
-               <Ground>130</Ground>
-               <Air>20</Air>
-               <Boss>10</Boss>
+               <Ground>3</Ground>
+               <Air>5</Air>
+               <GroundBoss>2</GroundBoss>
+               <AirBoss>10</AirBoss>
           </Wave>
      </Waves>
 </Map>
