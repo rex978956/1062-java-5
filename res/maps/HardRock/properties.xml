@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Map>
      <Name>Hard Rock</Name>
-     <StartMoney>3000</StartMoney>
+     <StartMoney>300</StartMoney>
      <MoneyPerKill>10</MoneyPerKill>
      <MoneyPerWave>100</MoneyPerWave>
      <BaseHealthGround>10</BaseHealthGround>
@@ -17,6 +17,22 @@
           <Spawn>
                <PosX>14</PosX>
                <PosY>0</PosY>
+          </Spawn>
+          <Spawn>
+               <PosX>0</PosX>
+               <PosY>4</PosY>
+          </Spawn>
+          <Spawn>
+               <PosX>0</PosX>
+               <PosY>12</PosY>
+          </Spawn>
+          <Spawn>
+               <PosX>4</PosX>
+               <PosY>14</PosY>
+          </Spawn>
+          <Spawn>
+               <PosX>13</PosX>
+               <PosY>14</PosY>
           </Spawn>
      </Spawns>
      <Base>
