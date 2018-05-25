@@ -6,6 +6,8 @@
             - Credits
     - ImageManager 
         - 建表起來放好了 參考網路資源的寫法
+    - ParameterManager
+        - 把定值的參數整理起來放在一起 這樣要變動參數時比較方便 (5/26更新)
 - states
     - Game
     - MainMenu
