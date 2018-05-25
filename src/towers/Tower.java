@@ -13,9 +13,9 @@ import states.Game;
 
 public abstract class Tower {
 	protected Game game; //contanier
-	
+
 	protected Point position; //方向
-	
+
 	int upgradeLevel;
 	private int[] range, cost;
 	Image[] textures;
@@ -27,15 +27,15 @@ public abstract class Tower {
 		this.textures = textures;
 		this.game = game;
 	}
-	
+
 	public Point getPosition() {
 		return position;
 	}
-	
+
 	public Point getTilePosition() { //找座標點
 		return new Point(
-			(int)Math.floor(position.getX()/48),
-			(int)Math.floor(position.getY()/48)
+				(int)Math.floor(position.getX()/48),
+				(int)Math.floor(position.getY()/48)
 		);
 	}
 
@@ -46,7 +46,7 @@ public abstract class Tower {
 	public int getUpgradeLevel() {
 		return upgradeLevel;
 	}
-	
+
 	public void setUpgradeLevel(int upgradeLevel) {
 		this.upgradeLevel = upgradeLevel;
 	}
@@ -55,30 +55,26 @@ public abstract class Tower {
 		return range[upgradeLevel];
 	}
 
+	public int getUpgradeRange() {
+		return range[(upgradeLevel < 2)? (upgradeLevel+1) : upgradeLevel];
+	}
+
 	public int getCost() {
 		return cost[upgradeLevel];
 	}
-	
+
 	public int getCost(int i) {
 		return cost[i];
 	}
-	
+
 	public int getUpgradeCost() {
 		return (upgradeLevel < 2)? cost[upgradeLevel+1] : 0;
 	}
 
-    ArrayList<Enemy> getEntitiesInRange() {
+	ArrayList<Enemy> getEntitiesInRange() {
 		ArrayList<Enemy> entityList = game.getEntityList();
 		ArrayList<Enemy> entitiesInRange = new ArrayList<>();
-		for(Enemy entity: entityList) {
 
-			Vector2f entityPos = entity.getPosition();
-
-			double distance = Math.sqrt(Math.pow(Math.abs(entityPos.x-position.getX()), 2)+Math.pow(Math.abs(entityPos.y-position.getY()), 2));
-			if(distance <= getRange()) {
-				entitiesInRange.add(entity);
-			}
-		}
 		return entitiesInRange;
 	}
 
