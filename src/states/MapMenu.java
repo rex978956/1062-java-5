@@ -1,8 +1,8 @@
 package states;
 
-import main.imageManager;
-import map.map;
-import map.mapLoader;
+import main.ImagerManager;
+import map.Map;
+import map.MapLoader;
 import org.newdawn.slick.*;
 import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.BasicGameState;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 /**
  * Map select menu state
  */
-public class mapMenu extends BasicGameState {
+public class MapMenu extends BasicGameState {
 
     private Image cursor;
     private Image cursorTail;
@@ -23,7 +23,7 @@ public class mapMenu extends BasicGameState {
 
     private MouseOverArea prevBtn, nextBtn;
 
-    private ArrayList<map> mapList;
+    private ArrayList<Map> mapList;
 
     private int selectedMap;
 
@@ -52,9 +52,9 @@ public class mapMenu extends BasicGameState {
      */
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
-        test = imageManager.getImage(imageManager.TEST);
+        test = ImagerManager.getImage(ImagerManager.TEST);
 
-        mapList = mapLoader.loadMaps();
+        mapList = MapLoader.loadMaps();
 
         cursor = new Image("res/cursor.png");
         cursorMiddle = new Image("res/cursorMiddle.png");
@@ -75,19 +75,25 @@ public class mapMenu extends BasicGameState {
 
         g.setBackground(Color.red);
 
+        if (mapList != null) {
+            Map map = mapList.get(selectedMap);
+
+        }
+
         float x = container.getWidth() / 2;
         float y = container.getHeight() / 2;
         test.drawCentered(x, y);
 
-        int prevBtnX = container.getWidth() / 4 - imageManager.getImage(imageManager.BTN_ARROW_LEFT).getWidth() / 2;
-        int prevBtnY = container.getHeight() / 2 - imageManager.getImage(imageManager.BTN_ARROW_LEFT).getHeight() / 2;
+        int prevBtnX = container.getWidth() / 4 - ImagerManager.getImage(ImagerManager.BTN_ARROW_LEFT).getWidth() / 2;
+        int prevBtnY = container.getHeight() / 2 - ImagerManager.getImage(ImagerManager.BTN_ARROW_LEFT).getHeight() / 2;
 
-        prevBtn = new MouseOverArea(container, imageManager.getImage(imageManager.BTN_ARROW_LEFT), prevBtnX, prevBtnY);
+        prevBtn = new MouseOverArea(container, ImagerManager.getImage(ImagerManager.BTN_ARROW_LEFT), prevBtnX, prevBtnY);
         prevBtn.addListener(source -> selectPrevMap());
 
-        int nextBtnX = container.getWidth() * 3 / 4 - imageManager.getImage(imageManager.BTN_ARROW_RIGHT).getWidth() / 2;
-        int nextBtnY = container.getHeight() / 2 - imageManager.getImage(imageManager.BTN_ARROW_RIGHT).getHeight() / 2;
-        nextBtn = new MouseOverArea(container, imageManager.getImage(imageManager.BTN_ARROW_RIGHT), nextBtnX, nextBtnY);
+        int nextBtnX = container.getWidth() * 3 / 4 - ImagerManager.getImage(ImagerManager.BTN_ARROW_RIGHT).getWidth() / 2;
+        int nextBtnY = container.getHeight() / 2 - ImagerManager.getImage(ImagerManager.BTN_ARROW_RIGHT).getHeight() / 2;
+
+        nextBtn = new MouseOverArea(container, ImagerManager.getImage(ImagerManager.BTN_ARROW_RIGHT), nextBtnX, nextBtnY);
         nextBtn.addListener(source -> selectNextMap());
 
         prevBtn.render(container, g);

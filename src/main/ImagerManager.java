@@ -5,7 +5,7 @@ import org.newdawn.slick.SlickException;
 
 import java.util.ArrayList;
 
-public class imageManager {
+public class ImagerManager {
 
     public static final int TEST = 0;
 

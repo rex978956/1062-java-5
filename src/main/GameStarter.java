@@ -5,9 +5,9 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
-import states.mapMenu;
+import states.MapMenu;
 
-public class gameStarter extends StateBasedGame {
+public class GameStarter extends StateBasedGame {
 
     private static final int WINDOWED_WIDTH = 1024;
     private static final int WINDOWED_HEIGHT = 768;
@@ -18,13 +18,13 @@ public class gameStarter extends StateBasedGame {
      *
      * @param name The name of the game
      */
-    public gameStarter(String name) {
+    public GameStarter(String name) {
         super(name);
     }
 
     public static void main(String[] args) throws SlickException {
 
-        AppGameContainer game = new AppGameContainer(new gameStarter("Final Tower Defense"));
+        AppGameContainer game = new AppGameContainer(new GameStarter("Final Tower Defense"));
         game.setDisplayMode(WINDOWED_WIDTH, WINDOWED_HEIGHT, false);
         game.setAlwaysRender(true);
         game.setShowFPS(true);
@@ -41,7 +41,7 @@ public class gameStarter extends StateBasedGame {
     @Override
     public void initStatesList(GameContainer container) throws SlickException {
         this.container = (AppGameContainer) container;
-        addState(new mapMenu());
+        addState(new MapMenu());
     }
 
     @Override

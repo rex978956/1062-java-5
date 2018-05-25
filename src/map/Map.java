@@ -1,29 +1,23 @@
 package map;
 
-import org.newdawn.slick.Image;
-import org.newdawn.slick.geom.Point;
 import org.newdawn.slick.tiled.TiledMap;
 import org.newdawn.slick.util.pathfinding.PathFindingContext;
 import org.newdawn.slick.util.pathfinding.TileBasedMap;
 
-import java.util.ArrayList;
-
 /**
  * Map instance
  */
-public class map implements TileBasedMap {
+public class Map implements TileBasedMap {
 
     private String name;
-    private Image preview;
     private TiledMap map;
-    private int startMoney, killMoney, bonusMoney;
-    private int multiplierHealth;
-    private int startHealth;
-    private ArrayList<Point> spawnList;
-    private Point base;
-    private ArrayList<Integer[]> waveList;
 
-    private int[][] towerList;
+
+    public Map(TiledMap tiledMap, String mapName) {
+        // TODO: Many settings doesn't loaded
+        this.map = tiledMap;
+        this.name = mapName;
+    }
 
     /**
      * Get the width of the tile map. The slightly odd name is used
@@ -87,4 +81,5 @@ public class map implements TileBasedMap {
     public float getCost(PathFindingContext context, int tx, int ty) {
         return 1.0f;
     }
+
 }
