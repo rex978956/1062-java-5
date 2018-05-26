@@ -247,15 +247,6 @@ public class Game extends BasicGameState {
                             if (buyTower.getCost() <= gold) {
 
                                 boolean blocking = false;
-                                Point base = map.getBase();
-                                for (Point spawn : map.getSpawnList()) {
-                                    if (buyTowerPathfinder.findPath(null, (int) spawn.getX(), (int) spawn.getY(), (int) base.getX(), (int) base.getY()) == null) {
-                                        blocking = true;
-                                        break;
-                                    } else if (tileposx == spawn.getX() && tileposy == spawn.getY()) {
-                                        blocking = true;
-                                    }
-                                }
 
                                 if (!blocking) {
                                     gold -= buyTower.getCost();
@@ -325,7 +316,6 @@ public class Game extends BasicGameState {
             g.drawString("Ground: " + nextWave[0], 1105, 680);
             g.drawString("Air: " + nextWave[1], 1105, 700);
             g.drawString("GroundBoss: " + nextWave[2], 1105, 720);
-//            g.drawString("AirBoss: " + nextWave[3], 1105, 740);
         } else {
             g.drawString("Last Wave!", 1105, 720);
         }

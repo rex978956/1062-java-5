@@ -19,9 +19,9 @@ import java.util.ArrayList;
  */
 public class MapMenu extends BasicGameState {
 
-    private Image cursor;
-    private Image cursorTail;
-    private Image cursorMiddle;
+//    private Image cursor;
+//    private Image cursorTail;
+//    private Image cursorMiddle;
 
     private MouseOverArea prevBtn, nextBtn;
 
@@ -58,10 +58,10 @@ public class MapMenu extends BasicGameState {
 
         mapList = MapLoader.loadMaps();
 
-        cursor = new Image("res/cursor.png");
-        cursorMiddle = new Image("res/cursorMiddle.png");
-        cursorTail = new Image("res/cursorTail.png");
-
+//        cursor = new Image("res/cursor.png");
+//        cursorMiddle = new Image("res/cursorMiddle.png");
+//        cursorTail = new Image("res/cursorTail.png");
+//
 //        container.setDefaultMouseCursor();
 //        container.setMouseGrabbed(true);
 
@@ -89,7 +89,7 @@ public class MapMenu extends BasicGameState {
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) {
 
-        g.setBackground(Color.red);
+        //g.setBackground(Color.red);
 
         if (mapList != null) {
             Map map = mapList.get(selectedMap);
@@ -110,13 +110,13 @@ public class MapMenu extends BasicGameState {
 
         prevBtn.render(container, g);
         nextBtn.render(container, g);
-
-        float MouseX = container.getInput().getMouseX();
-        float MouseY = container.getInput().getMouseY();
-        cursor.rotate(1);
-        cursor.drawCentered(MouseX, MouseY);
-        cursorMiddle.drawCentered(MouseX, MouseY);
-        cursorTail.drawCentered(MouseX, MouseY);
+//
+//        float MouseX = container.getInput().getMouseX();
+//        float MouseY = container.getInput().getMouseY();
+//        cursor.rotate(1);
+//        cursor.drawCentered(MouseX, MouseY);
+//        cursorMiddle.drawCentered(MouseX, MouseY);
+//        cursorTail.drawCentered(MouseX, MouseY);
     }
 
     /**
