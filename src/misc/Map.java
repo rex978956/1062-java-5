@@ -11,7 +11,7 @@ import states.Game;
 import java.util.ArrayList;
 
 /**
- * Map instance
+ * Map class
  */
 public class Map implements TileBasedMap {
 
@@ -84,6 +84,10 @@ public class Map implements TileBasedMap {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public TiledMap getMap() {
+        return map;
     }
 
     public void setMap(TiledMap map) {
@@ -205,11 +209,8 @@ public class Map implements TileBasedMap {
      */
     @Override
     public boolean blocked(PathFindingContext context, int tx, int ty) {
-        if (map.getTileId(tx, ty, 1) == 0)
-            return true;
-        if (towerList[tx][ty] != 0)
-            return true;
-        return false;
+        //TODO: I forgot what todo in this
+        return true;
     }
 
     /**
@@ -249,10 +250,6 @@ public class Map implements TileBasedMap {
         return map.getWidth();
     }
 
-    public TiledMap getMap() {
-        return map;
-    }
-
     /**
      * Notification that the path finder visited a given tile. This is
      * used for debugging new heuristics.
@@ -264,7 +261,8 @@ public class Map implements TileBasedMap {
     public void pathFinderVisited(int x, int y) {
     }
 
-    public ArrayList<Enemy> getEntityList(int wave) {
+    public ArrayList<Enemy> getEnemyList(int wave) {
+        //TODO: Get the enemy list
         return null;
     }
 }

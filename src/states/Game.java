@@ -126,7 +126,7 @@ public class Game extends BasicGameState {
         buttonStartWave.addListener(arg0 -> {
             if (spawnList.isEmpty() && wave < map.getWaveList().size()) {
                 wave++;
-                spawnList = map.getEntityList(wave);
+                spawnList = map.getEnemyList(wave);
 
                 if (!gotMoneyForWave) {
                     gold += map.getWaveMoney();
