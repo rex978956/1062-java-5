@@ -1,8 +1,8 @@
 package states;
 
 import main.ImageManager;
-import map.Map;
-import map.MapLoader;
+import misc.Map;
+import misc.MapLoader;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.gui.MouseOverArea;

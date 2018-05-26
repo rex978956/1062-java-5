@@ -1,4 +1,4 @@
-package map;
+package misc;
 
 import enemy.Enemy;
 import main.ImageManager;

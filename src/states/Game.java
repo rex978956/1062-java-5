@@ -2,7 +2,7 @@ package states;
 
 import enemy.Enemy;
 import main.ImageManager;
-import map.Map;
+import misc.Map;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Circle;
