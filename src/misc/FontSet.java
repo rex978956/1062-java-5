@@ -32,7 +32,7 @@ public class FontSet {
         draw(str,x,y,size,color);
     }
 
-    public static void draw(String str, int x, int y, int size, Color color) {
+    private static void draw(String str, int x, int y, int size, Color color) {
         if(size == 18) {
             gnyrwn18.drawString(x, y, str, color);
         } else if(size == 26) {

@@ -3,19 +3,18 @@ package states;
 import misc.FontSet;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class FontDemo extends BasicGameState {
 
     @Override
-    public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
+    public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) {
 
     }
 
     @Override
-    public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
+    public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) {
         FontSet.draw("Demo58",550,100, 58);
         FontSet.draw("Demo50",550,200, 50);
         FontSet.draw("Demo42",550,300, 42);
@@ -25,7 +24,7 @@ public class FontDemo extends BasicGameState {
     }
 
     @Override
-    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
+    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) {
 
     }
 
