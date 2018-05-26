@@ -25,8 +25,8 @@ public class Map implements TileBasedMap {
     private int startMoney, killMoney, waveMoney;
 
     /* Positions */
-    private ArrayList<Point> spawnList;
     private Point base;
+    private ArrayList<Point> spawnList;
 
     /* Health settings */
     private int waveHealthMultiplier;
