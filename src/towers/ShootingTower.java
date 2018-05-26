@@ -37,19 +37,13 @@ public abstract class ShootingTower extends Tower {
 
         if (!entitiesInRange.isEmpty()) {
 
-
             int index = -1;
 
-
             for (int i = 0; i < entitiesInRange.size(); i++) {
-                if (canTarget(entitiesInRange.get(i))) {
-
-                    if (index == -1 || entitiesInRange.get(i).getHealth() < entitiesInRange.get(index).getHealth()) {
+                if (canTarget(entitiesInRange.get(i)) && index == -1) {
                         index = i;
-                    }
                 }
             }
-
             if (index != -1) {
                 return entitiesInRange.get(index);
             }
@@ -71,7 +65,6 @@ public abstract class ShootingTower extends Tower {
     public int getDamage() {
         return damage[upgradeLevel];
     }
-
 
     @Override
     public void update(GameContainer gc, int delta) {
