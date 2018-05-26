@@ -54,38 +54,18 @@ public class MapMenu extends BasicGameState {
      */
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
-//        test = ImagerManager.getImage(ImagerManager.TEST);
+
 
         mapList = MapLoader.loadMaps();
 
         cursor = new Image("res/cursor.png");
         cursorMiddle = new Image("res/cursorMiddle.png");
         cursorTail = new Image("res/cursorTail.png");
+
 //        container.setDefaultMouseCursor();
 //        container.setMouseGrabbed(true);
-    }
 
-    /**
-     * Render this state to the game's graphics context
-     *
-     * @param container The container holding the game
-     * @param game      The game holding this state
-     * @param g         The graphics context to render to
-     */
-    @Override
-    public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-
-        g.setBackground(Color.red);
-
-//        if (mapList != null) {
-//            Map map = mapList.get(selectedMap);
-//
-//        }
-
-//        float x = container.getWidth() / 2;
-//        float y = container.getHeight() / 2;
-//        test.drawCentered(x, y);
-
+        /* Mouse should added at bottom */
         int prevBtnX = container.getWidth() / 4 - ImageManager.getImage(ImageManager.MENU_BUTTON_LARROW).getWidth() / 2;
         int prevBtnY = container.getHeight() / 2 - ImageManager.getImage(ImageManager.MENU_BUTTON_LARROW).getHeight() / 2;
 
@@ -97,6 +77,36 @@ public class MapMenu extends BasicGameState {
 
         nextBtn = new MouseOverArea(container, ImageManager.getImage(ImageManager.MENU_BUTTON_RARROW), nextBtnX, nextBtnY);
         nextBtn.addListener(source -> selectNextMap());
+    }
+
+    /**
+     * Render this state to the game's graphics context
+     *
+     * @param container The container holding the game
+     * @param game      The game holding this state
+     * @param g         The graphics context to render to
+     */
+    @Override
+    public void render(GameContainer container, StateBasedGame game, Graphics g) {
+
+        g.setBackground(Color.red);
+
+        if (mapList != null) {
+            Map map = mapList.get(selectedMap);
+
+            map.getPreview().draw(466, 255);
+            g.setColor(Color.white);
+            g.drawString(map.getName(), 480, 471);
+
+            if (selectedMap > 0) {
+                mapList.get(selectedMap - 1).getPreview().draw(-224, 255);
+            }
+
+            if (selectedMap < mapList.size() - 1) {
+                mapList.get(selectedMap + 1).getPreview().draw(1156, 255);
+            }
+        }
+
 
         prevBtn.render(container, g);
         nextBtn.render(container, g);
@@ -117,7 +127,7 @@ public class MapMenu extends BasicGameState {
      * @param delta     The amount of time that's passed in millisecond since last update
      */
     @Override
-    public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
+    public void update(GameContainer container, StateBasedGame game, int delta) {
         Input input = container.getInput();
         if (input.isKeyPressed(Input.KEY_ESCAPE)) {
             game.enterState(1, new FadeOutTransition(), new FadeInTransition());

@@ -325,7 +325,7 @@ public class Game extends BasicGameState {
             g.drawString("Ground: " + nextWave[0], 1105, 680);
             g.drawString("Air: " + nextWave[1], 1105, 700);
             g.drawString("GroundBoss: " + nextWave[2], 1105, 720);
-            g.drawString("AirBoss: " + nextWave[3], 1105, 740);
+//            g.drawString("AirBoss: " + nextWave[3], 1105, 740);
         } else {
             g.drawString("Last Wave!", 1105, 720);
         }
