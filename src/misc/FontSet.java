@@ -7,19 +7,19 @@ import java.awt.Font;
 import org.newdawn.slick.util.ResourceLoader;
 
 public class FontSet {
-    private static TrueTypeFont gnyrwn18, gnyrwn26, gnyrwn34, gnyrwn42, gnyrwn50, gnyrwn58;
+    private static TrueTypeFont Akrobat18, Akrobat26, Akrobat34, Akrobat42, Akrobat58, Akrobat73;
     private static Color color;
     static{
         try {
-            InputStream inputStream	= ResourceLoader.getResourceAsStream("res/fonts/gnyrwn.ttf");
+            InputStream inputStream	= ResourceLoader.getResourceAsStream("res/fonts/Akrobat-Regular.otf");
 
             Font awtFont2 = Font.createFont(Font.TRUETYPE_FONT, inputStream);
-            gnyrwn18 = new TrueTypeFont(awtFont2.deriveFont(18F),true);
-            gnyrwn26 = new TrueTypeFont(awtFont2.deriveFont(26F),true);
-            gnyrwn34 = new TrueTypeFont(awtFont2.deriveFont(34F),true);
-            gnyrwn42 = new TrueTypeFont(awtFont2.deriveFont(42F),true);
-            gnyrwn50 = new TrueTypeFont(awtFont2.deriveFont(50F),true);
-            gnyrwn58 = new TrueTypeFont(awtFont2.deriveFont(58F),true);
+            Akrobat18 = new TrueTypeFont(awtFont2.deriveFont(18F),true);
+            Akrobat26 = new TrueTypeFont(awtFont2.deriveFont(26F),true);
+            Akrobat34 = new TrueTypeFont(awtFont2.deriveFont(34F),true);
+            Akrobat42 = new TrueTypeFont(awtFont2.deriveFont(42F),true);
+            Akrobat58 = new TrueTypeFont(awtFont2.deriveFont(58F),true);
+            Akrobat73 = new TrueTypeFont(awtFont2.deriveFont(73F),true);
 
             color = Color.decode("#2988ff");
 
@@ -34,17 +34,17 @@ public class FontSet {
 
     private static void draw(String str, int x, int y, int size, Color color) {
         if(size == 18) {
-            gnyrwn18.drawString(x, y, str, color);
+            Akrobat18.drawString(x, y, str, color);
         } else if(size == 26) {
-            gnyrwn26.drawString(x, y, str, color);
+            Akrobat26.drawString(x, y, str, color);
         } else if(size == 34) {
-            gnyrwn34.drawString(x, y, str, color);
+            Akrobat34.drawString(x, y, str, color);
         } else if(size == 42) {
-            gnyrwn42.drawString(x, y, str, color);
-        } else if(size == 50) {
-            gnyrwn50.drawString(x, y, str, color);
+            Akrobat42.drawString(x, y, str, color);
         } else if(size == 58) {
-            gnyrwn58.drawString(x, y, str, color);
+            Akrobat58.drawString(x, y, str, color);
+        } else if(size == 73) {
+            Akrobat73.drawString(x, y, str, color);
         }
     }
 
