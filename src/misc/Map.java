@@ -1,16 +1,12 @@
 package misc;
 
 import enemy.Enemy;
-import main.ImageManager;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Point;
-import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.tiled.TiledMap;
-import org.newdawn.slick.util.pathfinding.Mover;
 import org.newdawn.slick.util.pathfinding.PathFindingContext;
 import org.newdawn.slick.util.pathfinding.TileBasedMap;
 import states.Game;
-import towers.Tower;
 
 import java.util.ArrayList;
 
@@ -209,19 +205,6 @@ public class Map implements TileBasedMap {
      */
     @Override
     public boolean blocked(PathFindingContext context, int tx, int ty) {
-        if (map.getTileId(tx, ty, 1) == 0)
-            return true;
-        if (towerList[tx][ty] != 0)
-            return true;
-
-        Mover mover = context.getMover();
-        if (mover == null) {
-            Tower buyTower = game.getBuyTower();
-            if (buyTower != null) {
-                Point towerPos = buyTower.getTilePosition();
-                return tx == towerPos.getX() && ty == towerPos.getY();
-            }
-        }
         return false;
     }
 
@@ -278,52 +261,6 @@ public class Map implements TileBasedMap {
     }
 
     public ArrayList<Enemy> getEntityList(int wave) {
-        ArrayList<Enemy> entityList = new ArrayList<>();
-
-        if (wave <= waveList.size() && wave > 0) {
-            Integer[] numbers = waveList.get(wave - 1);
-
-            int spawn = 0;
-
-            for (int g = 0; g < numbers[0]; g++) {
-                if (spawn < spawnList.size() - 1) {
-                    spawn++;
-                } else {
-                    spawn = 0;
-                }
-
-                Point spawnPoint = spawnList.get(spawn);
-
-                entityList.add(new Enemy(game, new Vector2f(spawnPoint.getX() * 48 + 24, spawnPoint.getY() * 48 + 24),
-                        startHpGround + (wave) * waveHealthMultiplier, 1.5f, false, ImageManager.getImage(ImageManager.ENEMY_GROUND)));
-            }
-
-            for (int g = 0; g < numbers[1]; g++) {
-                if (spawn < spawnList.size() - 1) {
-                    spawn++;
-                } else {
-                    spawn = 0;
-                }
-
-                Point spawnPoint = spawnList.get(spawn);
-
-                entityList.add(new Enemy(game, new Vector2f(spawnPoint.getX() * 48 + 24, spawnPoint.getY() * 48 + 24),
-                        startHpAir + (wave) * waveHealthMultiplier, 2, true, ImageManager.getImage(ImageManager.ENEMY_AIR)));
-            }
-            for (int g = 0; g < numbers[2]; g++) {
-                if (spawn < spawnList.size() - 1) {
-                    spawn++;
-                } else {
-                    spawn = 0;
-                }
-
-                Point spawnPoint = spawnList.get(spawn);
-
-                entityList.add(new Enemy(game, new Vector2f(spawnPoint.getX() * 48 + 24, spawnPoint.getY() * 48 + 24),
-                        startHpGroundBoss + (wave) * waveHealthMultiplier, 1.5f, false, ImageManager.getImage(ImageManager.ENEMY_GROUND)));
-            }
-            return entityList;
-        }
         return null;
     }
 }
