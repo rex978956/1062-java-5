@@ -65,7 +65,7 @@ public class MapMenu extends BasicGameState {
 //        container.setDefaultMouseCursor();
 //        container.setMouseGrabbed(true);
 
-        /* Mouse should added at bottom */
+        /* Buttons */
         int prevBtnX = container.getWidth() / 4 - ImageManager.getImage(ImageManager.MENU_BUTTON_LARROW).getWidth() / 2;
         int prevBtnY = container.getHeight() / 2 - ImageManager.getImage(ImageManager.MENU_BUTTON_LARROW).getHeight() / 2;
 
@@ -145,6 +145,7 @@ public class MapMenu extends BasicGameState {
             int x = Mouse.getX();
             int y = 800 - Mouse.getY();
 
+            //TODO: Use Button Over Area
             if (x > 466 && x < 814 && y > 255 && y < 497) {
                 Game game2 = new Game(mapList.get(selectedMap));
                 game2.init(container, game);

@@ -4,9 +4,11 @@ import enemy.Enemy;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Point;
 import org.newdawn.slick.tiled.TiledMap;
+import org.newdawn.slick.util.pathfinding.Mover;
 import org.newdawn.slick.util.pathfinding.PathFindingContext;
 import org.newdawn.slick.util.pathfinding.TileBasedMap;
 import states.Game;
+import towers.Tower;
 
 import java.util.ArrayList;
 
@@ -84,6 +86,10 @@ public class Map implements TileBasedMap {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public TiledMap getMap() {
+        return map;
     }
 
     public void setMap(TiledMap map) {
@@ -205,6 +211,23 @@ public class Map implements TileBasedMap {
      */
     @Override
     public boolean blocked(PathFindingContext context, int tx, int ty) {
+        /* Tiled Map X and Y and layout 1 is empty */
+        if (map.getTileId(tx, ty, 1) == 0)
+            return true;
+        /* Tower is here or not */
+        if (towerList[tx][ty] != 0)
+            return true;
+
+        Mover mover = context.getMover();
+        if (mover == null) {
+            Tower tower = game.getBuyTower();
+            if (tower != null) {
+                Point position = tower.getTilePosition();
+                if (tx == position.getX() && ty == position.getY()) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
@@ -245,9 +268,6 @@ public class Map implements TileBasedMap {
         return map.getWidth();
     }
 
-    public TiledMap getMap() {
-        return map;
-    }
 
     /**
      * Notification that the path finder visited a given tile. This is
@@ -260,8 +280,9 @@ public class Map implements TileBasedMap {
     public void pathFinderVisited(int x, int y) {
     }
 
-    public ArrayList<Enemy> getEntityList(int wave) {
-        return null;
+    public ArrayList<Enemy> getEnemyList(int wave) {
+        ArrayList<Enemy> enemyList = new ArrayList<>();
+        return enemyList;
     }
 }
 

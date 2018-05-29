@@ -88,7 +88,3 @@ public abstract class Tower {
 
     public abstract void render(GameContainer gc, Graphics g);
 }
-
-
-
-
