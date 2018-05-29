@@ -41,7 +41,6 @@ public class MapLoader {
                             //TODO: Load the Image of the map that doesn't have preview
                             previewImage = new Image(preview.getPath());
                         }
-
                         tiledMap = new TiledMap(mapFile.getPath());
                     } catch (SlickException e) {
                         e.printStackTrace();
@@ -57,9 +56,13 @@ public class MapLoader {
 
                         /* Load basic settings */
                         String mapName = root.getElementsByTagName("Name").item(0).getTextContent();
+
+                        /* Money settings */
                         int startMoney = Integer.parseInt(root.getElementsByTagName("StartMoney").item(0).getTextContent());
                         int killMoney = Integer.parseInt(root.getElementsByTagName("MoneyPerKill").item(0).getTextContent());
                         int waveMoney = Integer.parseInt(root.getElementsByTagName("MoneyPerWave").item(0).getTextContent());
+
+                        /* Health settings */
                         int startHpGround = Integer.parseInt(root.getElementsByTagName("BaseHealthGround").item(0).getTextContent());
                         int startHpAir = Integer.parseInt(root.getElementsByTagName("BaseHealthAir").item(0).getTextContent());
                         int startHpBoss = Integer.parseInt(root.getElementsByTagName("BaseHealthBoss").item(0).getTextContent());

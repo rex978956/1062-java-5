@@ -17,22 +17,6 @@
                <PosX>14</PosX>
                <PosY>0</PosY>
           </Spawn>
-          <Spawn>
-               <PosX>0</PosX>
-               <PosY>4</PosY>
-          </Spawn>
-          <Spawn>
-               <PosX>0</PosX>
-               <PosY>12</PosY>
-          </Spawn>
-          <Spawn>
-               <PosX>4</PosX>
-               <PosY>14</PosY>
-          </Spawn>
-          <Spawn>
-               <PosX>13</PosX>
-               <PosY>14</PosY>
-          </Spawn>
      </Spawns>
      <Base>
           <PosX>21</PosX>
@@ -40,59 +24,54 @@
      </Base>
      <Waves>
           <Wave>
-               <Ground>130</Ground>
-               <Air>20</Air>
-               <Boss>10</Boss>
+              <Ground>10</Ground>
+              <Air>0</Air>
+              <Boss>0</Boss>
           </Wave>
           <Wave>
-               <Ground>130</Ground>
-               <Air>20</Air>
-               <Boss>10</Boss>
+              <Ground>12</Ground>
+              <Air>1</Air>
+              <Boss>0</Boss>
           </Wave>
           <Wave>
-               <Ground>130</Ground>
-               <Air>20</Air>
-               <Boss>10</Boss>
+              <Ground>14</Ground>
+              <Air>2</Air>
+              <Boss>0</Boss>
           </Wave>
           <Wave>
-               <Ground>130</Ground>
-               <Air>20</Air>
-               <Boss>10</Boss>
+              <Ground>16</Ground>
+              <Air>4</Air>
+              <Boss>0</Boss>
           </Wave>
           <Wave>
-               <Ground>130</Ground>
-               <Air>20</Air>
-               <Boss>10</Boss>
+              <Ground>24</Ground>
+              <Air>5</Air>
+              <Boss>1</Boss>
           </Wave>
           <Wave>
-               <Ground>130</Ground>
-               <Air>20</Air>
-               <Boss>10</Boss>
+              <Ground>32</Ground>
+              <Air>6</Air>
+              <Boss>0</Boss>
           </Wave>
           <Wave>
-               <Ground>130</Ground>
-               <Air>20</Air>
-               <Boss>10</Boss>
+              <Ground>38</Ground>
+              <Air>8</Air>
+              <Boss>0</Boss>
           </Wave>
           <Wave>
-               <Ground>130</Ground>
-               <Air>20</Air>
-               <Boss>10</Boss>
+              <Ground>46</Ground>
+              <Air>10</Air>
+              <Boss>0</Boss>
           </Wave>
           <Wave>
-               <Ground>130</Ground>
-               <Air>20</Air>
-               <Boss>10</Boss>
+              <Ground>52</Ground>
+              <Air>12</Air>
+              <Boss>0</Boss>
           </Wave>
           <Wave>
-               <Ground>130</Ground>
-               <Air>20</Air>
-               <Boss>10</Boss>
-          </Wave>
-          <Wave>
-               <Ground>130</Ground>
-               <Air>20</Air>
-               <Boss>10</Boss>
+              <Ground>70</Ground>
+              <Air>14</Air>
+              <Boss>2</Boss>
           </Wave>
      </Waves>
 </Map>

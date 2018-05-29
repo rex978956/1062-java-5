@@ -1,8 +1,10 @@
 package misc;
 
 import enemy.Enemy;
+import main.ImageManager;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Point;
+import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.tiled.TiledMap;
 import org.newdawn.slick.util.pathfinding.Mover;
 import org.newdawn.slick.util.pathfinding.PathFindingContext;
@@ -27,8 +29,8 @@ public class Map implements TileBasedMap {
     private int startMoney, killMoney, waveMoney;
 
     /* Positions */
-    private ArrayList<Point> spawnList;
     private Point base;
+    private ArrayList<Point> spawnList;
 
     /* Health settings */
     private int waveHealthMultiplier;
@@ -211,6 +213,7 @@ public class Map implements TileBasedMap {
      */
     @Override
     public boolean blocked(PathFindingContext context, int tx, int ty) {
+        //TODO: I forgot what todo in this
         /* Tiled Map X and Y and layout 1 is empty */
         if (map.getTileId(tx, ty, 1) == 0)
             return true;
@@ -281,6 +284,7 @@ public class Map implements TileBasedMap {
     }
 
     public ArrayList<Enemy> getEnemyList(int wave) {
+        //TODO: Get the enemy list
         ArrayList<Enemy> enemyList = new ArrayList<>();
         return enemyList;
     }
