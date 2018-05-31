@@ -13,6 +13,7 @@ import states.Game;
 import towers.Tower;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Map instance
@@ -36,10 +37,10 @@ public class Map implements TileBasedMap {
     private int waveHealthMultiplier;
     private int startHpGround, startHpAir, startHpGroundBoss, startHpAirBoss;
 
-    Map(TiledMap map, Image preview, String name,
-        int startMoney, int killMoney, int waveMoney,
-        int startHpGround, int startHpAir, int startHpGroundBoss, int startHpAirBoss,
-        int waveHealthMultiplier, ArrayList<Point> spawnList, Point base, ArrayList<Integer[]> waveList) {
+    public Map(TiledMap map, Image preview, String name,
+               int startMoney, int killMoney, int waveMoney,
+               int startHpGround, int startHpAir, int startHpGroundBoss, int startHpAirBoss,
+               int waveHealthMultiplier, ArrayList<Point> spawnList, Point base, ArrayList<Integer[]> waveList) {
         this.preview = preview;
         this.map = map;
         this.name = name;
@@ -213,7 +214,7 @@ public class Map implements TileBasedMap {
      */
     @Override
     public boolean blocked(PathFindingContext context, int tx, int ty) {
-        //TODO: I forgot what todo in this
+        //TODO: I still can place tower in the road
         /* Tiled Map X and Y and layout 1 is empty */
         if (map.getTileId(tx, ty, 1) == 0)
             return true;
@@ -271,7 +272,6 @@ public class Map implements TileBasedMap {
         return map.getWidth();
     }
 
-
     /**
      * Notification that the path finder visited a given tile. This is
      * used for debugging new heuristics.
@@ -283,10 +283,42 @@ public class Map implements TileBasedMap {
     public void pathFinderVisited(int x, int y) {
     }
 
+    /**
+     * Get the enemy list and add a new object.
+     *
+     * @param wave Wave is now playing
+     * @return null if wave is outside the waveList
+     */
     public ArrayList<Enemy> getEnemyList(int wave) {
         //TODO: Get the enemy list
         ArrayList<Enemy> enemyList = new ArrayList<>();
-        return enemyList;
+
+        /* Get wave list enemies */
+        if (wave <= waveList.size() && wave > 0) {
+            /* Monster Waves */
+            Integer[] numbers = waveList.get(wave - 1);
+
+            /* Spawn Enemy from 0 to all
+             * Serial run all the spawn points */
+            int spawn = 0;
+            for (int i = 0; i <= numbers[0]; i++) {
+                if (spawn > spawnList.size() - 1)
+                    spawn++;
+                else
+                    spawn = 0;
+
+                Point spawnPoint = spawnList.get(spawn);
+
+                int health = startHpGround + wave * waveHealthMultiplier;
+                float speed = 1.5f;
+
+                enemyList.add(new Enemy(game, new Vector2f(spawnPoint.getX() * 48 + 24, spawnPoint.getY() * 48 + 24)
+                        , health, speed, false, ImageManager.getImage(ImageManager.ENEMY_GROUND)));
+            }
+
+            System.out.println("This wave Enemies: " + Arrays.toString(waveList.get(wave - 1)));
+            return enemyList;
+        }
+        return null;
     }
 }
-
