@@ -21,15 +21,19 @@ public class MapLoader {
 
     public static ArrayList<Map> loadMaps() {
 
+        /* Make an ArrayList of Maps */
         ArrayList<Map> mapList = new ArrayList<>();
         File[] files = new File("res/maps").listFiles();
 
+        /* Read Map files */
         for (File file : Objects.requireNonNull(files)) {
+            /* One map per directory */
             if (file.isDirectory()) {
                 File xml = new File(file.getPath() + "/properties.xml");
                 File mapFile = new File(file.getPath() + "/map.tmx");
                 File preview = new File(file.getPath() + "/preview.png");
 
+                /* XML is the map settings */
                 if (xml.exists() && mapFile.exists()) {
                     TiledMap tiledMap = null;
                     Image previewImage = null;

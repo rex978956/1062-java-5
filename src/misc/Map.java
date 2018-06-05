@@ -214,7 +214,6 @@ public class Map implements TileBasedMap {
      */
     @Override
     public boolean blocked(PathFindingContext context, int tx, int ty) {
-        //TODO: I still can place tower in the road
         /* Tiled Map X and Y and layout 1 is empty */
         if (map.getTileId(tx, ty, 1) == 0)
             return true;
@@ -290,7 +289,6 @@ public class Map implements TileBasedMap {
      * @return null if wave is outside the waveList
      */
     public ArrayList<Enemy> getEnemyList(int wave) {
-        //TODO: Get the enemy list
         ArrayList<Enemy> enemyList = new ArrayList<>();
 
         /* Get wave list enemies */
@@ -299,8 +297,10 @@ public class Map implements TileBasedMap {
             Integer[] numbers = waveList.get(wave - 1);
 
             /* Spawn Enemy from 0 to all
-             * Serial run all the spawn points */
+             * Serialize run all the spawn points */
             int spawn = 0;
+
+            /* Enemy One */
             for (int i = 0; i <= numbers[0]; i++) {
                 if (spawn > spawnList.size() - 1)
                     spawn++;
