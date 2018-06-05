@@ -81,7 +81,7 @@ public class MapLoader {
                         /* Base Position */
                         Element baseNode = (Element) root.getElementsByTagName("Base").item(0);
                         int baseX = Integer.parseInt(baseNode.getElementsByTagName("PosX").item(0).getTextContent());
-                        int baseY = Integer.parseInt(baseNode.getElementsByTagName("PosX").item(0).getTextContent());
+                        int baseY = Integer.parseInt(baseNode.getElementsByTagName("PosY").item(0).getTextContent());
                         Point base = new Point(baseX, baseY);
 
                         /* Load Wave Settings */
