@@ -100,7 +100,8 @@ public class MapLoader {
                         }
 
                         /* Add new map to the list */
-                        mapList.add(new Map(tiledMap, previewImage, mapName, startMoney, killMoney, waveMoney, startHpGround, startHpAir, startHpBoss, startHpAir, waveHpMultiplier, spawnList, base, waveList));
+                        mapList.add(new Map(tiledMap, previewImage, mapName, startMoney, killMoney, waveMoney, startHpGround
+                                , startHpAir, startHpBoss, startHpAir, waveHpMultiplier, spawnList, base, waveList));
 
                         System.out.println("Map: " + String.format("%1$-12s", mapName) + "loaded successful!");
                     } catch (Exception e) {

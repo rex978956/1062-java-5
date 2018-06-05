@@ -226,9 +226,7 @@ public class Map implements TileBasedMap {
             Tower tower = game.getBuyTower();
             if (tower != null) {
                 Point position = tower.getTilePosition();
-                if (tx == position.getX() && ty == position.getY()) {
-                    return true;
-                }
+                return tx == position.getX() && ty == position.getY();
             }
         }
         return false;
@@ -315,7 +313,7 @@ public class Map implements TileBasedMap {
                 enemyList.add(new Enemy(game, new Vector2f(spawnPoint.getX() * 48 + 24, spawnPoint.getY() * 48 + 24)
                         , health, speed, false, ImageManager.getImage(ImageManager.ENEMY_GROUND)));
             }
-
+            //TODO(allen0099): Remember to Add Another Enemies
             System.out.println("This wave Enemies: " + Arrays.toString(waveList.get(wave - 1)));
             return enemyList;
         }
