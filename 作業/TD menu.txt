@@ -1,0 +1,24 @@
+Nion TD
+
+Choose Map
+
+Info
+side
+Upgrade
+
+Start Wave
+
+Sell(50%)
+
+Retry
+
+Quit Game
+
+Play
+
+Next Wave
+Exit
+
+Credits
+
+Cancel
