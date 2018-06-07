@@ -19,7 +19,7 @@
     - Game
     - MainMenu
     - MapMenu
-    - Summary
+    - Result
     - Credits
     - login (new)
 - towers
