@@ -2,8 +2,7 @@ package states;
 
 import enemy.Enemy;
 import main.ImageManager;
-import misc.Map;
-import misc.Result;
+import misc.*;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Circle;
@@ -173,7 +172,8 @@ public class Game extends BasicGameState {
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
 
         if (lost) {
-            Result result = new Result(false);
+            Result result = new Result(this,false);
+            result.init(gc, sbg);
             sbg.addState(result);
             sbg.enterState(4,new FadeOutTransition(), new FadeInTransition());
         }
@@ -197,7 +197,8 @@ public class Game extends BasicGameState {
                 }
 
                 if (wave == map.getWaveList().size()) {
-                    Result result = new Result(true);
+                    Result result = new Result(this,true);
+                    result.init(gc, sbg);
                     sbg.addState(result);
                     sbg.enterState(4,new FadeOutTransition(), new FadeInTransition());
                 }
