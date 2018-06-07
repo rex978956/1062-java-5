@@ -104,9 +104,12 @@ public class Game extends BasicGameState {
 
     @Override
     public void init(GameContainer gc, final StateBasedGame sbg) {
-        buttonUpgrade = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_UPGRADE), 1100, 332);
-        buttonSell = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_SELL), 1100, 378);
-        buttonStartWave = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_STARTWAVE), 1100, 755);
+        buttonUpgrade = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_UPGRADE),
+                1280+35 - ImageManager.getImage(ImageManager.GAME_BUTTON_UPGRADE).getWidth(), 332);
+        buttonSell = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_SELL),
+                1280+35 - ImageManager.getImage(ImageManager.GAME_BUTTON_SELL).getWidth(), 400);
+        buttonStartWave = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_STARTWAVE),
+                1280+35 - ImageManager.getImage(ImageManager.GAME_BUTTON_STARTWAVE).getWidth(), 705);
 
         buttonNormalTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.NORMAL_TOWER_1), 1104, 48);
         buttonGroundTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GROUND_TOWER_1), 1154, 48);
@@ -115,8 +118,10 @@ public class Game extends BasicGameState {
         /*++*/
         buttonNormalTower2 = new MouseOverArea(gc, ImageManager.getImage(ImageManager.NORMAL_TOWER2_1), 1104, 144);
 
-        buttonQuitGame = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_QUITGAME), 550, 287);
-        buttonCancel = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_CANCEL), 550, 345);
+        buttonQuitGame = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_QUITGAME),
+                640+35 - ImageManager.getImage(ImageManager.GAME_BUTTON_QUITGAME).getWidth()/2, 287);
+        buttonCancel = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_CANCEL),
+                640+35 - ImageManager.getImage(ImageManager.GAME_BUTTON_CANCEL).getWidth()/2, 360);
 
         buttonNormalTower.addListener(arg0 -> {
             buyTower = new NormalTower(new Point(-1000, -1000), Game.this);
@@ -334,7 +339,7 @@ public class Game extends BasicGameState {
             g.draw(rangeCircle);
 
 
-            info.draw(1100, 180);
+            info.draw(1168-info.getWidth()/2, 180);
 
             if (selectedTower instanceof ShootingTower) {
                 ShootingTower shTower = (ShootingTower) selectedTower;
