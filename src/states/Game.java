@@ -3,6 +3,7 @@ package states;
 import enemy.Enemy;
 import main.ImageManager;
 import misc.Map;
+import misc.Result;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Circle;
@@ -105,11 +106,11 @@ public class Game extends BasicGameState {
     @Override
     public void init(GameContainer gc, final StateBasedGame sbg) {
         buttonUpgrade = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_UPGRADE),
-                1280+35 - ImageManager.getImage(ImageManager.GAME_BUTTON_UPGRADE).getWidth(), 332);
+                1192 - ImageManager.getImage(ImageManager.GAME_BUTTON_UPGRADE).getWidth()/2, 200);
         buttonSell = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_SELL),
-                1280+35 - ImageManager.getImage(ImageManager.GAME_BUTTON_SELL).getWidth(), 400);
+                1192 - ImageManager.getImage(ImageManager.GAME_BUTTON_SELL).getWidth()/2, 400);
         buttonStartWave = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_STARTWAVE),
-                1280+35 - ImageManager.getImage(ImageManager.GAME_BUTTON_STARTWAVE).getWidth(), 705);
+                1192 - ImageManager.getImage(ImageManager.GAME_BUTTON_STARTWAVE).getWidth()/2, 705);
 
         buttonNormalTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.NORMAL_TOWER_1), 1104, 48);
         buttonGroundTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GROUND_TOWER_1), 1154, 48);
@@ -177,7 +178,9 @@ public class Game extends BasicGameState {
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
 
         if (lost) {
-            System.out.println("LOST");
+            Result result = new Result(false);
+            sbg.addState(result);
+            sbg.enterState(4,new FadeOutTransition(), new FadeInTransition());
         }
 
         Input input = gc.getInput();
@@ -199,8 +202,9 @@ public class Game extends BasicGameState {
                 }
 
                 if (wave == map.getWaveList().size()) {
-
-                    System.out.println("WIN");
+                    Result result = new Result(true);
+                    sbg.addState(result);
+                    sbg.enterState(4,new FadeOutTransition(), new FadeInTransition());
                 }
             }
 

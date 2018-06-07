@@ -19,13 +19,6 @@ public class TKUTD extends StateBasedGame {
         this.container = (AppGameContainer) gc;
         addState(new MainMenu());
         addState(new MapMenu());
-//        ArrayList<Point> spawnList = new ArrayList<>();
-//        spawnList.add(new Point(2, 0));
-//        spawnList.add(new Point(14, 0));
-//
-//        ArrayList<Integer[]> waveList = new ArrayList<>();
-//        waveList.add(new Integer[]{0, 1, 1});
-//        addState(new Game(new Map(new TiledMap("res/maps/HardRock/map.tmx"), new Image("res/maps/HardRock/preview.png"), "HardRock", 10000, 10, 1000, 1, 1, 1, 1, 2, spawnList, new Point(21, 11), waveList)));
     }
 
     public static void main(String[] args) {
