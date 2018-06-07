@@ -26,7 +26,7 @@ public class Game extends BasicGameState {
     private Image sidebarBackground, info;
 
     private MouseOverArea buttonUpgrade, buttonSell, buttonStartWave,
-            buttonNormalTower, buttonGroundTower, buttonAirTower, buttonSlowTower, buttonNormalTower2,
+            buttonNormalTower,
             buttonQuitGame, buttonCancel;
 
     private boolean pause;
@@ -113,11 +113,6 @@ public class Game extends BasicGameState {
                 1192 - ImageManager.getImage(ImageManager.GAME_BUTTON_STARTWAVE).getWidth()/2, 705);
 
         buttonNormalTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.NORMAL_TOWER_1), 1104, 48);
-        buttonGroundTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GROUND_TOWER_1), 1154, 48);
-        buttonAirTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.AIR_TOWER_1), 1104, 96);
-        buttonSlowTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.SLOW_TOWER_1), 1154, 96);
-        /*++*/
-        buttonNormalTower2 = new MouseOverArea(gc, ImageManager.getImage(ImageManager.NORMAL_TOWER2_1), 1104, 144);
 
         buttonQuitGame = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_QUITGAME),
                 640+35 - ImageManager.getImage(ImageManager.GAME_BUTTON_QUITGAME).getWidth()/2, 287);
@@ -256,6 +251,15 @@ public class Game extends BasicGameState {
                             if (buyTower.getCost() <= gold) {
 
                                 boolean blocking = false;
+                                Point base = map.getBase();
+                                for (Point spawn : map.getSpawnList()){
+                                    if(buyTowerPathfinder.findPath(null,(int)spawn.getX(),(int)spawn.getY(),(int)base.getX(),(int)base.getY()) == null) {
+                                        blocking = true;
+                                        break;
+                                    } else if(tileposx == spawn.getX() && tileposy == spawn.getY()) {
+                                        blocking = true;
+                                    }
+                                }
 
                                 if (!blocking) {
                                     gold -= buyTower.getCost();
