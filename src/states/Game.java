@@ -13,6 +13,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 import org.newdawn.slick.util.pathfinding.AStarPathFinder;
+import towers.AirTower;
 import towers.NormalTower;
 import towers.ShootingTower;
 import towers.Tower;
@@ -25,7 +26,7 @@ public class Game extends BasicGameState {
     private Image sidebarBackground, info;
 
     private MouseOverArea buttonUpgrade, buttonSell, buttonStartWave,
-            buttonNormalTower,
+            buttonNormalTower,buttonAirTower,
             buttonQuitGame, buttonCancel;
 
     private boolean pause;
@@ -112,6 +113,7 @@ public class Game extends BasicGameState {
                 1192 - ImageManager.getImage(ImageManager.GAME_BUTTON_STARTWAVE).getWidth()/2, 705);
 
         buttonNormalTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.NORMAL_TOWER_1), 1104, 48);
+        buttonAirTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.AIR_TOWER_1), 1152, 48);
 
         buttonQuitGame = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_QUITGAME),
                 640+35 - ImageManager.getImage(ImageManager.GAME_BUTTON_QUITGAME).getWidth()/2, 287);
@@ -120,6 +122,11 @@ public class Game extends BasicGameState {
 
         buttonNormalTower.addListener(arg0 -> {
             buyTower = new NormalTower(new Point(-1000, -1000), Game.this);
+            selectedTower = buyTower;
+        });
+
+        buttonAirTower.addListener(arg0 -> {
+            buyTower = new AirTower(new Point(-1000, -1000), Game.this);
             selectedTower = buyTower;
         });
 
@@ -273,6 +280,9 @@ public class Game extends BasicGameState {
                                         if (buyTower instanceof NormalTower) {
                                             buyTower = new NormalTower(new Point(-1000, -1000), Game.this);
 
+                                        }else if (buyTower instanceof AirTower) {
+                                            buyTower = new AirTower(new Point(-1000, -1000), Game.this);
+
                                         }
                                         selectedTower = buyTower;
                                     } else {
@@ -336,6 +346,7 @@ public class Game extends BasicGameState {
 
 
         buttonNormalTower.render(gc, g);
+        buttonAirTower.render(gc, g);
 
         if (selectedTower != null) {
             Point position = selectedTower.getPosition();

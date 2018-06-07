@@ -24,8 +24,8 @@
      </Base>
      <Waves>
           <Wave>
-              <Ground>10</Ground>
-              <Air>0</Air>
+              <Ground>2</Ground>
+              <Air>2</Air>
               <Boss>0</Boss>
           </Wave>
           <Wave>

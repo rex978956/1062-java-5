@@ -26,13 +26,14 @@ public class Result extends BasicGameState {
     public void init(final GameContainer gc, final StateBasedGame sbg) {
 
         retryButton = new MouseOverArea(gc,ImageManager.getImage(ImageManager.GAME_BUTTON_RETRY),
-                440 - ImageManager.getImage(ImageManager.GAME_BUTTON_RETRY).getWidth()/2,345);
+                440 - ImageManager.getImage(ImageManager.GAME_BUTTON_RETRY).getWidth()/2,
+                400 - ImageManager.getImage(ImageManager.GAME_BUTTON_RETRY).getHeight()/2);
         quitButton = new MouseOverArea(gc,ImageManager.getImage(ImageManager.GAME_BUTTON_QUITGAME),
-                840 - ImageManager.getImage(ImageManager.GAME_BUTTON_QUITGAME).getWidth()/2,345);
+                840 - ImageManager.getImage(ImageManager.GAME_BUTTON_QUITGAME).getWidth()/2,
+                400 - ImageManager.getImage(ImageManager.GAME_BUTTON_QUITGAME).getHeight()/2);
 
         retryButton.addListener(cmp -> {
             game.getMap().resetTowerList();
-
             game = new Game(game.getMap());
             game.init(gc, sbg);
             sbg.addState(game);

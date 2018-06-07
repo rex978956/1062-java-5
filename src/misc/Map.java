@@ -311,7 +311,7 @@ public class Map implements TileBasedMap {
                 float speed = 1.5f;
 
                 enemyList.add(new Enemy(game, new Vector2f(spawnPoint.getX() * 48 + 24, spawnPoint.getY() * 48 + 24)
-                        , health, speed, false, ImageManager.getImage(ImageManager.ENEMY_GROUND)));
+                        , health, speed,false, false, ImageManager.getImage(ImageManager.ENEMY_GROUND)));
             }
             //TODO(allen0099): Remember to Add Another Enemies
             System.out.println("This wave Enemies: " + Arrays.toString(waveList.get(wave - 1)));

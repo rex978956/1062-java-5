@@ -20,14 +20,14 @@ public class Enemy implements Mover {
 
     private int health, maxhp, radius;
     private float speed;
-    private boolean isBoss;
+    private boolean isBoss,isFly;
     private float slowValue;
     private Image texture;
 
     private AStarPathFinder pathfinder;
     private Point targetPoint;
 
-    public Enemy(Game game, Vector2f position, int hp, float speed, boolean isBoss, Image texture) {
+    public Enemy(Game game, Vector2f position, int hp, float speed,boolean isFly , boolean isBoss, Image texture) {
         this.game = game;
 
         this.position = position;
@@ -39,6 +39,7 @@ public class Enemy implements Mover {
         this.radius = 20;
         this.speed = speed;
         this.slowValue = 1;
+        this.isFly = isFly;
         this.isBoss = isBoss;
         this.texture = texture;
 
@@ -49,6 +50,10 @@ public class Enemy implements Mover {
 
         this.targetPoint = game.getMap().getBase();
         this.pathfinder = new AStarPathFinder(game.getMap(), 200, false);
+    }
+
+    public boolean isFlying() {
+        return isFly;
     }
 
     public int getHealth() {
@@ -65,6 +70,11 @@ public class Enemy implements Mover {
 
     public Vector2f getPosition() {
         return position;
+    }
+
+    public void setSlowValue(float slowValue) {
+        if(slowValue < this.slowValue)
+            this.slowValue = slowValue;
     }
 
     public void update(int delta) {
