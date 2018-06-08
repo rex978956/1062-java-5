@@ -73,7 +73,7 @@ public class TKUTD extends StateBasedGame {
     }
 
     /**
-     * Auto extract all needed natives in the jar, and detect the os you are using
+     * Auto extract all needed natives in the jar, and detect the os you are using.
      *
      * @throws NoSuchFieldException
      * @throws IllegalAccessException
@@ -94,9 +94,15 @@ public class TKUTD extends StateBasedGame {
 
         if (osName.startsWith("windows")) {
             if (osArch.matches("^(x8664|amd64|ia32e|em64t|x64)$")) {
-
+                System.setProperty("java.library.path", "natives/windows_64");
+                Field fieldSysPath = ClassLoader.class.getDeclaredField("sys_paths");
+                fieldSysPath.setAccessible(true);
+                fieldSysPath.set(null, null);
             } else {
-
+                System.setProperty("java.library.path", "natives/windows_32");
+                Field fieldSysPath = ClassLoader.class.getDeclaredField("sys_paths");
+                fieldSysPath.setAccessible(true);
+                fieldSysPath.set(null, null);
             }
         } else if (osName.startsWith("linux")) {
             if (osArch.matches("^(x8664|amd64|ia32e|em64t|x64)$")) {
@@ -105,10 +111,16 @@ public class TKUTD extends StateBasedGame {
                 fieldSysPath.setAccessible(true);
                 fieldSysPath.set(null, null);
             } else {
-
+                System.setProperty("java.library.path", "natives/linux_32");
+                Field fieldSysPath = ClassLoader.class.getDeclaredField("sys_paths");
+                fieldSysPath.setAccessible(true);
+                fieldSysPath.set(null, null);
             }
-        } else if (osName.startsWith("mac")) {
-
+        } else if (osName.endsWith("osx")) {
+            System.setProperty("java.library.path", "natives/osx");
+            Field fieldSysPath = ClassLoader.class.getDeclaredField("sys_paths");
+            fieldSysPath.setAccessible(true);
+            fieldSysPath.set(null, null);
         } else {
             throw new IllegalArgumentException("OS UNKNOWN: " + osName);
         }
