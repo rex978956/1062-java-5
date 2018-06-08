@@ -3,11 +3,13 @@
     <CLASSES>
       <root url="file://$PROJECT_DIR$/lib/classes" />
     </CLASSES>
-    <JAVADOC>
-      <root url="file://$PROJECT_DIR$/lib/javadoc" />
-    </JAVADOC>
+    <JAVADOC />
     <NATIVE>
-      <root url="file://$PROJECT_DIR$/lib/natives" />
+      <root url="file://$PROJECT_DIR$/lib/natives/linux_32" />
+      <root url="file://$PROJECT_DIR$/lib/natives/linux_64" />
+      <root url="file://$PROJECT_DIR$/lib/natives/osx" />
+      <root url="file://$PROJECT_DIR$/lib/natives/windows_32" />
+      <root url="file://$PROJECT_DIR$/lib/natives/windows_64" />
     </NATIVE>
     <SOURCES>
       <root url="file://$PROJECT_DIR$/lib/src" />
