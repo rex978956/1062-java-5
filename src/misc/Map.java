@@ -300,7 +300,7 @@ public class Map implements TileBasedMap {
 
             /* Enemy One */
             for (int i = 0; i <= numbers[0]; i++) {
-                if (spawn > spawnList.size() - 1)
+                if (spawn < spawnList.size() - 1)
                     spawn++;
                 else
                     spawn = 0;

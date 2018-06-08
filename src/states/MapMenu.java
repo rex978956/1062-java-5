@@ -3,8 +3,10 @@ package states;
 import main.ImageManager;
 import misc.Map;
 import misc.MapLoader;
-import org.lwjgl.input.Mouse;
-import org.newdawn.slick.*;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.GameState;
@@ -24,6 +26,7 @@ public class MapMenu extends BasicGameState {
 //    private Image cursorMiddle;
 
     private MouseOverArea prevBtn, nextBtn;
+    private MouseOverArea mapPreview;
 
     private ArrayList<Map> mapList;
 
@@ -91,22 +94,18 @@ public class MapMenu extends BasicGameState {
 
         //g.setBackground(Color.red);
 
-        if (mapList != null) {
-            Map map = mapList.get(selectedMap);
+        int previewX = container.getWidth() / 2;
+        int previewY = container.getHeight() / 2;
+        mapPreview = new MouseOverArea(container, mapList.get(selectedMap).getPreview(), previewX, previewY);
+        mapPreview.render(container, g);
 
-            map.getPreview().draw(466, 255);
-            g.setColor(Color.white);
-            g.drawString(map.getName(), 480, 471);
-
-            if (selectedMap > 0) {
-                mapList.get(selectedMap - 1).getPreview().draw(-224, 255);
-            }
-
-            if (selectedMap < mapList.size() - 1) {
-                mapList.get(selectedMap + 1).getPreview().draw(1156, 255);
-            }
+        if (selectedMap > 0) {
+            mapList.get(selectedMap - 1).getPreview().draw(-224, 255);
         }
 
+        if (selectedMap < mapList.size() - 1) {
+            mapList.get(selectedMap + 1).getPreview().draw(1156, 255);
+        }
 
         prevBtn.render(container, g);
         nextBtn.render(container, g);
@@ -141,18 +140,18 @@ public class MapMenu extends BasicGameState {
             selectNextMap();
         }
 
-        if (input.isMousePressed(0)) {
-            int x = Mouse.getX();
-            int y = 800 - Mouse.getY();
-
-            //TODO: Use Button Over Area
-            if (x > 466 && x < 814 && y > 255 && y < 497) {
-                Game game2 = new Game(mapList.get(selectedMap));
-                game2.init(container, game);
-                game.addState(game2);
-                game.enterState(3, new FadeOutTransition(), new FadeInTransition());
-            }
-        }
+//        if (input.isMousePressed(0)) {
+//            int x = Mouse.getX();
+//            int y = 800 - Mouse.getY();
+//
+//            //TODO: Use Button Over Area
+//            if (x > 466 && x < 814 && y > 255 && y < 497) {
+//                Game game2 = new Game(mapList.get(selectedMap));
+//                game2.init(container, game);
+//                game.addState(game2);
+//                game.enterState(3, new FadeOutTransition(), new FadeInTransition());
+//            }
+//        }
     }
 
     /**
