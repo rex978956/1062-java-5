@@ -18,17 +18,13 @@
      <HealthMultiplier>10</HealthMultiplier>
      <Spawns>
           <Spawn>
-               <PosX>2</PosX>
-               <PosY>0</PosY>
-          </Spawn>
-          <Spawn>
-               <PosX>14</PosX>
+               <PosX>1</PosX>
                <PosY>0</PosY>
           </Spawn>
      </Spawns>
      <Base>
-          <PosX>21</PosX>
-          <PosY>11</PosY>
+          <PosX>20</PosX>
+          <PosY>14</PosY>
      </Base>
      <Waves>
           <Wave>
