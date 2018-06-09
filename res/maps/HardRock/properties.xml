@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <Map>
-     <Name>Hard Rock</Name>
-     <Id>0</Id>
-     <StartMoney>3000</StartMoney>
-     <MoneyPerKill>10</MoneyPerKill>
-     <MoneyPerWave>100</MoneyPerWave>
+    <Name>Hard Rock</Name>
+    <Id>0</Id>
+    <StartMoney>3000</StartMoney>
+    <MoneyPerKill>10</MoneyPerKill>
+    <MoneyPerWave>100</MoneyPerWave>
     <BaseHpBlueSoldier>1</BaseHpBlueSoldier>
     <BaseHpGreenSoldier>1</BaseHpGreenSoldier>
     <BaseHpPurpleSoldier>1</BaseHpPurpleSoldier>
@@ -12,38 +12,38 @@
     <BaseHpRedElephant>1</BaseHpRedElephant>
     <BaseHpBlueTiger>1</BaseHpBlueTiger>
     <BaseHpYellowTiger>1</BaseHpYellowTiger>
-     <BaseHpFat>1</BaseHpFat>
-     <BaseHpSkeleton>1</BaseHpSkeleton>
+    <BaseHpFat>1</BaseHpFat>
+    <BaseHpSkeleton>1</BaseHpSkeleton>
     <BaseHpDemon>1</BaseHpDemon>
     <BaseHpOrangeDragon>1</BaseHpOrangeDragon>
-     <HealthMultiplier>10</HealthMultiplier>
-     <Spawns>
-          <Spawn>
-               <PosX>2</PosX>
-               <PosY>0</PosY>
-          </Spawn>
-          <Spawn>
-               <PosX>14</PosX>
-               <PosY>0</PosY>
-          </Spawn>
-     </Spawns>
-     <Base>
-          <PosX>21</PosX>
-          <PosY>11</PosY>
-     </Base>
-     <Waves>
-          <Wave>
-              <BlueSoldier>1</BlueSoldier>
-              <GreenSoldier>1</GreenSoldier>
-              <PurpleSoldier>1</PurpleSoldier>
-              <YellowElephant>1</YellowElephant>
-              <RedElephant>1</RedElephant>
-              <BlueTiger>1</BlueTiger>
-              <YellowTiger>1</YellowTiger>
-              <Fat>1</Fat>
-              <Skeleton>1</Skeleton>
-              <Demon>1</Demon>
-              <OrangeDragon>1</OrangeDragon>
-          </Wave>
-     </Waves>
+    <HealthMultiplier>10</HealthMultiplier>
+    <Spawns>
+        <Spawn>
+            <PosX>2</PosX>
+            <PosY>0</PosY>
+        </Spawn>
+        <Spawn>
+            <PosX>14</PosX>
+            <PosY>0</PosY>
+        </Spawn>
+    </Spawns>
+    <Base>
+        <PosX>21</PosX>
+        <PosY>11</PosY>
+    </Base>
+    <Waves>
+        <Wave>
+            <BlueSoldier>1</BlueSoldier>
+            <GreenSoldier>1</GreenSoldier>
+            <PurpleSoldier>1</PurpleSoldier>
+            <YellowElephant>1</YellowElephant>
+            <RedElephant>1</RedElephant>
+            <BlueTiger>1</BlueTiger>
+            <YellowTiger>1</YellowTiger>
+            <Fat>1</Fat>
+            <Skeleton>1</Skeleton>
+            <Demon>1</Demon>
+            <OrangeDragon>1</OrangeDragon>
+        </Wave>
+    </Waves>
 </Map>
