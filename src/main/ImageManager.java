@@ -47,15 +47,23 @@ public class ImageManager {
     public static final int PROJECTILE_CYAN = 29;
     public static final int PROJECTILE_GREEN = 30;
 
-    public static final int ENEMY_GROUND = 31;
-    public static final int ENEMY_AIR = 32;
+    public static final int NORMAL_TOWER2_1 = 31;
+    public static final int NORMAL_TOWER2_2 = 32;
+    public static final int NORMAL_TOWER2_3 = 33;
+    public static final int PROJECTILE_OP = 34;
+    public static final int PROJECTILE_ICE = 35;
 
-    public static final int NORMAL_TOWER2_1 = 33;
-    public static final int NORMAL_TOWER2_2 = 34;
-    public static final int NORMAL_TOWER2_3 = 35;
-    public static final int PROJECTILE_OP = 36;
-    public static final int ENEMY_BIG = 37;
-    public static final int PROJECTILE_ICE = 38;
+    public static final int BLUESOLDIER = 0;
+    public static final int GREENSOLDIER = 1;
+    public static final int PURPLESSOLDIER = 2;
+    public static final int YELLOWELEPHANT = 3;
+    public static final int REDELEPHANT = 4;
+    public static final int BLUETIGER = 5;
+    public static final int YELLOWTIGER = 6;
+    public static final int FAT = 7;
+    public static final int SKELETON = 8;
+    public static final int DEMON = 9;
+    public static final int ORANGEDRAGON = 10;
 
     private static ArrayList<Image> imageList;
 
@@ -104,15 +112,11 @@ public class ImageManager {
             imageList.add(new Image("res/images/projectiles/projectile-cyan.png")); //29
             imageList.add(new Image("res/images/projectiles/projectile-green.png")); //30
 
-            imageList.add(new Image("res/images/enemy/enemy-ground.png")); //31
-            imageList.add(new Image("res/images/enemy/enemy-air.png")); //32
-
-            imageList.add(new Image("res/images/towers/PentagonTower1.png")); //33
-            imageList.add(new Image("res/images/towers/PentagonTower2.png")); //34
-            imageList.add(new Image("res/images/towers/PentagonTower3.png")); //35
-            imageList.add(new Image("res/images/projectiles/projectile-op.png")); //36
-            imageList.add(new Image("res/images/enemy/black-hole2.png")); //37
-            imageList.add(new Image("res/images/projectiles/projectile-ice.png")); //38
+            imageList.add(new Image("res/images/towers/PentagonTower1.png")); //31
+            imageList.add(new Image("res/images/towers/PentagonTower2.png")); //32
+            imageList.add(new Image("res/images/towers/PentagonTower3.png")); //33
+            imageList.add(new Image("res/images/projectiles/projectile-op.png")); //34
+            imageList.add(new Image("res/images/projectiles/projectile-ice.png")); //35
 
 
         } catch (SlickException e) {
@@ -121,7 +125,180 @@ public class ImageManager {
     }
 
 
+    private static Image[] BluesoldierList;
+    static {
+        BluesoldierList = new Image[16];
+
+        try {
+            for (int i =0;i<16;i++){
+                BluesoldierList[i] = new Image("res/images/enemy/bluesoldier/"+i+".png");
+            }
+        } catch (SlickException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static Image[] GreensoldierList;
+    static {
+        GreensoldierList = new Image[16];
+
+        try {
+            for (int i =0;i<16;i++){
+                GreensoldierList[i] = new Image("res/images/enemy/greensoldier/"+i+".png");
+            }
+        } catch (SlickException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static Image[] PurplesoldierList;
+    static {
+        PurplesoldierList = new Image[16];
+
+        try {
+            for (int i =0;i<16;i++){
+                PurplesoldierList[i] = new Image("res/images/enemy/purplesoldier/"+i+".png");
+            }
+        } catch (SlickException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private static Image[] YellowelephantList;
+    static {
+        YellowelephantList = new Image[16];
+
+        try {
+            for (int i =0;i<16;i++){
+                YellowelephantList[i] = new Image("res/images/enemy/yellowelephant/"+i+".png");
+            }
+        } catch (SlickException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static Image[] RedelephantList;
+    static {
+        RedelephantList = new Image[16];
+
+        try {
+            for (int i =0;i<16;i++){
+                RedelephantList[i] = new Image("res/images/enemy/redelephant/"+i+".png");
+            }
+        } catch (SlickException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static Image[] BluetigerList;
+    static {
+        BluetigerList = new Image[16];
+
+        try {
+            for (int i =0;i<16;i++){
+                BluetigerList[i] = new Image("res/images/enemy/bluetiger/"+i+".png");
+            }
+        } catch (SlickException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static Image[] YellowtigerList;
+    static {
+        YellowtigerList = new Image[16];
+
+        try {
+            for (int i =0;i<16;i++){
+                YellowtigerList[i] = new Image("res/images/enemy/yellowtiger/"+i+".png");
+            }
+        } catch (SlickException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static Image[] FatList;
+    static {
+        FatList = new Image[16];
+
+        try {
+            for (int i =0;i<16;i++){
+                FatList[i] = new Image("res/images/enemy/fat/"+i+".png");
+            }
+        } catch (SlickException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static Image[] SkeletonList;
+    static {
+        SkeletonList = new Image[16];
+
+        try {
+            for (int i =0;i<16;i++){
+                SkeletonList[i] = new Image("res/images/enemy/skeleton/"+i+".png");
+            }
+        } catch (SlickException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static Image[] DemonList;
+    static {
+        DemonList = new Image[16];
+
+        try {
+            for (int i =0;i<16;i++){
+                DemonList[i] = new Image("res/images/enemy/demon/"+i+".png");
+            }
+        } catch (SlickException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static Image[] OrangeDragonList;
+    static {
+        OrangeDragonList = new Image[16];
+
+        try {
+            for (int i =0;i<16;i++){
+                OrangeDragonList[i] = new Image("res/images/enemy/orangedragon/"+i+".png");
+            }
+        } catch (SlickException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static Image getImage(int id) {
         return imageList.get(id).copy();
+    }
+
+    public static Image[] getEnemyImage(int id) {
+        switch (id){
+            case BLUESOLDIER:
+                return BluesoldierList;
+            case GREENSOLDIER:
+                return GreensoldierList;
+            case PURPLESSOLDIER:
+                return PurplesoldierList;
+            case YELLOWELEPHANT:
+                return YellowelephantList;
+            case REDELEPHANT:
+                return RedelephantList;
+            case BLUETIGER:
+                return BluetigerList;
+            case YELLOWTIGER:
+                return YellowtigerList;
+            case FAT:
+                return FatList;
+            case SKELETON:
+                return SkeletonList;
+            case DEMON:
+                return DemonList;
+            case ORANGEDRAGON:
+                return OrangeDragonList;
+            default:
+                return BluesoldierList;
+        }
     }
 }

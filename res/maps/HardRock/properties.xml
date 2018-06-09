@@ -1,12 +1,20 @@
 <?xml version="1.0"?>
 <Map>
      <Name>Hard Rock</Name>
-     <StartMoney>300</StartMoney>
+     <StartMoney>3000</StartMoney>
      <MoneyPerKill>10</MoneyPerKill>
      <MoneyPerWave>100</MoneyPerWave>
-     <BaseHealthGround>10</BaseHealthGround>
-     <BaseHealthAir>9</BaseHealthAir>
-     <BaseHealthBoss>400</BaseHealthBoss>
+     <BaseHpBluesoldier>1</BaseHpBluesoldier>
+     <BaseHpGreensoldier>1</BaseHpGreensoldier>
+     <BaseHpPurplesoldier>1</BaseHpPurplesoldier>
+     <BaseHpYellowelephant>1</BaseHpYellowelephant>
+     <BaseHpRedelephant>1</BaseHpRedelephant>
+     <BaseHpBluetiger>1</BaseHpBluetiger>
+     <BaseHpYellowtiger>1</BaseHpYellowtiger>
+     <BaseHpFat>1</BaseHpFat>
+     <BaseHpSkeleton>1</BaseHpSkeleton>
+    <BaseHpDemon>1</BaseHpDemon>
+    <BaseHpOrangeDragon>1</BaseHpOrangeDragon>
      <HealthMultiplier>10</HealthMultiplier>
      <Spawns>
           <Spawn>
@@ -24,54 +32,17 @@
      </Base>
      <Waves>
           <Wave>
-              <Ground>10</Ground>
-              <Air>0</Air>
-              <Boss>0</Boss>
-          </Wave>
-          <Wave>
-              <Ground>12</Ground>
-              <Air>1</Air>
-              <Boss>0</Boss>
-          </Wave>
-          <Wave>
-              <Ground>14</Ground>
-              <Air>2</Air>
-              <Boss>0</Boss>
-          </Wave>
-          <Wave>
-              <Ground>16</Ground>
-              <Air>4</Air>
-              <Boss>0</Boss>
-          </Wave>
-          <Wave>
-              <Ground>24</Ground>
-              <Air>5</Air>
-              <Boss>1</Boss>
-          </Wave>
-          <Wave>
-              <Ground>32</Ground>
-              <Air>6</Air>
-              <Boss>0</Boss>
-          </Wave>
-          <Wave>
-              <Ground>38</Ground>
-              <Air>8</Air>
-              <Boss>0</Boss>
-          </Wave>
-          <Wave>
-              <Ground>46</Ground>
-              <Air>10</Air>
-              <Boss>0</Boss>
-          </Wave>
-          <Wave>
-              <Ground>52</Ground>
-              <Air>12</Air>
-              <Boss>0</Boss>
-          </Wave>
-          <Wave>
-              <Ground>70</Ground>
-              <Air>14</Air>
-              <Boss>2</Boss>
+              <Bluesoldier>1</Bluesoldier>
+              <Greensoldier>1</Greensoldier>
+              <Purplesoldier>1</Purplesoldier>
+              <Yellowelephant>1</Yellowelephant>
+              <Redelephant>1</Redelephant>
+              <Bluetiger>1</Bluetiger>
+              <Yellowtiger>1</Yellowtiger>
+              <Fat>1</Fat>
+              <Skeleton>1</Skeleton>
+              <Demon>1</Demon>
+              <OrangeDragon>1</OrangeDragon>
           </Wave>
      </Waves>
 </Map>
