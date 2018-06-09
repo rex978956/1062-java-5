@@ -41,7 +41,7 @@ public class Game extends BasicGameState {
     private Tower buyTower, selectedTower;
     private AStarPathFinder buyTowerPathfinder;
 
-    private Color selectedFill, selectedRing;
+    private Color selectedFill, selectedRing, selectedUpFill, selectedUpRing;
 
     private ArrayList<Enemy> spawnList;
 
@@ -50,10 +50,12 @@ public class Game extends BasicGameState {
     private int wave;
     private int lastSpawn;
 
+    private int mapID, score=0, dieNum=0;
     private int gold;
     private int baseHealth, currentHealth;
 
     private boolean gotMoneyForWave = true;
+    private boolean isClickedTower = false;
 
     public Game(Map map) {
 
@@ -65,6 +67,7 @@ public class Game extends BasicGameState {
         buyTowerPathfinder = new AStarPathFinder(map, 200, false);
 
         this.map = map;
+        this.mapID = map.getMapID();
         this.entityList = new ArrayList<>();
         this.entityRemovalList = new ArrayList<>();
         this.towerList = new ArrayList<>();
@@ -76,6 +79,8 @@ public class Game extends BasicGameState {
 
         this.selectedFill = new Color(41, 136, 255, 40);
         this.selectedRing = new Color(41, 136, 255, 180);
+        this.selectedUpFill =  new Color(255,136,41,40);
+        this.selectedUpRing =  new Color(255,136,41,180);
     }
 
     public Map getMap() {
@@ -101,6 +106,22 @@ public class Game extends BasicGameState {
 
     public void setGold(int gold) {
         this.gold = gold;
+    }
+
+    public int getScore(){
+        return score;
+    }
+    public void setScore(int score){
+        this.score = score;
+    }
+    public int getDieNum(){
+        return dieNum;
+    }
+    public void setDieNum(int dieNum){
+        this.dieNum = dieNum;
+    }
+    public int getMapID(){
+        return mapID;
     }
 
     @Override
@@ -234,6 +255,8 @@ public class Game extends BasicGameState {
 
             if (buyTower != null) {
 
+                isClickedTower = false;
+
                 if (mouseX < 1056 && mouseY < 720) {
                     int tileposx = (int) Math.floor((mouseX) / 48);
                     int tileposy = (int) Math.floor((mouseY) / 48);
@@ -304,6 +327,7 @@ public class Game extends BasicGameState {
                         }
 
                         selectedTower = clickedTower;
+                        isClickedTower = true;
 
                     } else {
                         selectedTower = null;
@@ -351,12 +375,28 @@ public class Game extends BasicGameState {
         if (selectedTower != null) {
             Point position = selectedTower.getPosition();
             Circle rangeCircle = new Circle(position.getX(), position.getY(), selectedTower.getRange());
+            Circle gradeRangeCircle = new Circle(position.getX(),position.getY(),selectedTower.getUpgradeRange());
 
-            g.setColor(selectedFill);
-            g.fill(rangeCircle);
+            if(isClickedTower){
+                g.setColor(selectedUpFill);
+                g.fill(gradeRangeCircle);
 
-            g.setColor(selectedRing);
-            g.draw(rangeCircle);
+                g.setColor(selectedUpRing);
+                g.draw(gradeRangeCircle);
+
+                g.setColor(selectedFill);
+                g.fill(rangeCircle);
+
+                g.setColor(selectedRing);
+                g.draw(rangeCircle);
+
+            }else{
+                g.setColor(selectedFill);
+                g.fill(rangeCircle);
+
+                g.setColor(selectedRing);
+                g.draw(rangeCircle);
+            }
 
 
             info.draw(1168-info.getWidth()/2, 180);

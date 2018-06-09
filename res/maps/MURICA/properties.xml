@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <Map>
      <Name>Murica</Name>
+     <Id>1</Id>
      <StartMoney>3000</StartMoney>
      <MoneyPerKill>10</MoneyPerKill>
      <MoneyPerWave>100</MoneyPerWave>

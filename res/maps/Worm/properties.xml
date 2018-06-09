@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <Map>
      <Name>Worm</Name>
+     <Id>3</Id>
      <StartMoney>3000</StartMoney>
      <MoneyPerKill>10</MoneyPerKill>
      <MoneyPerWave>100</MoneyPerWave>
