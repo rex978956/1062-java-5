@@ -60,7 +60,6 @@ public class MapLoader {
 
                         /* Load basic settings */
                         String mapName = root.getElementsByTagName("Name").item(0).getTextContent();
-                        int mapID = Integer.parseInt(root.getElementsByTagName("Id").item(0).getTextContent());
 
                         /* Money settings */
                         int startMoney = Integer.parseInt(root.getElementsByTagName("StartMoney").item(0).getTextContent());
@@ -122,7 +121,7 @@ public class MapLoader {
                         }
 
                         /* Add new map to the list */
-                        mapList.add(new Map(tiledMap, previewImage, mapName, mapID, startMoney, killMoney, waveMoney,
+                        mapList.add(new Map(tiledMap, previewImage, mapName, startMoney, killMoney, waveMoney,
                                 startHpBluesoldier, startHpGreensoldier, startHpPurplesoldier,
                                 startHpYellowelephant, startRedelephant, startHpBluetiger, startHpYellowtiger,
                                 startHpFat, startHpSkeleton, startHpDemon, startHpOrangeDragon,

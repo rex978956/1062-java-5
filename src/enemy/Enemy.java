@@ -10,11 +10,7 @@ import org.newdawn.slick.util.pathfinding.AStarPathFinder;
 import org.newdawn.slick.util.pathfinding.Mover;
 import org.newdawn.slick.util.pathfinding.Path;
 import org.newdawn.slick.util.pathfinding.Path.Step;
-
 import states.Game;
-import main.ImageManager;
-
-import java.util.ArrayList;
 
 public class Enemy implements Mover {
     private Game game;
@@ -39,8 +35,8 @@ public class Enemy implements Mover {
         this.game = game;
 
         this.position = position;
-        this.tileposx = (int)Math.floor((position.x)/48);
-        this.tileposy = (int)Math.floor((position.y)/48);
+        this.tileposx = (int) Math.floor((position.x) / 48);
+        this.tileposy = (int) Math.floor((position.y) / 48);
 
         this.health = hp;
         this.maxhp = hp;
@@ -51,10 +47,10 @@ public class Enemy implements Mover {
         this.isBoss = isBoss;
         this.texture = texture;
 
-        Image[] walkUp = {texture[0],texture[1],texture[2],texture[3]};
-        Image[] walkDown = {texture[4],texture[5],texture[6],texture[7]};
-        Image[] walkLeft = {texture[8],texture[9],texture[10],texture[11]};
-        Image[] walkRight = {texture[12],texture[13],texture[14],texture[15]};
+        Image[] walkUp = {texture[0], texture[1], texture[2], texture[3]};
+        Image[] walkDown = {texture[4], texture[5], texture[6], texture[7]};
+        Image[] walkLeft = {texture[8], texture[9], texture[10], texture[11]};
+        Image[] walkRight = {texture[12], texture[13], texture[14], texture[15]};
 
         duration = new int[]{(int) (200 * slowValue), (int) (200 * slowValue), (int) (200 * slowValue), (int) (200 * slowValue)};
 
@@ -89,62 +85,61 @@ public class Enemy implements Mover {
     }
 
     public void setSlowValue(float slowValue) {
-        if(slowValue < this.slowValue)
+        if (slowValue < this.slowValue)
             this.slowValue = slowValue;
     }
 
     public void update(int delta) {
 
-        if(Math.abs(tileposx*48+24-position.x) >= 48) {
-            tileposx = (int)Math.floor((position.x)/48);
-        } else if(Math.abs(tileposy*48+24-position.y) >= 48) {
-            tileposy = (int)Math.floor((position.y)/48);
+        if (Math.abs(tileposx * 48 + 24 - position.x) >= 48) {
+            tileposx = (int) Math.floor((position.x) / 48);
+        } else if (Math.abs(tileposy * 48 + 24 - position.y) >= 48) {
+            tileposy = (int) Math.floor((position.y) / 48);
         }
 
-        Path p = pathfinder.findPath(this, tileposx, tileposy , (int)targetPoint.getX(), (int)targetPoint.getY());
-        if(p != null) {
-            if(p.getLength() > 0) {
+        Path p = pathfinder.findPath(this, tileposx, tileposy, (int) targetPoint.getX(), (int) targetPoint.getY());
+        if (p != null) {
+            if (p.getLength() > 0) {
                 Step step = p.getStep(1);
                 Vector2f nextPoint = new Vector2f(step.getX() - tileposx, step.getY() - tileposy);
-                nextPoint = nextPoint.scale((delta/1000.f)*48*speed*slowValue);
+                nextPoint = nextPoint.scale((delta / 1000.f) * 48 * speed * slowValue);
                 position.add(nextPoint);
-                angle = (int)new Vector2f(nextPoint.getX(), nextPoint.getY()).getTheta();
+                angle = (int) new Vector2f(nextPoint.getX(), nextPoint.getY()).getTheta();
                 System.out.println(angle);
-                if(angle>315||angle<=45){
+                if (angle > 315 || angle <= 45) {
                     enemy = movingRight;
-                }else if(angle>45&&angle<=135){
+                } else if (angle > 45 && angle <= 135) {
                     enemy = movingDown;
-                }else if(angle>135&&angle<=225){
+                } else if (angle > 135 && angle <= 225) {
                     enemy = movingLeft;
-                }else if(angle>225&&angle<=315){
+                } else if (angle > 225 && angle <= 315) {
                     enemy = movingUp;
                 }
                 slowValue = 1;
             }
-        }
-        else {
+        } else {
             Point base = game.getMap().getBase();
-            if(base.getX() == tileposx && base.getY() == tileposy) {
+            if (base.getX() == tileposx && base.getY() == tileposy) {
                 game.removeEntity(this);
-                game.setHealth(game.getHealth() - ((isBoss)? 5 : 1));
+                game.setHealth(game.getHealth() - ((isBoss) ? 5 : 1));
             }
         }
     }
 
     public void render(Graphics g) {
-        if(isBoss) {
-            enemy.draw(position.x-texture[0].getWidth()/2, position.y-texture[0].getHeight()/2);
+        if (isBoss) {
+            enemy.draw(position.x - texture[0].getWidth() / 2, position.y - texture[0].getHeight() / 2);
         } else {
-            enemy.draw(position.x-texture[0].getWidth()/2, position.y-texture[0].getHeight()/2);
+            enemy.draw(position.x - texture[0].getWidth() / 2, position.y - texture[0].getHeight() / 2);
         }
 
         g.setColor(Color.red);
-        g.fillRect(position.x-18, position.y-24, 36, 2);
+        g.fillRect(position.x - 18, position.y - 24, 36, 2);
 
         g.setColor(Color.green);
-        float width = 36*((float)health/(float)maxhp);
-        if(width > 0) {
-            g.fillRect(position.x-18, position.y-24, (int)width, 2);
+        float width = 36 * ((float) health / (float) maxhp);
+        if (width > 0) {
+            g.fillRect(position.x - 18, position.y - 24, (int) width, 2);
         }
     }
 }

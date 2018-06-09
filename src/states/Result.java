@@ -51,10 +51,8 @@ public class Result extends BasicGameState {
 
         if(isWin) {
             g.drawString("WIN", 100,100);
-            g.drawString("mapID: "+game.getMapID()+"   Score: "+game.getScore(), 300,300);
         } else {
             g.drawString("LOSE", 100,100);
-            g.drawString("mapID: "+game.getMapID()+"   Score: "+game.getScore(), 300,300);
         }
 
         quitButton.render(gc, g);

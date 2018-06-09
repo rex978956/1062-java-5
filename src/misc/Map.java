@@ -23,7 +23,6 @@ public class Map implements TileBasedMap {
     /* Settings */
     private Game game;
     private String name;
-    private int mapID;
     private TiledMap map;
     private Image preview;
     private ArrayList<Integer[]> waveList;
@@ -40,7 +39,7 @@ public class Map implements TileBasedMap {
             startHpYellowelephant,startHPRedelephant,startHpBluetiger,startHpYellowtiger,
             startHpFat,startHpSkeleton,startHpDemon,startHpOrangeDragon;
 
-    public Map(TiledMap map, Image preview, String name, int mapID,
+    public Map(TiledMap map, Image preview, String name,
                int startMoney, int killMoney, int waveMoney,
                int startHpBluesoldier,int startHpGreensoldier,int startHpPurplesoldier,
                int startHpYellowelephant,int startHPRedelephant,int startHpBluetiger,int startHpYellowtiger,
@@ -49,7 +48,6 @@ public class Map implements TileBasedMap {
         this.preview = preview;
         this.map = map;
         this.name = name;
-        this.mapID = mapID;
         this.startMoney = startMoney;
         this.killMoney = killMoney;
         this.waveMoney = waveMoney;
@@ -182,10 +180,6 @@ public class Map implements TileBasedMap {
 
     public void setWaveHealthMultiplier(int waveHealthMultiplier) {
         this.waveHealthMultiplier = waveHealthMultiplier;
-    }
-
-    public int getMapID(){
-        return mapID;
     }
 
    /* public int getStartHpBluesoldier() {
