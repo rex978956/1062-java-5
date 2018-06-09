@@ -16,8 +16,8 @@ public abstract class Tower {
     protected Point position;
 
     int upgradeLevel;
-    private int[] range, cost;
     Image[] textures;
+    private int[] range, cost;
 
     Tower(Point position, int[] range, int[] cost, Image[] textures, Game game) {
         this.position = position;
@@ -31,15 +31,15 @@ public abstract class Tower {
         return position;
     }
 
+    public void setPosition(Point position) {
+        this.position = position;
+    }
+
     public Point getTilePosition() {
         return new Point(
                 (int) Math.floor(position.getX() / 48),
                 (int) Math.floor(position.getY() / 48)
         );
-    }
-
-    public void setPosition(Point position) {
-        this.position = position;
     }
 
     public int getUpgradeLevel() {
