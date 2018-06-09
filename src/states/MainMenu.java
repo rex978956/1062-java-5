@@ -1,6 +1,7 @@
 package states;
 
 import main.ImageManager;
+import misc.FontSet;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -16,29 +17,31 @@ public class MainMenu extends BasicGameState {
     private MouseOverArea playButton, exitButton;
 
     @Override
-    public void init(GameContainer gc, final StateBasedGame sbg) {
+    public void init(GameContainer container, final StateBasedGame game) {
         background = ImageManager.getImage(ImageManager.MENU_BACKGROUND);
 
-        playButton = new MouseOverArea(gc, ImageManager.getImage(ImageManager.MENU_BUTTON_PLAY),
+        playButton = new MouseOverArea(container, ImageManager.getImage(ImageManager.MENU_BUTTON_PLAY),
                 640 + 35 - ImageManager.getImage(ImageManager.MENU_BUTTON_PLAY).getWidth() / 2,
                 200);
-        playButton.addListener(cmp -> sbg.enterState(2, new FadeOutTransition(), new FadeInTransition()));
+        playButton.addListener(source -> game.enterState(2, new FadeOutTransition(), new FadeInTransition()));
 
-        exitButton = new MouseOverArea(gc, ImageManager.getImage(ImageManager.MENU_BUTTON_EXIT),
+        exitButton = new MouseOverArea(container, ImageManager.getImage(ImageManager.MENU_BUTTON_EXIT),
                 640 + 35 - ImageManager.getImage(ImageManager.MENU_BUTTON_EXIT).getWidth() / 2,
                 300);
-        exitButton.addListener(cmp -> System.exit(0));
+        exitButton.addListener(source -> System.exit(0));
     }
 
     @Override
-    public void render(GameContainer gc, StateBasedGame sbg, Graphics g) {
+    public void render(GameContainer container, StateBasedGame game, Graphics g) {
         background.draw(0, 0);
-        playButton.render(gc, g);
-        exitButton.render(gc, g);
+        playButton.render(container, g);
+        exitButton.render(container, g);
+        FontSet.draw("OH, YOU KNOW THE FLAG NOW.", 1080, 1000, 18);
+        FontSet.draw("THIS IS FUCKING JAVA.", 1080, 1018, 18);
     }
 
     @Override
-    public void update(GameContainer gc, StateBasedGame sbg, int delta) {
+    public void update(GameContainer container, StateBasedGame game, int delta) {
     }
 
     @Override

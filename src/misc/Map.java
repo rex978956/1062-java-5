@@ -35,14 +35,14 @@ public class Map implements TileBasedMap {
 
     /* Health settings */
     private int waveHealthMultiplier;
-    private int startHpBluesoldier, startHpGreensoldier, startHpPurplesoldier,
-            startHpYellowelephant, startHPRedelephant, startHpBluetiger, startHpYellowtiger,
+    private int startHpBlueSoldier, startHpGreenSoldier, startHpPurpleSoldier,
+            startHpYellowElephant, startHpRedElephant, startHpBlueTiger, startHpYellowTiger,
             startHpFat, startHpSkeleton, startHpDemon, startHpOrangeDragon;
 
     public Map(TiledMap map, Image preview, String name,
                int startMoney, int killMoney, int waveMoney,
-               int startHpBluesoldier, int startHpGreensoldier, int startHpPurplesoldier,
-               int startHpYellowelephant, int startHPRedelephant, int startHpBluetiger, int startHpYellowtiger,
+               int startHpBlueSoldier, int startHpGreenSoldier, int startHpPurpleSoldier,
+               int startHpYellowElephant, int startHpRedElephant, int startHpBlueTiger, int startHpYellowTiger,
                int startHpFat, int startHpSkeleton, int startHpDemon, int startHpOrangeDragon,
                int waveHealthMultiplier, ArrayList<Point> spawnList, Point base, ArrayList<Integer[]> waveList) {
         this.preview = preview;
@@ -51,13 +51,13 @@ public class Map implements TileBasedMap {
         this.startMoney = startMoney;
         this.killMoney = killMoney;
         this.waveMoney = waveMoney;
-        this.startHpBluesoldier = startHpBluesoldier;
-        this.startHpGreensoldier = startHpGreensoldier;
-        this.startHpPurplesoldier = startHpPurplesoldier;
-        this.startHpYellowelephant = startHpYellowelephant;
-        this.startHPRedelephant = startHPRedelephant;
-        this.startHpBluetiger = startHpBluetiger;
-        this.startHpYellowtiger = startHpYellowtiger;
+        this.startHpBlueSoldier = startHpBlueSoldier;
+        this.startHpGreenSoldier = startHpGreenSoldier;
+        this.startHpPurpleSoldier = startHpPurpleSoldier;
+        this.startHpYellowElephant = startHpYellowElephant;
+        this.startHpRedElephant = startHpRedElephant;
+        this.startHpBlueTiger = startHpBlueTiger;
+        this.startHpYellowTiger = startHpYellowTiger;
         this.startHpFat = startHpFat;
         this.startHpSkeleton = startHpSkeleton;
         this.startHpDemon = startHpDemon;
@@ -182,60 +182,60 @@ public class Map implements TileBasedMap {
         this.waveHealthMultiplier = waveHealthMultiplier;
     }
 
-   /* public int getStartHpBluesoldier() {
-        return startHpBluesoldier;
+   /* public int getStartHpBlueSoldier() {
+        return startHpBlueSoldier;
     }
 
-    public void setStartHpBluesoldier(int startHpBluesoldier) {
-        this.startHpBluesoldier = startHpBluesoldier;
+    public void setStartHpBlueSoldier(int startHpBlueSoldier) {
+        this.startHpBlueSoldier = startHpBlueSoldier;
     }
 
-    public int getStartHpGreensoldier() {
-        return startHpGreensoldier;
+    public int getStartHpGreenSoldier() {
+        return startHpGreenSoldier;
     }
 
-    public void setStartHpGreensoldier(int startHpGreensoldier) {
-        this.startHpBluesoldier = startHpGreensoldier;
+    public void setStartHpGreenSoldier(int startHpGreenSoldier) {
+        this.startHpBlueSoldier = startHpGreenSoldier;
     }
 
-    public int getStartHpPurplesoldier() {
-        return startHpPurplesoldier;
+    public int getStartHpPurpleSoldier() {
+        return startHpPurpleSoldier;
     }
 
-    public void setStartHpPurplesoldier(int startHpPurplesoldier) {
-        this.startHpPurplesoldier = startHpPurplesoldier;
+    public void setStartHpPurpleSoldier(int startHpPurpleSoldier) {
+        this.startHpPurpleSoldier = startHpPurpleSoldier;
     }
 
-    public int getStartHpYellowelephant() {
-        return startHpYellowelephant;
+    public int getStartHpYellowElephant() {
+        return startHpYellowElephant;
     }
 
-    public void setStartHpYellowelephant(int startHpYellowelephant) {
-        this.startHpYellowelephant = startHpYellowelephant;
+    public void setStartHpYellowElephant(int startHpYellowElephant) {
+        this.startHpYellowElephant = startHpYellowElephant;
     }
 
-    public int getStartRedelephant() {
-        return startRedelephant;
+    public int getStartRedElephant() {
+        return startRedElephant;
     }
 
-    public void setStartRedelephant(int startRedelephant) {
-        this.startRedelephant = startRedelephant;
+    public void setStartRedElephant(int startRedelephant) {
+        this.startRedElephant = startRedElephant;
     }
 
-    public int getStartHpBluetiger() {
-        return startHpBluetiger;
+    public int getStartHpBlueTiger() {
+        return startHpBlueTiger;
     }
 
-    public void setStartHpBluetiger(int startHpBluetiger) {
-        this.startHpBluetiger = startHpBluetiger;
+    public void setStartHpBlueTiger(int startHpBlueTiger) {
+        this.startHpBlueTiger = startHpBlueTiger;
     }
 
-    public int getStartHpYellowtiger() {
-        return startHpYellowtiger;
+    public int getStartHpYellowTiger() {
+        return startHpYellowTiger;
     }
 
-    public void setStartHpYellowtiger(int startHpYellowtiger) {
-        this.startHpYellowtiger = startHpYellowtiger;
+    public void setStartHpYellowTiger(int startHpYellowTiger) {
+        this.startHpYellowTiger = startHpYellowTiger;
     }
 
     public int getStartHpFat() {
@@ -366,7 +366,7 @@ public class Map implements TileBasedMap {
              * Serialize run all the spawn points */
             int spawn = 0;
 
-            /* Enemy Bluesoldier */
+            /* Enemy BlueSolider */
             for (int i = 0; i < numbers[0]; i++) {
                 if (spawn < spawnList.size() - 1)
                     spawn++;
@@ -375,13 +375,14 @@ public class Map implements TileBasedMap {
 
                 Point spawnPoint = spawnList.get(spawn);
 
-                int health = startHpBluesoldier + wave * waveHealthMultiplier;
+                int health = startHpBlueSoldier + wave * waveHealthMultiplier;
                 float speed = 1.5f;
 
                 enemyList.add(new Enemy(game, new Vector2f(spawnPoint.getX() * 48 + 24, spawnPoint.getY() * 48 + 24)
                         , health, speed, false, false, ImageManager.getEnemyImage(ImageManager.BLUESOLDIER)));
             }
-            /* Enemy Greensoldier */
+
+            /* Enemy GreenSoldier */
             for (int i = 0; i < numbers[0]; i++) {
                 if (spawn < spawnList.size() - 1)
                     spawn++;
@@ -390,13 +391,14 @@ public class Map implements TileBasedMap {
 
                 Point spawnPoint = spawnList.get(spawn);
 
-                int health = startHpGreensoldier + wave * waveHealthMultiplier;
+                int health = startHpGreenSoldier + wave * waveHealthMultiplier;
                 float speed = 1.5f;
 
                 enemyList.add(new Enemy(game, new Vector2f(spawnPoint.getX() * 48 + 24, spawnPoint.getY() * 48 + 24)
                         , health, speed, false, false, ImageManager.getEnemyImage(ImageManager.GREENSOLDIER)));
             }
-            /* Enemy Purplesoldier */
+
+            /* Enemy PurpleSoldier */
             for (int i = 0; i < numbers[0]; i++) {
                 if (spawn < spawnList.size() - 1)
                     spawn++;
@@ -405,13 +407,14 @@ public class Map implements TileBasedMap {
 
                 Point spawnPoint = spawnList.get(spawn);
 
-                int health = startHpPurplesoldier + wave * waveHealthMultiplier;
+                int health = startHpPurpleSoldier + wave * waveHealthMultiplier;
                 float speed = 1.5f;
 
                 enemyList.add(new Enemy(game, new Vector2f(spawnPoint.getX() * 48 + 24, spawnPoint.getY() * 48 + 24)
                         , health, speed, false, false, ImageManager.getEnemyImage(ImageManager.PURPLESSOLDIER)));
             }
-            /* Enemy Yellowelephant */
+
+            /* Enemy YellowElephant */
             for (int i = 0; i < numbers[0]; i++) {
                 if (spawn < spawnList.size() - 1)
                     spawn++;
@@ -420,13 +423,14 @@ public class Map implements TileBasedMap {
 
                 Point spawnPoint = spawnList.get(spawn);
 
-                int health = startHpYellowelephant + wave * waveHealthMultiplier;
+                int health = startHpYellowElephant + wave * waveHealthMultiplier;
                 float speed = 1.5f;
 
                 enemyList.add(new Enemy(game, new Vector2f(spawnPoint.getX() * 48 + 24, spawnPoint.getY() * 48 + 24)
                         , health, speed, false, false, ImageManager.getEnemyImage(ImageManager.YELLOWELEPHANT)));
             }
-            /* Enemy Redelephant */
+
+            /* Enemy RedElephant */
             for (int i = 0; i < numbers[0]; i++) {
                 if (spawn < spawnList.size() - 1)
                     spawn++;
@@ -435,13 +439,14 @@ public class Map implements TileBasedMap {
 
                 Point spawnPoint = spawnList.get(spawn);
 
-                int health = startHPRedelephant + wave * waveHealthMultiplier;
+                int health = startHpRedElephant + wave * waveHealthMultiplier;
                 float speed = 1.5f;
 
                 enemyList.add(new Enemy(game, new Vector2f(spawnPoint.getX() * 48 + 24, spawnPoint.getY() * 48 + 24)
                         , health, speed, false, false, ImageManager.getEnemyImage(ImageManager.REDELEPHANT)));
             }
-            /* Enemy  Bluetiger*/
+
+            /* Enemy  BlueTiger*/
             for (int i = 0; i < numbers[0]; i++) {
                 if (spawn < spawnList.size() - 1)
                     spawn++;
@@ -450,13 +455,14 @@ public class Map implements TileBasedMap {
 
                 Point spawnPoint = spawnList.get(spawn);
 
-                int health = startHpBluetiger + wave * waveHealthMultiplier;
+                int health = startHpBlueTiger + wave * waveHealthMultiplier;
                 float speed = 1.5f;
 
                 enemyList.add(new Enemy(game, new Vector2f(spawnPoint.getX() * 48 + 24, spawnPoint.getY() * 48 + 24)
                         , health, speed, false, false, ImageManager.getEnemyImage(ImageManager.BLUETIGER)));
             }
-            /* Enemy  Yellowtiger*/
+
+            /* Enemy  YellowTiger*/
             for (int i = 0; i < numbers[0]; i++) {
                 if (spawn < spawnList.size() - 1)
                     spawn++;
@@ -465,12 +471,13 @@ public class Map implements TileBasedMap {
 
                 Point spawnPoint = spawnList.get(spawn);
 
-                int health = startHpYellowtiger + wave * waveHealthMultiplier;
+                int health = startHpYellowTiger + wave * waveHealthMultiplier;
                 float speed = 1.5f;
 
                 enemyList.add(new Enemy(game, new Vector2f(spawnPoint.getX() * 48 + 24, spawnPoint.getY() * 48 + 24)
                         , health, speed, false, false, ImageManager.getEnemyImage(ImageManager.YELLOWTIGER)));
             }
+
             /* Enemy  Fat*/
             for (int i = 0; i < numbers[0]; i++) {
                 if (spawn < spawnList.size() - 1)
@@ -486,6 +493,7 @@ public class Map implements TileBasedMap {
                 enemyList.add(new Enemy(game, new Vector2f(spawnPoint.getX() * 48 + 24, spawnPoint.getY() * 48 + 24)
                         , health, speed, false, false, ImageManager.getEnemyImage(ImageManager.FAT)));
             }
+
             /* Enemy  Skeleton*/
             for (int i = 0; i < numbers[0]; i++) {
                 if (spawn < spawnList.size() - 1)
@@ -501,6 +509,7 @@ public class Map implements TileBasedMap {
                 enemyList.add(new Enemy(game, new Vector2f(spawnPoint.getX() * 48 + 24, spawnPoint.getY() * 48 + 24)
                         , health, speed, false, false, ImageManager.getEnemyImage(ImageManager.SKELETON)));
             }
+
             /* Enemy  Demon*/
             for (int i = 0; i < numbers[0]; i++) {
                 if (spawn < spawnList.size() - 1)
@@ -516,6 +525,7 @@ public class Map implements TileBasedMap {
                 enemyList.add(new Enemy(game, new Vector2f(spawnPoint.getX() * 48 + 24, spawnPoint.getY() * 48 + 24)
                         , health, speed, false, false, ImageManager.getEnemyImage(ImageManager.DEMON)));
             }
+
             /* Enemy  OrangeDragon*/
             for (int i = 0; i < numbers[0]; i++) {
                 if (spawn < spawnList.size() - 1)
@@ -531,7 +541,7 @@ public class Map implements TileBasedMap {
                 enemyList.add(new Enemy(game, new Vector2f(spawnPoint.getX() * 48 + 24, spawnPoint.getY() * 48 + 24)
                         , health, speed, false, false, ImageManager.getEnemyImage(ImageManager.ORANGEDRAGON)));
             }
-            //TODO(allen0099): Remember to Add Another Enemies
+
             System.out.println("This wave Enemies: " + Arrays.toString(waveList.get(wave - 1)));
             return enemyList;
         }

@@ -4,13 +4,13 @@
      <StartMoney>3000</StartMoney>
      <MoneyPerKill>10</MoneyPerKill>
      <MoneyPerWave>100</MoneyPerWave>
-     <BaseHpBluesoldier>1</BaseHpBluesoldier>
-     <BaseHpGreensoldier>1</BaseHpGreensoldier>
-     <BaseHpPurplesoldier>1</BaseHpPurplesoldier>
-     <BaseHpYellowelephant>1</BaseHpYellowelephant>
-     <BaseHpRedelephant>1</BaseHpRedelephant>
-     <BaseHpBluetiger>1</BaseHpBluetiger>
-     <BaseHpYellowtiger>1</BaseHpYellowtiger>
+     <BaseHpBlueSoldier>1</BaseHpBlueSoldier>
+     <BaseHpGreenSoldier>1</BaseHpGreenSoldier>
+     <BaseHpPurpleSoldier>1</BaseHpPurpleSoldier>
+     <BaseHpYellowElephant>1</BaseHpYellowElephant>
+     <BaseHpRedElephant>1</BaseHpRedElephant>
+     <BaseHpBlueTiger>1</BaseHpBlueTiger>
+     <BaseHpYellowTiger>1</BaseHpYellowTiger>
      <BaseHpFat>1</BaseHpFat>
      <BaseHpSkeleton>1</BaseHpSkeleton>
      <BaseHpDemon>1</BaseHpDemon>
@@ -28,13 +28,13 @@
      </Base>
      <Waves>
           <Wave>
-               <Bluesoldier>1</Bluesoldier>
-               <Greensoldier>1</Greensoldier>
-               <Purplesoldier>1</Purplesoldier>
-               <Yellowelephant>1</Yellowelephant>
-               <Redelephant>1</Redelephant>
-               <Bluetiger>1</Bluetiger>
-               <Yellowtiger>1</Yellowtiger>
+               <BlueSoldier>1</BlueSoldier>
+               <GreenSoldier>1</GreenSoldier>
+               <PurpleSoldier>1</PurpleSoldier>
+               <YellowElephant>1</YellowElephant>
+               <RedElephant>1</RedElephant>
+               <BlueTiger>1</BlueTiger>
+               <YellowTiger>1</YellowTiger>
                <Fat>1</Fat>
                <Skeleton>1</Skeleton>
                <Demon>1</Demon>
