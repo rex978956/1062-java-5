@@ -6,7 +6,6 @@ import misc.MapLoader;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
-import org.newdawn.slick.SlickException;
 import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.GameState;
@@ -48,27 +47,7 @@ public class MapMenu extends BasicGameState {
         }
     }
 
-    /**
-     * Initialise the state. It should load any resources it needs at this stage
-     *
-     * @param container The container holding the game
-     * @param game      The game holding this state
-     * @throws SlickException Indicates a failure to initialise a resource for this state
-     */
-    @Override
-    public void init(GameContainer container, StateBasedGame game) throws SlickException {
-
-
-        mapList = MapLoader.loadMaps();
-
-//        cursor = new Image("res/cursor.png");
-//        cursorMiddle = new Image("res/cursorMiddle.png");
-//        cursorTail = new Image("res/cursorTail.png");
-//
-//        container.setDefaultMouseCursor();
-//        container.setMouseGrabbed(true);
-
-        /* Buttons */
+    private void clickButtons(GameContainer container) {
         int prevBtnX = container.getWidth() / 4 - ImageManager.getImage(ImageManager.MENU_BUTTON_LARROW).getWidth() / 2;
         int prevBtnY = container.getHeight() / 2 - ImageManager.getImage(ImageManager.MENU_BUTTON_LARROW).getHeight() / 2;
 
@@ -82,6 +61,40 @@ public class MapMenu extends BasicGameState {
         nextBtn.addListener(source -> selectNextMap());
     }
 
+    private void clickSelectGame(GameContainer container, StateBasedGame game) {
+        int previewX = container.getWidth() / 2 - mapList.get(selectedMap).getPreview().getWidth() / 2;
+        int previewY = container.getHeight() / 2 - mapList.get(selectedMap).getPreview().getHeight() / 2;
+        mapPreview = new MouseOverArea(container, mapList.get(selectedMap).getPreview(), previewX, previewY);
+        mapPreview.addListener(source -> {
+            Game game2 = new Game(mapList.get(selectedMap));
+            game2.init(container, game);
+            game.addState(game2);
+            game.enterState(3, new FadeOutTransition(), new FadeInTransition());
+        });
+    }
+
+    /**
+     * Initialise the state. It should load any resources it needs at this stage
+     *
+     * @param container The container holding the game
+     * @param game      The game holding this state
+     */
+    @Override
+    public void init(GameContainer container, StateBasedGame game) {
+
+
+        mapList = MapLoader.loadMaps();
+
+//        cursor = new Image("res/cursor.png");
+//        cursorMiddle = new Image("res/cursorMiddle.png");
+//        cursorTail = new Image("res/cursorTail.png");
+//
+//        container.setDefaultMouseCursor();
+//        container.setMouseGrabbed(true);
+        clickButtons(container);
+        clickSelectGame(container, game);
+    }
+
     /**
      * Render this state to the game's graphics context
      *
@@ -93,23 +106,20 @@ public class MapMenu extends BasicGameState {
     public void render(GameContainer container, StateBasedGame game, Graphics g) {
 
         //g.setBackground(Color.red);
-
-        int previewX = container.getWidth() / 2;
-        int previewY = container.getHeight() / 2;
-        mapPreview = new MouseOverArea(container, mapList.get(selectedMap).getPreview(), previewX, previewY);
         mapPreview.render(container, g);
+        mapList.get(selectedMap).getPreview().drawCentered(container.getWidth() / 2, container.getHeight() / 2);
 
         if (selectedMap > 0) {
-            mapList.get(selectedMap - 1).getPreview().draw(-224, 255);
+            mapList.get(selectedMap - 1).getPreview().draw(0 - mapList.get(selectedMap).getPreview().getWidth() * 3 / 4, 225);
         }
 
         if (selectedMap < mapList.size() - 1) {
-            mapList.get(selectedMap + 1).getPreview().draw(1156, 255);
+            mapList.get(selectedMap + 1).getPreview().draw(container.getWidth() - mapList.get(selectedMap).getPreview().getWidth() / 4, 225);
         }
 
         prevBtn.render(container, g);
         nextBtn.render(container, g);
-//
+
 //        float MouseX = container.getInput().getMouseX();
 //        float MouseY = container.getInput().getMouseY();
 //        cursor.rotate(1);
@@ -140,18 +150,10 @@ public class MapMenu extends BasicGameState {
             selectNextMap();
         }
 
-//        if (input.isMousePressed(0)) {
-//            int x = Mouse.getX();
-//            int y = 800 - Mouse.getY();
-//
-//            //TODO: Use Button Over Area
-//            if (x > 466 && x < 814 && y > 255 && y < 497) {
-//                Game game2 = new Game(mapList.get(selectedMap));
-//                game2.init(container, game);
-//                game.addState(game2);
-//                game.enterState(3, new FadeOutTransition(), new FadeInTransition());
-//            }
-//        }
+        if (input.isKeyPressed(Input.KEY_F11)) {
+            clickButtons(container);
+            clickSelectGame(container, game);
+        }
     }
 
     /**
