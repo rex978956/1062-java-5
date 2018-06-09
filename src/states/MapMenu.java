@@ -199,6 +199,22 @@ package states;
  * @param container The container holding the game
  * @param game      The game holding this state
  * @param delta     The amount of time that's passed in millisecond since last update
+ * @param container The container holding the game
+ * @param game      The game holding this state
+ * @throws SlickException Indicates a failure to initialise a resource for this state
+ * <p>
+ * Render this state to the game's graphics context
+ * @param container The container holding the game
+ * @param game      The game holding this state
+ * @param g         The graphics context to render to
+ * <p>
+ * Update the state's logic based on the amount of time that's passed
+ * @param container The container holding the game
+ * @param game      The game holding this state
+ * @param delta     The amount of time that's passed in millisecond since last update
+ * @see GameState#getID()
+ * <p>
+ * Initialise the state. It should load any resources it needs at this stage
  * @see GameState#getID()
  *//*
 

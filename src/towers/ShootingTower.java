@@ -41,7 +41,7 @@ public abstract class ShootingTower extends Tower {
 
             for (int i = 0; i < entitiesInRange.size(); i++) {
                 if (canTarget(entitiesInRange.get(i)) && index == -1) {
-                        index = i;
+                    index = i;
                 }
             }
             if (index != -1) {

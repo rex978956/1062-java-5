@@ -126,12 +126,13 @@ public class ImageManager {
 
 
     private static Image[] BluesoldierList;
+
     static {
         BluesoldierList = new Image[16];
 
         try {
-            for (int i =0;i<16;i++){
-                BluesoldierList[i] = new Image("res/images/enemy/bluesoldier/"+i+".png");
+            for (int i = 0; i < 16; i++) {
+                BluesoldierList[i] = new Image("res/images/enemy/bluesoldier/" + i + ".png");
             }
         } catch (SlickException e) {
             e.printStackTrace();
@@ -139,12 +140,13 @@ public class ImageManager {
     }
 
     private static Image[] GreensoldierList;
+
     static {
         GreensoldierList = new Image[16];
 
         try {
-            for (int i =0;i<16;i++){
-                GreensoldierList[i] = new Image("res/images/enemy/greensoldier/"+i+".png");
+            for (int i = 0; i < 16; i++) {
+                GreensoldierList[i] = new Image("res/images/enemy/greensoldier/" + i + ".png");
             }
         } catch (SlickException e) {
             e.printStackTrace();
@@ -152,12 +154,13 @@ public class ImageManager {
     }
 
     private static Image[] PurplesoldierList;
+
     static {
         PurplesoldierList = new Image[16];
 
         try {
-            for (int i =0;i<16;i++){
-                PurplesoldierList[i] = new Image("res/images/enemy/purplesoldier/"+i+".png");
+            for (int i = 0; i < 16; i++) {
+                PurplesoldierList[i] = new Image("res/images/enemy/purplesoldier/" + i + ".png");
             }
         } catch (SlickException e) {
             e.printStackTrace();
@@ -166,12 +169,13 @@ public class ImageManager {
 
 
     private static Image[] YellowelephantList;
+
     static {
         YellowelephantList = new Image[16];
 
         try {
-            for (int i =0;i<16;i++){
-                YellowelephantList[i] = new Image("res/images/enemy/yellowelephant/"+i+".png");
+            for (int i = 0; i < 16; i++) {
+                YellowelephantList[i] = new Image("res/images/enemy/yellowelephant/" + i + ".png");
             }
         } catch (SlickException e) {
             e.printStackTrace();
@@ -179,12 +183,13 @@ public class ImageManager {
     }
 
     private static Image[] RedelephantList;
+
     static {
         RedelephantList = new Image[16];
 
         try {
-            for (int i =0;i<16;i++){
-                RedelephantList[i] = new Image("res/images/enemy/redelephant/"+i+".png");
+            for (int i = 0; i < 16; i++) {
+                RedelephantList[i] = new Image("res/images/enemy/redelephant/" + i + ".png");
             }
         } catch (SlickException e) {
             e.printStackTrace();
@@ -192,12 +197,13 @@ public class ImageManager {
     }
 
     private static Image[] BluetigerList;
+
     static {
         BluetigerList = new Image[16];
 
         try {
-            for (int i =0;i<16;i++){
-                BluetigerList[i] = new Image("res/images/enemy/bluetiger/"+i+".png");
+            for (int i = 0; i < 16; i++) {
+                BluetigerList[i] = new Image("res/images/enemy/bluetiger/" + i + ".png");
             }
         } catch (SlickException e) {
             e.printStackTrace();
@@ -205,12 +211,13 @@ public class ImageManager {
     }
 
     private static Image[] YellowtigerList;
+
     static {
         YellowtigerList = new Image[16];
 
         try {
-            for (int i =0;i<16;i++){
-                YellowtigerList[i] = new Image("res/images/enemy/yellowtiger/"+i+".png");
+            for (int i = 0; i < 16; i++) {
+                YellowtigerList[i] = new Image("res/images/enemy/yellowtiger/" + i + ".png");
             }
         } catch (SlickException e) {
             e.printStackTrace();
@@ -218,12 +225,13 @@ public class ImageManager {
     }
 
     private static Image[] FatList;
+
     static {
         FatList = new Image[16];
 
         try {
-            for (int i =0;i<16;i++){
-                FatList[i] = new Image("res/images/enemy/fat/"+i+".png");
+            for (int i = 0; i < 16; i++) {
+                FatList[i] = new Image("res/images/enemy/fat/" + i + ".png");
             }
         } catch (SlickException e) {
             e.printStackTrace();
@@ -231,12 +239,13 @@ public class ImageManager {
     }
 
     private static Image[] SkeletonList;
+
     static {
         SkeletonList = new Image[16];
 
         try {
-            for (int i =0;i<16;i++){
-                SkeletonList[i] = new Image("res/images/enemy/skeleton/"+i+".png");
+            for (int i = 0; i < 16; i++) {
+                SkeletonList[i] = new Image("res/images/enemy/skeleton/" + i + ".png");
             }
         } catch (SlickException e) {
             e.printStackTrace();
@@ -244,12 +253,13 @@ public class ImageManager {
     }
 
     private static Image[] DemonList;
+
     static {
         DemonList = new Image[16];
 
         try {
-            for (int i =0;i<16;i++){
-                DemonList[i] = new Image("res/images/enemy/demon/"+i+".png");
+            for (int i = 0; i < 16; i++) {
+                DemonList[i] = new Image("res/images/enemy/demon/" + i + ".png");
             }
         } catch (SlickException e) {
             e.printStackTrace();
@@ -257,12 +267,13 @@ public class ImageManager {
     }
 
     private static Image[] OrangeDragonList;
+
     static {
         OrangeDragonList = new Image[16];
 
         try {
-            for (int i =0;i<16;i++){
-                OrangeDragonList[i] = new Image("res/images/enemy/orangedragon/"+i+".png");
+            for (int i = 0; i < 16; i++) {
+                OrangeDragonList[i] = new Image("res/images/enemy/orangedragon/" + i + ".png");
             }
         } catch (SlickException e) {
             e.printStackTrace();
@@ -274,7 +285,7 @@ public class ImageManager {
     }
 
     public static Image[] getEnemyImage(int id) {
-        switch (id){
+        switch (id) {
             case BLUESOLDIER:
                 return BluesoldierList;
             case GREENSOLDIER:

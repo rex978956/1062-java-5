@@ -20,12 +20,12 @@ public class MainMenu extends BasicGameState {
         background = ImageManager.getImage(ImageManager.MENU_BACKGROUND);
 
         playButton = new MouseOverArea(gc, ImageManager.getImage(ImageManager.MENU_BUTTON_PLAY),
-                640+35-ImageManager.getImage(ImageManager.MENU_BUTTON_PLAY).getWidth()/2,
+                640 + 35 - ImageManager.getImage(ImageManager.MENU_BUTTON_PLAY).getWidth() / 2,
                 200);
         playButton.addListener(cmp -> sbg.enterState(2, new FadeOutTransition(), new FadeInTransition()));
 
         exitButton = new MouseOverArea(gc, ImageManager.getImage(ImageManager.MENU_BUTTON_EXIT),
-                640+35-ImageManager.getImage(ImageManager.MENU_BUTTON_EXIT).getWidth()/2,
+                640 + 35 - ImageManager.getImage(ImageManager.MENU_BUTTON_EXIT).getWidth() / 2,
                 300);
         exitButton.addListener(cmp -> System.exit(0));
     }

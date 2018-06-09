@@ -116,8 +116,8 @@ public class MapLoader {
 
 
                             waveList.add(new Integer[]{BluesoldierUnits, GreensoldierUnits, PurplesoldierUnits,
-                                    YellowelephantUnits,RedelephantUnits,BluetigerUnits,YellowtigerUnits,
-                                    FatUnits,SkeletonUnits,DemonUnits,OrangeDragonUnits});
+                                    YellowelephantUnits, RedelephantUnits, BluetigerUnits, YellowtigerUnits,
+                                    FatUnits, SkeletonUnits, DemonUnits, OrangeDragonUnits});
                         }
 
                         /* Add new map to the list */
