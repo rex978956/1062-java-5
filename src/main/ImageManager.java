@@ -64,6 +64,11 @@ public class ImageManager {
     public static final int SKELETON = 8;
     public static final int DEMON = 9;
     public static final int ORANGEDRAGON = 10;
+    public static final int BEE = 11;
+    public static final int PHOENIX = 12;
+    public static final int BLUEDRAGON = 13;
+    public static final int SKELETONDRAGON = 14;
+    public static final int DRAGONDRIVER = 15;
 
     private static ArrayList<Image> imageList;
 
@@ -280,6 +285,76 @@ public class ImageManager {
         }
     }
 
+    private static Image[] BeeList;
+
+    static {
+        BeeList = new Image[16];
+
+        try {
+            for (int i = 0; i < 16; i++) {
+                BeeList[i] = new Image("res/images/enemy/bee/" + i + ".png");
+            }
+        } catch (SlickException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static Image[] PhoenixList;
+
+    static {
+        PhoenixList = new Image[16];
+
+        try {
+            for (int i = 0; i < 16; i++) {
+                PhoenixList[i] = new Image("res/images/enemy/phoenix/" + i + ".png");
+            }
+        } catch (SlickException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static Image[] BlueDragonList;
+
+    static {
+        BlueDragonList = new Image[16];
+
+        try {
+            for (int i = 0; i < 16; i++) {
+                BlueDragonList[i] = new Image("res/images/enemy/bluedragon/" + i + ".png");
+            }
+        } catch (SlickException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static Image[] SkeletonDragonList;
+
+    static {
+        SkeletonDragonList = new Image[16];
+
+        try {
+            for (int i = 0; i < 16; i++) {
+                SkeletonDragonList[i] = new Image("res/images/enemy/skeletondragon/" + i + ".png");
+            }
+        } catch (SlickException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static Image[] DragonDriverList;
+
+    static {
+        DragonDriverList = new Image[16];
+
+        try {
+            for (int i = 0; i < 16; i++) {
+                DragonDriverList[i] = new Image("res/images/enemy/dragondriver/" + i + ".png");
+            }
+        } catch (SlickException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static Image getImage(int id) {
         return imageList.get(id).copy();
     }
@@ -308,6 +383,16 @@ public class ImageManager {
                 return DemonList;
             case ORANGEDRAGON:
                 return OrangeDragonList;
+            case BEE:
+                return BeeList;
+            case PHOENIX:
+                return PhoenixList;
+            case BLUEDRAGON:
+                return BlueDragonList;
+            case SKELETONDRAGON:
+                return SkeletonDragonList;
+            case DRAGONDRIVER:
+                return DragonDriverList;
             default:
                 return BluesoldierList;
         }

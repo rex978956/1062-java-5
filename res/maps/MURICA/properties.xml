@@ -16,6 +16,11 @@
      <BaseHpSkeleton>1</BaseHpSkeleton>
      <BaseHpDemon>1</BaseHpDemon>
      <BaseHpOrangeDragon>1</BaseHpOrangeDragon>
+     <BaseHpBee>1</BaseHpBee>
+     <BaseHpPhoenix>1</BaseHpPhoenix>
+     <BaseHpBlueDragon>1</BaseHpBlueDragon>
+     <BaseHpSkeletonDragon>1</BaseHpSkeletonDragon>
+     <BaseHpDragonDriver>1</BaseHpDragonDriver>
      <HealthMultiplier>10</HealthMultiplier>
      <Spawns>
           <Spawn>
@@ -40,6 +45,11 @@
                <Skeleton>1</Skeleton>
                <Demon>1</Demon>
                <OrangeDragon>1</OrangeDragon>
+               <Bee>1</Bee>
+               <Phoenix>1</Phoenix>
+               <BlueDragon>1</BlueDragon>
+               <SkeletonDragon>1</SkeletonDragon>
+               <DragonDriver>1</DragonDriver>
           </Wave>
      </Waves>
 </Map>

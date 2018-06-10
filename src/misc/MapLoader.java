@@ -77,6 +77,11 @@ public class MapLoader {
                         int startHpFat = Integer.parseInt(root.getElementsByTagName("BaseHpFat").item(0).getTextContent());
                         int startHpDemon = Integer.parseInt(root.getElementsByTagName("BaseHpDemon").item(0).getTextContent());
                         int startHpOrangeDragon = Integer.parseInt(root.getElementsByTagName("BaseHpOrangeDragon").item(0).getTextContent());
+                        int startHpBee = Integer.parseInt(root.getElementsByTagName("BaseHpBee").item(0).getTextContent());
+                        int startHpPhoenix = Integer.parseInt(root.getElementsByTagName("BaseHpPhoenix").item(0).getTextContent());
+                        int startHpBlueDragon = Integer.parseInt(root.getElementsByTagName("BaseHpBlueDragon").item(0).getTextContent());
+                        int startHpSkeletonDragon = Integer.parseInt(root.getElementsByTagName("BaseHpSkeletonDragon").item(0).getTextContent());
+                        int startHpDragonDriver = Integer.parseInt(root.getElementsByTagName("BaseHpDragonDriver").item(0).getTextContent());
 
                         int waveHpMultiplier = Integer.parseInt(root.getElementsByTagName("HealthMultiplier").item(0).getTextContent());
 
@@ -112,11 +117,17 @@ public class MapLoader {
                             int SkeletonUnits = Integer.parseInt(wave.getElementsByTagName("Skeleton").item(0).getTextContent());
                             int DemonUnits = Integer.parseInt(wave.getElementsByTagName("Demon").item(0).getTextContent());
                             int OrangeDragonUnits = Integer.parseInt(wave.getElementsByTagName("OrangeDragon").item(0).getTextContent());
+                            int BeeUnits = Integer.parseInt(wave.getElementsByTagName("Bee").item(0).getTextContent());
+                            int PhoenixUnits = Integer.parseInt(wave.getElementsByTagName("Phoenix").item(0).getTextContent());
+                            int BlueDragonUnits = Integer.parseInt(wave.getElementsByTagName("BlueDragon").item(0).getTextContent());
+                            int SkeletonDragonUnits = Integer.parseInt(wave.getElementsByTagName("SkeletonDragon").item(0).getTextContent());
+                            int DragonDriverUnits = Integer.parseInt(wave.getElementsByTagName("DragonDriver").item(0).getTextContent());
 
 
                             waveList.add(new Integer[]{BluesoldierUnits, GreensoldierUnits, PurplesoldierUnits,
-                                    YellowelephantUnits,RedelephantUnits,BluetigerUnits,YellowtigerUnits,
-                                    FatUnits,SkeletonUnits,DemonUnits,OrangeDragonUnits});
+                                    YellowelephantUnits, RedelephantUnits, BluetigerUnits, YellowtigerUnits,
+                                    FatUnits, SkeletonUnits, DemonUnits, OrangeDragonUnits,
+                                    BeeUnits, PhoenixUnits, BlueDragonUnits, SkeletonDragonUnits, DragonDriverUnits});
                         }
 
                         /* Add new map to the list */
@@ -124,6 +135,7 @@ public class MapLoader {
                                 startHpBluesoldier, startHpGreensoldier, startHpPurplesoldier,
                                 startHpYellowelephant, startRedelephant, startHpBluetiger, startHpYellowtiger,
                                 startHpFat, startHpSkeleton, startHpDemon, startHpOrangeDragon,
+                                startHpBee, startHpPhoenix, startHpBlueDragon, startHpSkeletonDragon, startHpDragonDriver,
                                 waveHpMultiplier, spawnList, base, waveList));
 
                         System.out.println("Map: " + String.format("%1$-12s", mapName) + "loaded successful!");

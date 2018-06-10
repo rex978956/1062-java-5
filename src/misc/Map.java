@@ -37,13 +37,15 @@ public class Map implements TileBasedMap {
     private int waveHealthMultiplier;
     private  int startHpBluesoldier,startHpGreensoldier,startHpPurplesoldier,
             startHpYellowelephant,startHPRedelephant,startHpBluetiger,startHpYellowtiger,
-            startHpFat,startHpSkeleton,startHpDemon,startHpOrangeDragon;
+            startHpFat,startHpSkeleton,startHpDemon,startHpOrangeDragon,
+            startHpBee, startHpPhoenix, startHpBlueDragon, startHpSkeletonDragon, startHpDragonDriver;
 
     public Map(TiledMap map, Image preview, String name,
                int startMoney, int killMoney, int waveMoney,
                int startHpBluesoldier,int startHpGreensoldier,int startHpPurplesoldier,
                int startHpYellowelephant,int startHPRedelephant,int startHpBluetiger,int startHpYellowtiger,
                int startHpFat, int startHpSkeleton,int startHpDemon,int startHpOrangeDragon,
+               int startHpBee, int startHpPhoenix, int startHpBlueDragon, int startHpSkeletonDragon, int startHpDragonDriver,
                int waveHealthMultiplier, ArrayList<Point> spawnList, Point base, ArrayList<Integer[]> waveList) {
         this.preview = preview;
         this.map = map;
@@ -62,6 +64,11 @@ public class Map implements TileBasedMap {
         this.startHpSkeleton = startHpSkeleton;
         this.startHpDemon = startHpDemon;
         this.startHpOrangeDragon = startHpOrangeDragon;
+        this.startHpBee = startHpBee;
+        this.startHpPhoenix = startHpPhoenix;
+        this.startHpBlueDragon = startHpBlueDragon;
+        this.startHpSkeletonDragon = startHpSkeletonDragon;
+        this.startHpDragonDriver = startHpDragonDriver;
         this.waveHealthMultiplier = waveHealthMultiplier;
         this.spawnList = spawnList;
         this.base = base;
@@ -532,6 +539,87 @@ public class Map implements TileBasedMap {
                 enemyList.add(new Enemy(game, new Vector2f(spawnPoint.getX() * 48 + 24, spawnPoint.getY() * 48 + 24)
                         , health, speed,false, false, ImageManager.getEnemyImage(ImageManager.ORANGEDRAGON)));
             }
+
+            /* Enemy  Bee*/
+            for (int i = 0; i < numbers[11]; i++) {
+                if (spawn < spawnList.size() - 1)
+                    spawn++;
+                else
+                    spawn = 0;
+
+                Point spawnPoint = spawnList.get(spawn);
+
+                int health = startHpBee + wave * waveHealthMultiplier;
+                float speed = 1.5f;
+
+                enemyList.add(new Enemy(game, new Vector2f(spawnPoint.getX() * 48 + 24, spawnPoint.getY() * 48 + 24)
+                        , health, speed,true, false, ImageManager.getEnemyImage(ImageManager.BEE)));
+            }
+
+            /* Enemy  Phoenix*/
+            for (int i = 0; i < numbers[12]; i++) {
+                if (spawn < spawnList.size() - 1)
+                    spawn++;
+                else
+                    spawn = 0;
+
+                Point spawnPoint = spawnList.get(spawn);
+
+                int health = startHpPhoenix + wave * waveHealthMultiplier;
+                float speed = 1.5f;
+
+                enemyList.add(new Enemy(game, new Vector2f(spawnPoint.getX() * 48 + 24, spawnPoint.getY() * 48 + 24)
+                        , health, speed,true, false, ImageManager.getEnemyImage(ImageManager.PHOENIX)));
+            }
+
+            /* Enemy  BlueDragon*/
+            for (int i = 0; i < numbers[13]; i++) {
+                if (spawn < spawnList.size() - 1)
+                    spawn++;
+                else
+                    spawn = 0;
+
+                Point spawnPoint = spawnList.get(spawn);
+
+                int health = startHpBlueDragon + wave * waveHealthMultiplier;
+                float speed = 1.5f;
+
+                enemyList.add(new Enemy(game, new Vector2f(spawnPoint.getX() * 48 + 24, spawnPoint.getY() * 48 + 24)
+                        , health, speed,true, false, ImageManager.getEnemyImage(ImageManager.BLUEDRAGON)));
+            }
+
+            /* Enemy  SkeletonDragon*/
+            for (int i = 0; i < numbers[14]; i++) {
+                if (spawn < spawnList.size() - 1)
+                    spawn++;
+                else
+                    spawn = 0;
+
+                Point spawnPoint = spawnList.get(spawn);
+
+                int health = startHpSkeletonDragon + wave * waveHealthMultiplier;
+                float speed = 1.5f;
+
+                enemyList.add(new Enemy(game, new Vector2f(spawnPoint.getX() * 48 + 24, spawnPoint.getY() * 48 + 24)
+                        , health, speed,true, false, ImageManager.getEnemyImage(ImageManager.SKELETONDRAGON)));
+            }
+
+            /* Enemy  DragonDriver*/
+            for (int i = 0; i < numbers[15]; i++) {
+                if (spawn < spawnList.size() - 1)
+                    spawn++;
+                else
+                    spawn = 0;
+
+                Point spawnPoint = spawnList.get(spawn);
+
+                int health = startHpDragonDriver + wave * waveHealthMultiplier;
+                float speed = 1.5f;
+
+                enemyList.add(new Enemy(game, new Vector2f(spawnPoint.getX() * 48 + 24, spawnPoint.getY() * 48 + 24)
+                        , health, speed,true, false, ImageManager.getEnemyImage(ImageManager.DRAGONDRIVER)));
+            }
+
             //TODO(allen0099): Remember to Add Another Enemies
             System.out.println("This wave Enemies: " + Arrays.toString(waveList.get(wave - 1)));
             return enemyList;
