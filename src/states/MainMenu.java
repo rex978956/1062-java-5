@@ -36,8 +36,8 @@ public class MainMenu extends BasicGameState {
         background.draw(0, 0);
         playButton.render(container, g);
         exitButton.render(container, g);
-        FontSet.draw("OH, YOU KNOW THE FLAG NOW.", 1080, 1000, 18);
-        FontSet.draw("THIS IS FUCKING JAVA.", 1080, 1018, 18);
+        FontSet.drawAkrobat("OH, YOU KNOW THE FLAG NOW.", 1080, 1000, 18);
+        FontSet.drawAkrobat("THIS IS FUCKING JAVA.", 1080, 1018, 18);
     }
 
     @Override

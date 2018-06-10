@@ -469,40 +469,40 @@ public class Game extends BasicGameState {
 
             if(selectedTower instanceof ShootingTower) {
                 ShootingTower shTower = (ShootingTower) selectedTower;
-                FontSet.draw("Damage: " + shTower.getDamage(), 1105, 220, 18);
-                FontSet.draw("Range: " + shTower.getRange(),1105, 240, 18);
-                FontSet.draw("Atk Speed: " + Math.round(1000f/shTower.getShootInterval()*100)/100f, 1105, 260, 18);
+                FontSet.drawAkrobat("Damage: " + shTower.getDamage(), 1105, 220, 18);
+                FontSet.drawAkrobat("Range: " + shTower.getRange(),1105, 240, 18);
+                FontSet.drawAkrobat("Atk Speed: " + Math.round(1000f/shTower.getShootInterval()*100)/100f, 1105, 260, 18);
                 if(shTower.getType() == 1){
-                    FontSet.draw("info1", 1105, 240, 18);
+                    FontSet.drawAkrobat("info1", 1105, 240, 18);
                 }else if(shTower.getType() == 2){
-                    FontSet.draw("info2" , 1105, 240, 18);
+                    FontSet.drawAkrobat("info2" , 1105, 240, 18);
                 }else if(shTower.getType() == 3){
-                    FontSet.draw("info3", 1105, 240, 18);
+                    FontSet.drawAkrobat("info3", 1105, 240, 18);
                 }
 
                 if(selectedTower == buyTower){
-                    FontSet.draw("Cost: " + buyTower.getCost(),1105, 300, 18);
+                    FontSet.drawAkrobat("Cost: " + buyTower.getCost(),1105, 300, 18);
                 }
             } else if(selectedTower instanceof SlowTower) {
                 SlowTower slowTower = (SlowTower) selectedTower;
-                FontSet.draw("Range: "+slowTower.getRange(),1105, 220, 18);
-                FontSet.draw("Slow Value: "+(int)((1-slowTower.getSlowValue())*100)+"%",1105, 240, 18);
+                FontSet.drawAkrobat("Range: "+slowTower.getRange(),1105, 220, 18);
+                FontSet.drawAkrobat("Slow Value: "+(int)((1-slowTower.getSlowValue())*100)+"%",1105, 240, 18);
                 if(selectedTower == buyTower){
-                    FontSet.draw("Cost: " + buyTower.getCost(),1105, 260, 18);
+                    FontSet.drawAkrobat("Cost: " + buyTower.getCost(),1105, 260, 18);
                 }
 
             } else if(selectedTower instanceof RadiationTower) {
                 RadiationTower radiationTower = (RadiationTower) selectedTower;
-                FontSet.draw("Range: "+radiationTower.getRange(),1105, 220, 18);
-                FontSet.draw("Slow Value: "+(int)((1-radiationTower.getSlowValue())*100)+"%",1105, 240, 18);
+                FontSet.drawAkrobat("Range: "+radiationTower.getRange(),1105, 220, 18);
+                FontSet.drawAkrobat("Slow Value: "+(int)((1-radiationTower.getSlowValue())*100)+"%",1105, 240, 18);
                 if(selectedTower == buyTower){
-                    FontSet.draw("Cost: " + buyTower.getCost(),1105, 260, 18);
+                    FontSet.drawAkrobat("Cost: " + buyTower.getCost(),1105, 260, 18);
                 }
             }
 
             if (selectedTower != buyTower && selectedTower != null) {
                 if (selectedTower.getUpgradeLevel() < 2) {
-                    FontSet.draw(""+selectedTower.getUpgradeCost(),1170, 339, 26);
+                    FontSet.drawAkrobat(""+selectedTower.getUpgradeCost(),1170, 339, 26);
                     buttonUpgrade.render(gc, g);
                 }
                 buttonSell.render(gc, g);
