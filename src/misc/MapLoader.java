@@ -66,13 +66,13 @@ public class MapLoader {
                         int waveMoney = Integer.parseInt(root.getElementsByTagName("MoneyPerWave").item(0).getTextContent());
 
                         /* Health settings */
-                        int startHpBluesoldier = Integer.parseInt(root.getElementsByTagName("BaseHpBlueSoldier").item(0).getTextContent());
-                        int startHpGreensoldier = Integer.parseInt(root.getElementsByTagName("BaseHpGreenSoldier").item(0).getTextContent());
-                        int startHpPurplesoldier = Integer.parseInt(root.getElementsByTagName("BaseHpPurpleSoldier").item(0).getTextContent());
-                        int startHpYellowelephant = Integer.parseInt(root.getElementsByTagName("BaseHpYellowElephant").item(0).getTextContent());
-                        int startRedelephant = Integer.parseInt(root.getElementsByTagName("BaseHpRedElephant").item(0).getTextContent());
-                        int startHpBluetiger = Integer.parseInt(root.getElementsByTagName("BaseHpBlueTiger").item(0).getTextContent());
-                        int startHpYellowtiger = Integer.parseInt(root.getElementsByTagName("BaseHpYellowTiger").item(0).getTextContent());
+                        int startHpBlueSoldier = Integer.parseInt(root.getElementsByTagName("BaseHpBlueSoldier").item(0).getTextContent());
+                        int startHpGreenSoldier = Integer.parseInt(root.getElementsByTagName("BaseHpGreenSoldier").item(0).getTextContent());
+                        int startHpPurpleSoldier = Integer.parseInt(root.getElementsByTagName("BaseHpPurpleSoldier").item(0).getTextContent());
+                        int startHpYellowElephant = Integer.parseInt(root.getElementsByTagName("BaseHpYellowElephant").item(0).getTextContent());
+                        int startRedElephant = Integer.parseInt(root.getElementsByTagName("BaseHpRedElephant").item(0).getTextContent());
+                        int startHpBlueTiger = Integer.parseInt(root.getElementsByTagName("BaseHpBlueTiger").item(0).getTextContent());
+                        int startHpYellowTiger = Integer.parseInt(root.getElementsByTagName("BaseHpYellowTiger").item(0).getTextContent());
                         int startHpSkeleton = Integer.parseInt(root.getElementsByTagName("BaseHpSkeleton").item(0).getTextContent());
                         int startHpFat = Integer.parseInt(root.getElementsByTagName("BaseHpFat").item(0).getTextContent());
                         int startHpDemon = Integer.parseInt(root.getElementsByTagName("BaseHpDemon").item(0).getTextContent());
@@ -106,13 +106,13 @@ public class MapLoader {
                         NodeList waveNodes = root.getElementsByTagName("Wave");
                         for (int i = 0; i < waveNodes.getLength(); i++) {
                             Element wave = (Element) waveNodes.item(i);
-                            int BluesoldierUnits = Integer.parseInt(wave.getElementsByTagName("BlueSoldier").item(0).getTextContent());
-                            int GreensoldierUnits = Integer.parseInt(wave.getElementsByTagName("GreenSoldier").item(0).getTextContent());
-                            int PurplesoldierUnits = Integer.parseInt(wave.getElementsByTagName("PurpleSoldier").item(0).getTextContent());
-                            int YellowelephantUnits = Integer.parseInt(wave.getElementsByTagName("YellowElephant").item(0).getTextContent());
-                            int RedelephantUnits = Integer.parseInt(wave.getElementsByTagName("RedElephant").item(0).getTextContent());
-                            int BluetigerUnits = Integer.parseInt(wave.getElementsByTagName("BlueTiger").item(0).getTextContent());
-                            int YellowtigerUnits = Integer.parseInt(wave.getElementsByTagName("YellowTiger").item(0).getTextContent());
+                            int BlueSoldierUnits = Integer.parseInt(wave.getElementsByTagName("BlueSoldier").item(0).getTextContent());
+                            int GreenSoldierUnits = Integer.parseInt(wave.getElementsByTagName("GreenSoldier").item(0).getTextContent());
+                            int PurpleSoldierUnits = Integer.parseInt(wave.getElementsByTagName("PurpleSoldier").item(0).getTextContent());
+                            int YellowElephantUnits = Integer.parseInt(wave.getElementsByTagName("YellowElephant").item(0).getTextContent());
+                            int RedElephantUnits = Integer.parseInt(wave.getElementsByTagName("RedElephant").item(0).getTextContent());
+                            int BlueTigerUnits = Integer.parseInt(wave.getElementsByTagName("BlueTiger").item(0).getTextContent());
+                            int YellowTigerUnits = Integer.parseInt(wave.getElementsByTagName("YellowTiger").item(0).getTextContent());
                             int FatUnits = Integer.parseInt(wave.getElementsByTagName("Fat").item(0).getTextContent());
                             int SkeletonUnits = Integer.parseInt(wave.getElementsByTagName("Skeleton").item(0).getTextContent());
                             int DemonUnits = Integer.parseInt(wave.getElementsByTagName("Demon").item(0).getTextContent());
@@ -124,16 +124,16 @@ public class MapLoader {
                             int DragonDriverUnits = Integer.parseInt(wave.getElementsByTagName("DragonDriver").item(0).getTextContent());
 
 
-                            waveList.add(new Integer[]{BluesoldierUnits, GreensoldierUnits, PurplesoldierUnits,
-                                    YellowelephantUnits, RedelephantUnits, BluetigerUnits, YellowtigerUnits,
+                            waveList.add(new Integer[]{BlueSoldierUnits, GreenSoldierUnits, PurpleSoldierUnits,
+                                    YellowElephantUnits, RedElephantUnits, BlueTigerUnits, YellowTigerUnits,
                                     FatUnits, SkeletonUnits, DemonUnits, OrangeDragonUnits,
                                     BeeUnits, PhoenixUnits, BlueDragonUnits, SkeletonDragonUnits, DragonDriverUnits});
                         }
 
                         /* Add new map to the list */
                         mapList.add(new Map(tiledMap, previewImage, mapName, startMoney, killMoney, waveMoney,
-                                startHpBluesoldier, startHpGreensoldier, startHpPurplesoldier,
-                                startHpYellowelephant, startRedelephant, startHpBluetiger, startHpYellowtiger,
+                                startHpBlueSoldier, startHpGreenSoldier, startHpPurpleSoldier,
+                                startHpYellowElephant, startRedElephant, startHpBlueTiger, startHpYellowTiger,
                                 startHpFat, startHpSkeleton, startHpDemon, startHpOrangeDragon,
                                 startHpBee, startHpPhoenix, startHpBlueDragon, startHpSkeletonDragon, startHpDragonDriver,
                                 waveHpMultiplier, spawnList, base, waveList));
