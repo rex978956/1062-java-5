@@ -49,8 +49,8 @@ public class Game extends BasicGameState {
 
     private int wave;
     private int lastSpawn;
-
-    private int mapID, score=0, dieNum=0;
+    private String mapName;
+    private int score=0, dieNum=0;
     private int gold;
     private int baseHealth, currentHealth;
 
@@ -67,7 +67,7 @@ public class Game extends BasicGameState {
         buyTowerPathfinder = new AStarPathFinder(map, 200, false);
 
         this.map = map;
-        this.mapID = map.getMapID();
+        this.mapName = map.getName();
         this.entityList = new ArrayList<>();
         this.entityRemovalList = new ArrayList<>();
         this.towerList = new ArrayList<>();
@@ -120,8 +120,8 @@ public class Game extends BasicGameState {
     public void setDieNum(int dieNum){
         this.dieNum = dieNum;
     }
-    public int getMapID(){
-        return mapID;
+    public String getMapName(){
+        return mapName;
     }
 
     @Override
