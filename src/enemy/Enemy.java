@@ -105,7 +105,6 @@ public class Enemy implements Mover {
                 nextPoint = nextPoint.scale((delta / 1000.f) * 48 * speed * slowValue);
                 position.add(nextPoint);
                 angle = (int) new Vector2f(nextPoint.getX(), nextPoint.getY()).getTheta();
-                System.out.println(angle);
                 if (angle > 315 || angle <= 45) {
                     enemy = movingRight;
                 } else if (angle > 45 && angle <= 135) {

@@ -367,10 +367,12 @@ public class Map implements TileBasedMap {
 
             /* Enemy Bluesoldier */
             for (int i = 0; i < numbers[0]; i++) {
-                if (spawn > spawnList.size() - 1)
+                if (spawn < spawnList.size() - 1){
                     spawn++;
-                else
+                }
+                else{
                     spawn = 0;
+                }
 
                 Point spawnPoint = spawnList.get(spawn);
 
@@ -381,8 +383,8 @@ public class Map implements TileBasedMap {
                         , health, speed,false, false, ImageManager.getEnemyImage(ImageManager.BLUESOLDIER)));
             }
             /* Enemy Greensoldier */
-            for (int i = 0; i < numbers[0]; i++) {
-                if (spawn > spawnList.size() - 1)
+            for (int i = 0; i < numbers[1]; i++) {
+                if (spawn < spawnList.size() - 1)
                     spawn++;
                 else
                     spawn = 0;
@@ -396,8 +398,8 @@ public class Map implements TileBasedMap {
                         , health, speed,false, false, ImageManager.getEnemyImage(ImageManager.GREENSOLDIER)));
             }
             /* Enemy Purplesoldier */
-            for (int i = 0; i < numbers[0]; i++) {
-                if (spawn > spawnList.size() - 1)
+            for (int i = 0; i < numbers[2]; i++) {
+                if (spawn < spawnList.size() - 1)
                     spawn++;
                 else
                     spawn = 0;
@@ -411,8 +413,8 @@ public class Map implements TileBasedMap {
                         , health, speed,false, false, ImageManager.getEnemyImage(ImageManager.PURPLESSOLDIER)));
             }
             /* Enemy Yellowelephant */
-            for (int i = 0; i < numbers[0]; i++) {
-                if (spawn > spawnList.size() - 1)
+            for (int i = 0; i < numbers[3]; i++) {
+                if (spawn < spawnList.size() - 1)
                     spawn++;
                 else
                     spawn = 0;
@@ -426,8 +428,8 @@ public class Map implements TileBasedMap {
                         , health, speed,false, false, ImageManager.getEnemyImage(ImageManager.YELLOWELEPHANT)));
             }
             /* Enemy Redelephant */
-            for (int i = 0; i < numbers[0]; i++) {
-                if (spawn > spawnList.size() - 1)
+            for (int i = 0; i < numbers[4]; i++) {
+                if (spawn < spawnList.size() - 1)
                     spawn++;
                 else
                     spawn = 0;
@@ -441,8 +443,8 @@ public class Map implements TileBasedMap {
                         , health, speed,false, false, ImageManager.getEnemyImage(ImageManager.REDELEPHANT)));
             }
             /* Enemy  Bluetiger*/
-            for (int i = 0; i < numbers[0]; i++) {
-                if (spawn > spawnList.size() - 1)
+            for (int i = 0; i < numbers[5]; i++) {
+                if (spawn < spawnList.size() - 1)
                     spawn++;
                 else
                     spawn = 0;
@@ -456,8 +458,8 @@ public class Map implements TileBasedMap {
                         , health, speed,false, false, ImageManager.getEnemyImage(ImageManager.BLUETIGER)));
             }
             /* Enemy  Yellowtiger*/
-            for (int i = 0; i < numbers[0]; i++) {
-                if (spawn > spawnList.size() - 1)
+            for (int i = 0; i < numbers[6]; i++) {
+                if (spawn < spawnList.size() - 1)
                     spawn++;
                 else
                     spawn = 0;
@@ -471,8 +473,8 @@ public class Map implements TileBasedMap {
                         , health, speed,false, false, ImageManager.getEnemyImage(ImageManager.YELLOWTIGER)));
             }
             /* Enemy  Fat*/
-            for (int i = 0; i < numbers[0]; i++) {
-                if (spawn > spawnList.size() - 1)
+            for (int i = 0; i < numbers[7]; i++) {
+                if (spawn < spawnList.size() - 1)
                     spawn++;
                 else
                     spawn = 0;
@@ -486,8 +488,8 @@ public class Map implements TileBasedMap {
                         , health, speed,false, false, ImageManager.getEnemyImage(ImageManager.FAT)));
             }
             /* Enemy  Skeleton*/
-            for (int i = 0; i < numbers[0]; i++) {
-                if (spawn > spawnList.size() - 1)
+            for (int i = 0; i < numbers[8]; i++) {
+                if (spawn < spawnList.size() - 1)
                     spawn++;
                 else
                     spawn = 0;
@@ -501,8 +503,8 @@ public class Map implements TileBasedMap {
                         , health, speed,false, false, ImageManager.getEnemyImage(ImageManager.SKELETON)));
             }
             /* Enemy  Demon*/
-            for (int i = 0; i < numbers[0]; i++) {
-                if (spawn > spawnList.size() - 1)
+            for (int i = 0; i < numbers[9]; i++) {
+                if (spawn < spawnList.size() - 1)
                     spawn++;
                 else
                     spawn = 0;
@@ -516,8 +518,8 @@ public class Map implements TileBasedMap {
                         , health, speed,false, false, ImageManager.getEnemyImage(ImageManager.DEMON)));
             }
             /* Enemy  OrangeDragon*/
-            for (int i = 0; i < numbers[0]; i++) {
-                if (spawn > spawnList.size() - 1)
+            for (int i = 0; i < numbers[10]; i++) {
+                if (spawn < spawnList.size() - 1)
                     spawn++;
                 else
                     spawn = 0;
