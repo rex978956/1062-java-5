@@ -5,6 +5,8 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
+import sql.InitDatabase;
+import sql.InitTable;
 import states.MainMenu;
 import states.MapMenu;
 
@@ -32,6 +34,8 @@ public class TKUTD extends StateBasedGame {
     }
 
     public static void main(String[] args) {
+        new InitDatabase();
+        new InitTable();
         try {
             System.setProperty("org.newdawn.slick.pngloader", "false");
 

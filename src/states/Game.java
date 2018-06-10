@@ -201,8 +201,11 @@ public class Game extends BasicGameState {
 
         if (lost) {
             Result result = new Result(this, false);
+            Rank rank = new Rank(this);
+            rank.init(gc, sbg);
             result.init(gc, sbg);
             sbg.addState(result);
+            sbg.addState(rank);
             sbg.enterState(4, new FadeOutTransition(), new FadeInTransition());
         }
 
@@ -226,8 +229,11 @@ public class Game extends BasicGameState {
 
                 if (wave == map.getWaveList().size()) {
                     Result result = new Result(this, true);
+                    Rank rank = new Rank(this);
                     result.init(gc, sbg);
+                    rank.init(gc, sbg);
                     sbg.addState(result);
+                    sbg.addState(rank);
                     sbg.enterState(4, new FadeOutTransition(), new FadeInTransition());
                 }
             }

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Map>
-    <Name>Hard Rock</Name>
+    <Name>Hard_Rock</Name>
     <Id>0</Id>
     <StartMoney>3000</StartMoney>
     <MoneyPerKill>10</MoneyPerKill>
@@ -34,16 +34,16 @@
     <Waves>
         <Wave>
             <BlueSoldier>1</BlueSoldier>
-            <GreenSoldier>1</GreenSoldier>
-            <PurpleSoldier>1</PurpleSoldier>
-            <YellowElephant>1</YellowElephant>
-            <RedElephant>1</RedElephant>
-            <BlueTiger>1</BlueTiger>
-            <YellowTiger>1</YellowTiger>
-            <Fat>1</Fat>
-            <Skeleton>1</Skeleton>
-            <Demon>1</Demon>
-            <OrangeDragon>1</OrangeDragon>
+            <GreenSoldier>0</GreenSoldier>
+            <PurpleSoldier>0</PurpleSoldier>
+            <YellowElephant>0</YellowElephant>
+            <RedElephant>0</RedElephant>
+            <BlueTiger>0</BlueTiger>
+            <YellowTiger>0</YellowTiger>
+            <Fat>0</Fat>
+            <Skeleton>0</Skeleton>
+            <Demon>0</Demon>
+            <OrangeDragon>0</OrangeDragon>
         </Wave>
     </Waves>
 </Map>

@@ -2,20 +2,35 @@ package states;
 
 import main.ImageManager;
 
-import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.*;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.gui.MouseOverArea;
+import org.newdawn.slick.gui.TextField;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
+import org.newdawn.slick.util.ResourceLoader;
+import sql.InsertJdbc;
+
+import java.awt.*;
+import java.awt.Font;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class Result extends BasicGameState {
 
     private Game game;
     private boolean isWin;
+    private MouseOverArea nextButton;
 
-    private MouseOverArea retryButton, quitButton;
+    private String username ;
+    private TextField textField;
+    private Image textbg;
+    private MouseOverArea submit;
+    private java.awt.Font awtFont = null;
 
     Result(Game game, boolean isWin) {
         this.game = game;
@@ -24,25 +39,51 @@ public class Result extends BasicGameState {
 
     @Override
     public void init(final GameContainer gc, final StateBasedGame sbg) {
+        username = "Anonymous";
+//        background = new Image("images/world.png");
+        try {
+            textbg = new Image("res/images/menus/textfield_bg_active.png");
+        } catch (SlickException e) {
+            e.printStackTrace();
+        }
+        InputStream inputStream = ResourceLoader.getResourceAsStream("res/fonts/gnyrwn.ttf");
 
-        retryButton = new MouseOverArea(gc,ImageManager.getImage(ImageManager.GAME_BUTTON_RETRY),
-                440 - ImageManager.getImage(ImageManager.GAME_BUTTON_RETRY).getWidth()/2,
-                400 - ImageManager.getImage(ImageManager.GAME_BUTTON_RETRY).getHeight()/2);
-        quitButton = new MouseOverArea(gc,ImageManager.getImage(ImageManager.GAME_BUTTON_QUITGAME),
-                840 - ImageManager.getImage(ImageManager.GAME_BUTTON_QUITGAME).getWidth()/2,
-                400 - ImageManager.getImage(ImageManager.GAME_BUTTON_QUITGAME).getHeight()/2);
 
-        retryButton.addListener(cmp -> {
-            game.getMap().resetTowerList();
-            game = new Game(game.getMap());
-            game.init(gc, sbg);
-            sbg.addState(game);
-            sbg.enterState(3,new FadeOutTransition(), new FadeInTransition());
+        try {
+            awtFont = java.awt.Font.createFont(java.awt.Font.TRUETYPE_FONT, inputStream);
+        } catch (FontFormatException | IOException e) {
+            e.printStackTrace();
+        }
+        TrueTypeFont font35 = new TrueTypeFont(awtFont.deriveFont(45f), true);
+        textField = new TextField(gc, font35, 441, 450, 398, 58);
+        textField.setText(username);
+        textField.setTextColor(org.newdawn.slick.Color.green);
+        textField.setBorderColor(null);
+        textField.setConsumeEvents(true);
+        textField.setCursorPos(9);
+        textField.setCursorVisible(true);
+
+        Image ig = null;
+        try {
+            ig = new Image("res/images/menus/button-arrow-left.png");
+        } catch (SlickException e) {
+            e.printStackTrace();
+        }
+        submit = new MouseOverArea(gc, ig, 454, 600);
+        submit.addListener(cmp -> {
+            username = textField.getText();
+            new InsertJdbc(game.getMapName(), username, game.getScore());
+            System.out.println("!!!!!!!!!!!!");
         });
 
-        quitButton.addListener(cmp -> {
-            game.getMap().resetTowerList();
-            sbg.enterState(1,new FadeOutTransition(), new FadeInTransition());
+
+
+        nextButton = new MouseOverArea(gc,ImageManager.getImage(ImageManager.GAME_BUTTON_RETRY),
+                1000 - ImageManager.getImage(ImageManager.GAME_BUTTON_RETRY).getWidth()/2,
+                600 - ImageManager.getImage(ImageManager.GAME_BUTTON_RETRY).getHeight()/2);
+
+        nextButton.addListener(cmp -> {
+            sbg.enterState(5,new FadeOutTransition(Color.black,600), new FadeInTransition(Color.black,600));
         });
     }
 
@@ -57,8 +98,12 @@ public class Result extends BasicGameState {
             g.drawString("mapID: "+game.getMapName()+"   Score: "+game.getScore(), 300,300);
         }
 
-        quitButton.render(gc, g);
-        retryButton.render(gc, g);
+        nextButton.render(gc, g);
+
+        textField.render(gc, g);
+        textbg.draw(441,450);
+        submit.render(gc, g);
+
     }
 
     @Override
