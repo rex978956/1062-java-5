@@ -2,6 +2,7 @@ package states;
 
 import enemy.Enemy;
 import main.ImageManager;
+import misc.FontSet;
 import misc.Map;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
@@ -13,10 +14,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 import org.newdawn.slick.util.pathfinding.AStarPathFinder;
-import towers.AirTower;
-import towers.NormalTower;
-import towers.ShootingTower;
-import towers.Tower;
+import towers.*;
 
 import java.util.ArrayList;
 
@@ -26,7 +24,8 @@ public class Game extends BasicGameState {
     private Image sidebarBackground, info;
 
     private MouseOverArea buttonUpgrade, buttonSell, buttonStartWave,
-            buttonNormalTower, buttonAirTower,
+            buttonNormalTower, buttonAirTower, buttonGroundTower, buttonSlowTower,
+            buttonMachineTower, buttonAntiaircraftTower, buttonArtilleryTower, buttonRadiationTower,
             buttonQuitGame, buttonCancel;
 
     private boolean pause;
@@ -127,14 +126,22 @@ public class Game extends BasicGameState {
     @Override
     public void init(GameContainer gc, final StateBasedGame sbg) {
         buttonUpgrade = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_UPGRADE),
-                1192 - ImageManager.getImage(ImageManager.GAME_BUTTON_UPGRADE).getWidth() / 2, 200);
+                1192 - ImageManager.getImage(ImageManager.GAME_BUTTON_UPGRADE).getWidth() / 2, 270);
         buttonSell = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_SELL),
-                1192 - ImageManager.getImage(ImageManager.GAME_BUTTON_SELL).getWidth() / 2, 400);
+                1192 - ImageManager.getImage(ImageManager.GAME_BUTTON_SELL).getWidth() / 2, 320);
         buttonStartWave = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_STARTWAVE),
                 1192 - ImageManager.getImage(ImageManager.GAME_BUTTON_STARTWAVE).getWidth() / 2, 705);
 
-        buttonNormalTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.NORMAL_TOWER_1), 1104, 48);
-        buttonAirTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.AIR_TOWER_1), 1152, 48);
+
+        buttonNormalTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.NORMAL_TOWER), 1120, 50);
+        buttonGroundTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GROUND_TOWER), 1200, 50);
+        buttonAirTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.AIR_TOWER), 1120, 100);
+        buttonSlowTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.SLOW_TOWER), 1200, 100);
+        buttonMachineTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.MACHINE_TOWER), 1120, 150);
+        buttonArtilleryTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.ARTILLERY_TOWER), 1200, 150);
+        buttonAntiaircraftTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.ANTIAIRCRAFA_TOWER), 1120, 200);
+        buttonRadiationTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.RADIATION_TOWER), 1200, 200);
+
 
         buttonQuitGame = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_QUITGAME),
                 640 + 35 - ImageManager.getImage(ImageManager.GAME_BUTTON_QUITGAME).getWidth() / 2, 287);
@@ -148,6 +155,36 @@ public class Game extends BasicGameState {
 
         buttonAirTower.addListener(arg0 -> {
             buyTower = new AirTower(new Point(-1000, -1000), Game.this);
+            selectedTower = buyTower;
+        });
+
+        buttonSlowTower.addListener(arg0 -> {
+            buyTower = new SlowTower(new Point(-1000, -1000), Game.this);
+            selectedTower = buyTower;
+        });
+
+        buttonGroundTower.addListener(arg0 -> {
+            buyTower = new GroundTower(new Point(-1000, -1000), Game.this);
+            selectedTower = buyTower;
+        });
+
+        buttonMachineTower.addListener(arg0 -> {
+            buyTower = new MachineTower(new Point(-1000, -1000), Game.this);
+            selectedTower = buyTower;
+        });
+
+        buttonArtilleryTower.addListener(arg0 -> {
+            buyTower = new ArtilleryTower(new Point(-1000, -1000), Game.this);
+            selectedTower = buyTower;
+        });
+
+        buttonAntiaircraftTower.addListener(arg0 -> {
+            buyTower = new AntiaircraftTower(new Point(-1000, -1000), Game.this);
+            selectedTower = buyTower;
+        });
+
+        buttonRadiationTower.addListener(arg0 -> {
+            buyTower = new RadiationTower(new Point(-1000, -1000), Game.this);
             selectedTower = buyTower;
         });
 
@@ -312,6 +349,23 @@ public class Game extends BasicGameState {
                                         } else if (buyTower instanceof AirTower) {
                                             buyTower = new AirTower(new Point(-1000, -1000), Game.this);
 
+                                        } else if (buyTower instanceof GroundTower) {
+                                            buyTower = new GroundTower(new Point(-1000, -1000), Game.this);
+
+                                        } else if (buyTower instanceof SlowTower) {
+                                            buyTower = new SlowTower(new Point(-1000, -1000), Game.this);
+
+                                        } else if (buyTower instanceof MachineTower) {
+                                            buyTower = new MachineTower(new Point(-1000, -1000), Game.this);
+
+                                        } else if (buyTower instanceof AntiaircraftTower) {
+                                            buyTower = new AntiaircraftTower(new Point(-1000, -1000), Game.this);
+
+                                        } else if (buyTower instanceof ArtilleryTower) {
+                                            buyTower = new ArtilleryTower(new Point(-1000, -1000), Game.this);
+
+                                        } else if (buyTower instanceof RadiationTower) {
+                                            buyTower = new RadiationTower(new Point(-1000, -1000), Game.this);
                                         }
                                         selectedTower = buyTower;
                                     } else {
@@ -377,6 +431,12 @@ public class Game extends BasicGameState {
 
         buttonNormalTower.render(gc, g);
         buttonAirTower.render(gc, g);
+        buttonSlowTower.render(gc, g);
+        buttonGroundTower.render(gc, g);
+        buttonMachineTower.render(gc, g);
+        buttonAntiaircraftTower.render(gc, g);
+        buttonArtilleryTower.render(gc, g);
+        buttonRadiationTower.render(gc, g);
 
         if (selectedTower != null) {
             Point position = selectedTower.getPosition();
@@ -405,14 +465,44 @@ public class Game extends BasicGameState {
             }
 
 
-            info.draw(1168 - info.getWidth() / 2, 180);
+            info.draw(1168 - info.getWidth() / 2, 270);
 
-            if (selectedTower instanceof ShootingTower) {
+            if(selectedTower instanceof ShootingTower) {
                 ShootingTower shTower = (ShootingTower) selectedTower;
+                FontSet.draw("Damage: " + shTower.getDamage(), 1105, 220, 18);
+                FontSet.draw("Range: " + shTower.getRange(),1105, 240, 18);
+                FontSet.draw("Atk Speed: " + Math.round(1000f/shTower.getShootInterval()*100)/100f, 1105, 260, 18);
+                if(shTower.getType() == 1){
+                    FontSet.draw("info1", 1105, 240, 18);
+                }else if(shTower.getType() == 2){
+                    FontSet.draw("info2" , 1105, 240, 18);
+                }else if(shTower.getType() == 3){
+                    FontSet.draw("info3", 1105, 240, 18);
+                }
+
+                if(selectedTower == buyTower){
+                    FontSet.draw("Cost: " + buyTower.getCost(),1105, 300, 18);
+                }
+            } else if(selectedTower instanceof SlowTower) {
+                SlowTower slowTower = (SlowTower) selectedTower;
+                FontSet.draw("Range: "+slowTower.getRange(),1105, 220, 18);
+                FontSet.draw("Slow Value: "+(int)((1-slowTower.getSlowValue())*100)+"%",1105, 240, 18);
+                if(selectedTower == buyTower){
+                    FontSet.draw("Cost: " + buyTower.getCost(),1105, 260, 18);
+                }
+
+            } else if(selectedTower instanceof RadiationTower) {
+                RadiationTower radiationTower = (RadiationTower) selectedTower;
+                FontSet.draw("Range: "+radiationTower.getRange(),1105, 220, 18);
+                FontSet.draw("Slow Value: "+(int)((1-radiationTower.getSlowValue())*100)+"%",1105, 240, 18);
+                if(selectedTower == buyTower){
+                    FontSet.draw("Cost: " + buyTower.getCost(),1105, 260, 18);
+                }
             }
 
             if (selectedTower != buyTower && selectedTower != null) {
                 if (selectedTower.getUpgradeLevel() < 2) {
+                    FontSet.draw(""+selectedTower.getUpgradeCost(),1170, 339, 26);
                     buttonUpgrade.render(gc, g);
                 }
                 buttonSell.render(gc, g);

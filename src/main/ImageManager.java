@@ -7,30 +7,26 @@ import java.util.ArrayList;
 
 public class ImageManager {
 
-    public static final int NORMAL_TOWER_1 = 0;
-    public static final int NORMAL_TOWER_2 = 1;
-    public static final int NORMAL_TOWER_3 = 2;
+    public static final int NORMAL_TOWER = 0;
+    public static final int GROUND_TOWER = 1;
+    public static final int AIR_TOWER= 2;
+    public static final int SLOW_TOWER = 3;
+    public static final int ARTILLERY_TOWER = 4;
+    public static final int MACHINE_TOWER = 5;
+    public static final int ANTIAIRCRAFA_TOWER = 6;
+    public static final int RADIATION_TOWER = 7;
 
-    public static final int GROUND_TOWER_1 = 3;
-    public static final int GROUND_TOWER_2 = 4;
-    public static final int GROUND_TOWER_3 = 5;
+    public static final int PROJECTILE_BLUE = 8;
+    public static final int PROJECTILE_GREEN = 9;
+    public static final int PROJECTILE_BULLET = 10;
+    public static final int PROJECTILE_ARMOR = 11;
+    public static final int PROJECTILE_ROCKET = 12;
+    public static final int PROJECTILE_LASER = 13;
 
-    public static final int AIR_TOWER_1 = 6;
-    public static final int AIR_TOWER_2 = 7;
-    public static final int AIR_TOWER_3 = 8;
-
-    public static final int SLOW_TOWER_1 = 9;
-    public static final int SLOW_TOWER_2 = 10;
-    public static final int SLOW_TOWER_3 = 11;
-
-    public static final int MENU_BACKGROUND = 12;
-    public static final int MENU_LOGO = 13;
-    public static final int MENU_TEXT_CHOOSEMAP = 14;
-
+    public static final int MENU_BACKGROUND = 14;
     public static final int MENU_BUTTON_PLAY = 15;
-    public static final int MENU_BUTTON_CREDITS = 16;
-    public static final int MENU_BUTTON_EXIT = 17;
-
+    public static final int MENU_BUTTON_EXIT = 16;
+    public static final int MENU_TEXT_CHOOSEMAP = 17;
     public static final int MENU_BUTTON_LARROW = 18;
     public static final int MENU_BUTTON_RARROW = 19;
 
@@ -43,16 +39,8 @@ public class ImageManager {
     public static final int GAME_BUTTON_CANCEL = 26;
     public static final int GAME_BUTTON_RETRY = 27;
 
-    public static final int PROJECTILE_BLUE = 28;
-    public static final int PROJECTILE_CYAN = 29;
-    public static final int PROJECTILE_GREEN = 30;
 
-    public static final int NORMAL_TOWER2_1 = 31;
-    public static final int NORMAL_TOWER2_2 = 32;
-    public static final int NORMAL_TOWER2_3 = 33;
-    public static final int PROJECTILE_OP = 34;
-    public static final int PROJECTILE_ICE = 35;
-
+    /*Emeny*/
     public static final int BLUESOLDIER = 0;
     public static final int GREENSOLDIER = 1;
     public static final int PURPLESSOLDIER = 2;
@@ -76,34 +64,33 @@ public class ImageManager {
         imageList = new ArrayList<>();
 
         try {
-            imageList.add(new Image("res/images/towers/CircleTower1.png")); //0
-            imageList.add(new Image("res/images/towers/CircleTower2.png")); //1
-            imageList.add(new Image("res/images/towers/CircleTower3.png")); //2
+            /*Tower*/
+            imageList.add(new Image("res/images/towers/Normal.png")); //0
+            imageList.add(new Image("res/images/towers/Ground.png")); //1
+            imageList.add(new Image("res/images/towers/Air.png")); //2
+            imageList.add(new Image("res/images/towers/Slow.png")); //3
+            imageList.add(new Image("res/images/towers/Artillery.png")); //4
+            imageList.add(new Image("res/images/towers/Machine.png")); //5
+            imageList.add(new Image("res/images/towers/Antiaircraft.png")); //6
+            imageList.add(new Image("res/images/towers/Radiation.png")); //7
 
-            imageList.add(new Image("res/images/towers/HexagonTower1.png")); //3
-            imageList.add(new Image("res/images/towers/HexagonTower2.png")); //4
-            imageList.add(new Image("res/images/towers/HexagonTower3.png")); //5
+            /*Projectiles*/
+            imageList.add(new Image("res/images/projectiles/projectile-blue.png")); //8
+            imageList.add(new Image("res/images/projectiles/projectile-green.png")); //9
+            imageList.add(new Image("res/images/projectiles/bullet.png")); //10
+            imageList.add(new Image("res/images/projectiles/Armor.png")); //11
+            imageList.add(new Image("res/images/projectiles/Rocket.png")); //12
+            imageList.add(new Image("res/images/projectiles/Laser.png")); //13
 
-            imageList.add(new Image("res/images/towers/PentagonTower1.png")); //6
-            imageList.add(new Image("res/images/towers/PentagonTower2.png")); //7
-            imageList.add(new Image("res/images/towers/PentagonTower3.png")); //8
-
-            imageList.add(new Image("res/images/towers/GearTower1.png")); //9
-            imageList.add(new Image("res/images/towers/GearTower2.png")); //10
-            imageList.add(new Image("res/images/towers/GearTower3.png")); //11
-
-            imageList.add(new Image("res/images/menus/background.png")); //12
-
-            imageList.add(new Image("res/images/menus/text-neontd.png")); //13
-            imageList.add(new Image("res/images/menus/text-choose-map.png")); //14
-
+            /*Menu*/
+            imageList.add(new Image("res/images/menus/background.png")); //14
             imageList.add(new Image("res/images/menus/button-play.png")); //15
-            imageList.add(new Image("res/images/menus/button-credits.png")); //16
-            imageList.add(new Image("res/images/menus/button-exit.png")); //17
-
+            imageList.add(new Image("res/images/menus/button-exit.png")); //16
+            imageList.add(new Image("res/images/menus/text-choose-map.png")); //17
             imageList.add(new Image("res/images/menus/button-arrow-left.png")); //18
             imageList.add(new Image("res/images/menus/button-arrow-right.png")); //19
 
+            /*Game*/
             imageList.add(new Image("res/images/menus/game-sidebarbg.png")); //20
             imageList.add(new Image("res/images/menus/info.png")); //21
             imageList.add(new Image("res/images/menus/button-upgrade.png")); //22
@@ -112,16 +99,6 @@ public class ImageManager {
             imageList.add(new Image("res/images/menus/button-quitgame.png")); //25
             imageList.add(new Image("res/images/menus/button-cancel.png")); //26
             imageList.add(new Image("res/images/menus/button-retry.png")); //27
-
-            imageList.add(new Image("res/images/projectiles/projectile-blue.png")); //28
-            imageList.add(new Image("res/images/projectiles/projectile-cyan.png")); //29
-            imageList.add(new Image("res/images/projectiles/projectile-green.png")); //30
-
-            imageList.add(new Image("res/images/towers/PentagonTower1.png")); //31
-            imageList.add(new Image("res/images/towers/PentagonTower2.png")); //32
-            imageList.add(new Image("res/images/towers/PentagonTower3.png")); //33
-            imageList.add(new Image("res/images/projectiles/projectile-op.png")); //34
-            imageList.add(new Image("res/images/projectiles/projectile-ice.png")); //35
 
 
         } catch (SlickException e) {

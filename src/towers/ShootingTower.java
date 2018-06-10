@@ -18,14 +18,13 @@ public abstract class ShootingTower extends Tower {
     private int[] damage, shootInterval;
     private int lastShot;
     private int angle;
-
+    private int type;
     private Enemy target;
     private ArrayList<Bullet> bullets;
 
-    private int killCount;
-
-    ShootingTower(Point position, int[] damage, int[] shootInterval, int[] range, int[] cost, Image[] textures, Image projectile, Game game) {
+    ShootingTower(Point position, int type, int[] damage, int[] shootInterval, int[] range, int[] cost, Image[] textures, Image projectile, Game game) {
         super(position, range, cost, textures, game);
+        this.type = type;
         this.projectile = projectile;
         this.damage = damage;
         this.shootInterval = shootInterval;
@@ -39,11 +38,14 @@ public abstract class ShootingTower extends Tower {
 
             int index = -1;
 
-            for (int i = 0; i < entitiesInRange.size(); i++) {
-                if (canTarget(entitiesInRange.get(i)) && index == -1) {
-                    index = i;
+            for(int i = 0; i < entitiesInRange.size();i++) {
+                if(canTarget(entitiesInRange.get(i))) {
+                    if(index == -1 || entitiesInRange.get(i).getHealth() < entitiesInRange.get(index).getHealth()){
+                        index = i;
+                    }
                 }
             }
+
             if (index != -1) {
                 return entitiesInRange.get(index);
             }
@@ -62,8 +64,16 @@ public abstract class ShootingTower extends Tower {
         }
     }
 
+    public int getType() {
+        return type;
+    }
+
     public int getDamage() {
         return damage[upgradeLevel];
+    }
+
+    public int getShootInterval() {
+        return shootInterval[upgradeLevel];
     }
 
     @Override
@@ -112,7 +122,6 @@ public abstract class ShootingTower extends Tower {
                     game.setDieNum(game.getDieNum()+1);
                     game.setScore(game.getScore()+game.getDieNum());
                     game.setGold(game.getGold() + game.getMap().getKillMoney());
-                    killCount++;
                 }
 
                 iterator.remove();
