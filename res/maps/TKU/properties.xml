@@ -21,7 +21,7 @@
     <BaseHpBlueDragon>210</BaseHpBlueDragon>
     <BaseHpSkeletonDragon>330</BaseHpSkeletonDragon>
     <BaseHpDragonDriver>400</BaseHpDragonDriver>
-    <HealthMultiplier>10</HealthMultiplier>
+    <HealthMultiplier>12</HealthMultiplier>
     <Spawns>
         <Spawn>
             <PosX>2</PosX>
@@ -38,36 +38,18 @@
     </Base>
     <Waves>
         <Wave>
-            <BlueSoldier>1</BlueSoldier>
-            <GreenSoldier>1</GreenSoldier>
-            <PurpleSoldier>1</PurpleSoldier>
-            <YellowElephant>1</YellowElephant>
-            <RedElephant>1</RedElephant>
-            <BlueTiger>1</BlueTiger>
-            <YellowTiger>1</YellowTiger>
-            <Fat>1</Fat>
-            <Skeleton>1</Skeleton>
-            <Demon>1</Demon>
-            <OrangeDragon>1</OrangeDragon>
-            <Bee>1</Bee>
-            <Phoenix>1</Phoenix>
-            <BlueDragon>1</BlueDragon>
-            <SkeletonDragon>1</SkeletonDragon>
-            <DragonDriver>1</DragonDriver>
-        </Wave>
-        <Wave>
-            <BlueSoldier>5</BlueSoldier>
-            <GreenSoldier>10</GreenSoldier>
-            <PurpleSoldier>15</PurpleSoldier>
-            <YellowElephant>10</YellowElephant>
-            <RedElephant>16</RedElephant>
-            <BlueTiger>12</BlueTiger>
-            <YellowTiger>13</YellowTiger>
-            <Fat>7</Fat>
-            <Skeleton>9</Skeleton>
-            <Demon>13</Demon>
-            <OrangeDragon>15</OrangeDragon>
-            <Bee>4</Bee>
+            <BlueSoldier>10</BlueSoldier>
+            <GreenSoldier>5</GreenSoldier>
+            <PurpleSoldier>0</PurpleSoldier>
+            <YellowElephant>0</YellowElephant>
+            <RedElephant>0</RedElephant>
+            <BlueTiger>0</BlueTiger>
+            <YellowTiger>0</YellowTiger>
+            <Fat>0</Fat>
+            <Skeleton>0</Skeleton>
+            <Demon>0</Demon>
+            <OrangeDragon>0</OrangeDragon>
+            <Bee>0</Bee>
             <Phoenix>0</Phoenix>
             <BlueDragon>0</BlueDragon>
             <SkeletonDragon>0</SkeletonDragon>
@@ -75,129 +57,147 @@
         </Wave>
         <Wave>
             <BlueSoldier>10</BlueSoldier>
+            <GreenSoldier>10</GreenSoldier>
+            <PurpleSoldier>3</PurpleSoldier>
+            <YellowElephant>2</YellowElephant>
+            <RedElephant>1</RedElephant>
+            <BlueTiger>0</BlueTiger>
+            <YellowTiger>0</YellowTiger>
+            <Fat>0</Fat>
+            <Skeleton>0</Skeleton>
+            <Demon>0</Demon>
+            <OrangeDragon>0</OrangeDragon>
+            <Bee>4</Bee>
+            <Phoenix>1</Phoenix>
+            <BlueDragon>0</BlueDragon>
+            <SkeletonDragon>0</SkeletonDragon>
+            <DragonDriver>0</DragonDriver>
+        </Wave>
+        <Wave>
+            <BlueSoldier>5</BlueSoldier>
             <GreenSoldier>15</GreenSoldier>
-            <PurpleSoldier>17</PurpleSoldier>
-            <YellowElephant>17</YellowElephant>
-            <RedElephant>17</RedElephant>
-            <BlueTiger>18</BlueTiger>
-            <YellowTiger>19</YellowTiger>
-            <Fat>20</Fat>
-            <Skeleton>15</Skeleton>
-            <Demon>17</Demon>
-            <OrangeDragon>21</OrangeDragon>
-            <Bee>11</Bee>
-            <Phoenix>11</Phoenix>
-            <BlueDragon>11</BlueDragon>
-            <SkeletonDragon>11</SkeletonDragon>
-            <DragonDriver>11</DragonDriver>
+            <PurpleSoldier>7</PurpleSoldier>
+            <YellowElephant>5</YellowElephant>
+            <RedElephant>3</RedElephant>
+            <BlueTiger>2</BlueTiger>
+            <YellowTiger>1</YellowTiger>
+            <Fat>0</Fat>
+            <Skeleton>0</Skeleton>
+            <Demon>0</Demon>
+            <OrangeDragon>0</OrangeDragon>
+            <Bee>10</Bee>
+            <Phoenix>5</Phoenix>
+            <BlueDragon>0</BlueDragon>
+            <SkeletonDragon>0</SkeletonDragon>
+            <DragonDriver>0</DragonDriver>
         </Wave>
         <Wave>
-            <BlueSoldier>1</BlueSoldier>
-            <GreenSoldier>1</GreenSoldier>
-            <PurpleSoldier>1</PurpleSoldier>
-            <YellowElephant>1</YellowElephant>
-            <RedElephant>1</RedElephant>
-            <BlueTiger>1</BlueTiger>
-            <YellowTiger>1</YellowTiger>
+            <BlueSoldier>0</BlueSoldier>
+            <GreenSoldier>10</GreenSoldier>
+            <PurpleSoldier>10</PurpleSoldier>
+            <YellowElephant>8</YellowElephant>
+            <RedElephant>5</RedElephant>
+            <BlueTiger>3</BlueTiger>
+            <YellowTiger>5</YellowTiger>
             <Fat>1</Fat>
+            <Skeleton>0</Skeleton>
+            <Demon>0</Demon>
+            <OrangeDragon>0</OrangeDragon>
+            <Bee>15</Bee>
+            <Phoenix>15</Phoenix>
+            <BlueDragon>3</BlueDragon>
+            <SkeletonDragon>0</SkeletonDragon>
+            <DragonDriver>0</DragonDriver>
+        </Wave>
+        <Wave>
+            <BlueSoldier>2</BlueSoldier>
+            <GreenSoldier>5</GreenSoldier>
+            <PurpleSoldier>5</PurpleSoldier>
+            <YellowElephant>10</YellowElephant>
+            <RedElephant>15</RedElephant>
+            <BlueTiger>10</BlueTiger>
+            <YellowTiger>5</YellowTiger>
+            <Fat>3</Fat>
             <Skeleton>1</Skeleton>
-            <Demon>1</Demon>
-            <OrangeDragon>1</OrangeDragon>
-            <Bee>1</Bee>
-            <Phoenix>1</Phoenix>
-            <BlueDragon>1</BlueDragon>
+            <Demon>0</Demon>
+            <OrangeDragon>0</OrangeDragon>
+            <Bee>10</Bee>
+            <Phoenix>15</Phoenix>
+            <BlueDragon>5</BlueDragon>
             <SkeletonDragon>1</SkeletonDragon>
+            <DragonDriver>0</DragonDriver>
+        </Wave>
+        <Wave>
+            <BlueSoldier>5</BlueSoldier>
+            <GreenSoldier>5</GreenSoldier>
+            <PurpleSoldier>10</PurpleSoldier>
+            <YellowElephant>10</YellowElephant>
+            <RedElephant>10</RedElephant>
+            <BlueTiger>10</BlueTiger>
+            <YellowTiger>10</YellowTiger>
+            <Fat>10</Fat>
+            <Skeleton>10</Skeleton>
+            <Demon>5</Demon>
+            <OrangeDragon>1</OrangeDragon>
+            <Bee>5</Bee>
+            <Phoenix>15</Phoenix>
+            <BlueDragon>10</BlueDragon>
+            <SkeletonDragon>2</SkeletonDragon>
+            <DragonDriver>0</DragonDriver>
+        </Wave>
+        <Wave>
+            <BlueSoldier>0</BlueSoldier>
+            <GreenSoldier>5</GreenSoldier>
+            <PurpleSoldier>10</PurpleSoldier>
+            <YellowElephant>10</YellowElephant>
+            <RedElephant>10</RedElephant>
+            <BlueTiger>10</BlueTiger>
+            <YellowTiger>10</YellowTiger>
+            <Fat>10</Fat>
+            <Skeleton>10</Skeleton>
+            <Demon>5</Demon>
+            <OrangeDragon>1</OrangeDragon>
+            <Bee>5</Bee>
+            <Phoenix>10</Phoenix>
+            <BlueDragon>15</BlueDragon>
+            <SkeletonDragon>5</SkeletonDragon>
             <DragonDriver>1</DragonDriver>
         </Wave>
         <Wave>
-            <BlueSoldier>1</BlueSoldier>
-            <GreenSoldier>1</GreenSoldier>
-            <PurpleSoldier>1</PurpleSoldier>
-            <YellowElephant>1</YellowElephant>
-            <RedElephant>1</RedElephant>
-            <BlueTiger>1</BlueTiger>
-            <YellowTiger>1</YellowTiger>
-            <Fat>1</Fat>
-            <Skeleton>1</Skeleton>
-            <Demon>1</Demon>
-            <OrangeDragon>1</OrangeDragon>
-            <Bee>1</Bee>
-            <Phoenix>1</Phoenix>
-            <BlueDragon>1</BlueDragon>
-            <SkeletonDragon>1</SkeletonDragon>
-            <DragonDriver>1</DragonDriver>
+            <BlueSoldier>0</BlueSoldier>
+            <GreenSoldier>0</GreenSoldier>
+            <PurpleSoldier>5</PurpleSoldier>
+            <YellowElephant>10</YellowElephant>
+            <RedElephant>10</RedElephant>
+            <BlueTiger>10</BlueTiger>
+            <YellowTiger>10</YellowTiger>
+            <Fat>10</Fat>
+            <Skeleton>10</Skeleton>
+            <Demon>10</Demon>
+            <OrangeDragon>5</OrangeDragon>
+            <Bee>0</Bee>
+            <Phoenix>5</Phoenix>
+            <BlueDragon>15</BlueDragon>
+            <SkeletonDragon>10</SkeletonDragon>
+            <DragonDriver>5</DragonDriver>
         </Wave>
         <Wave>
-            <BlueSoldier>1</BlueSoldier>
-            <GreenSoldier>1</GreenSoldier>
-            <PurpleSoldier>1</PurpleSoldier>
-            <YellowElephant>1</YellowElephant>
-            <RedElephant>1</RedElephant>
-            <BlueTiger>1</BlueTiger>
-            <YellowTiger>1</YellowTiger>
-            <Fat>1</Fat>
-            <Skeleton>1</Skeleton>
-            <Demon>1</Demon>
-            <OrangeDragon>1</OrangeDragon>
-            <Bee>1</Bee>
-            <Phoenix>1</Phoenix>
-            <BlueDragon>1</BlueDragon>
-            <SkeletonDragon>1</SkeletonDragon>
-            <DragonDriver>1</DragonDriver>
-        </Wave>
-        <Wave>
-            <BlueSoldier>1</BlueSoldier>
-            <GreenSoldier>1</GreenSoldier>
-            <PurpleSoldier>1</PurpleSoldier>
-            <YellowElephant>1</YellowElephant>
-            <RedElephant>1</RedElephant>
-            <BlueTiger>1</BlueTiger>
-            <YellowTiger>1</YellowTiger>
-            <Fat>1</Fat>
-            <Skeleton>1</Skeleton>
-            <Demon>1</Demon>
-            <OrangeDragon>1</OrangeDragon>
-            <Bee>1</Bee>
-            <Phoenix>1</Phoenix>
-            <BlueDragon>1</BlueDragon>
-            <SkeletonDragon>1</SkeletonDragon>
-            <DragonDriver>1</DragonDriver>
-        </Wave>
-        <Wave>
-            <BlueSoldier>1</BlueSoldier>
-            <GreenSoldier>1</GreenSoldier>
-            <PurpleSoldier>1</PurpleSoldier>
-            <YellowElephant>1</YellowElephant>
-            <RedElephant>1</RedElephant>
-            <BlueTiger>1</BlueTiger>
-            <YellowTiger>1</YellowTiger>
-            <Fat>1</Fat>
-            <Skeleton>1</Skeleton>
-            <Demon>1</Demon>
-            <OrangeDragon>1</OrangeDragon>
-            <Bee>1</Bee>
-            <Phoenix>1</Phoenix>
-            <BlueDragon>1</BlueDragon>
-            <SkeletonDragon>1</SkeletonDragon>
-            <DragonDriver>1</DragonDriver>
-        </Wave>
-        <Wave>
-            <BlueSoldier>1</BlueSoldier>
-            <GreenSoldier>1</GreenSoldier>
-            <PurpleSoldier>1</PurpleSoldier>
-            <YellowElephant>1</YellowElephant>
-            <RedElephant>1</RedElephant>
-            <BlueTiger>1</BlueTiger>
-            <YellowTiger>1</YellowTiger>
-            <Fat>1</Fat>
-            <Skeleton>1</Skeleton>
-            <Demon>1</Demon>
-            <OrangeDragon>1</OrangeDragon>
-            <Bee>1</Bee>
-            <Phoenix>1</Phoenix>
-            <BlueDragon>1</BlueDragon>
-            <SkeletonDragon>1</SkeletonDragon>
-            <DragonDriver>1</DragonDriver>
+            <BlueSoldier>0</BlueSoldier>
+            <GreenSoldier>0</GreenSoldier>
+            <PurpleSoldier>5</PurpleSoldier>
+            <YellowElephant>10</YellowElephant>
+            <RedElephant>10</RedElephant>
+            <BlueTiger>10</BlueTiger>
+            <YellowTiger>10</YellowTiger>
+            <Fat>10</Fat>
+            <Skeleton>10</Skeleton>
+            <Demon>15</Demon>
+            <OrangeDragon>10</OrangeDragon>
+            <Bee>5</Bee>
+            <Phoenix>10</Phoenix>
+            <BlueDragon>10</BlueDragon>
+            <SkeletonDragon>15</SkeletonDragon>
+            <DragonDriver>10</DragonDriver>
         </Wave>
     </Waves>
 </Map>
