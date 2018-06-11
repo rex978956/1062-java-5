@@ -21,7 +21,7 @@
     <BaseHpBlueDragon>210</BaseHpBlueDragon>
     <BaseHpSkeletonDragon>330</BaseHpSkeletonDragon>
     <BaseHpDragonDriver>400</BaseHpDragonDriver>
-    <HealthMultiplier>10</HealthMultiplier>
+    <HealthMultiplier>1</HealthMultiplier>
     <Spawns>
         <Spawn>
             <PosX>0</PosX>

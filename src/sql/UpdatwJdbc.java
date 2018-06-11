@@ -14,7 +14,7 @@ public class UpdatwJdbc {
         Connection conn = null;
         Statement stmt = null;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/G05", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/G05", "root", "000");
 
             stmt = conn.createStatement();
             PreparedStatement sql = conn.prepareStatement("UPDATE " + mapName + " SET username = ?, score = ? WHERE username = ? ;");
