@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="2018.04.18" orientation="orthogonal" renderorder="right-down" width="22" height="15" tilewidth="48" tileheight="48" infinite="0" nextobjectid="1">
+ <tileset firstgid="1" name="InOut" tilewidth="48" tileheight="48" tilecount="256" columns="16">
+  <image source="../../images/tiles/Entry.png" width="768" height="768"/>
+ </tileset>
+ <tileset firstgid="257" name="Grass" tilewidth="48" tileheight="48" tilecount="18" columns="6">
+  <image source="../../images/tiles/Grass.jpg" width="295" height="171"/>
+ </tileset>
+ <tileset firstgid="275" name="Dirt" tilewidth="48" tileheight="48" tilecount="20" columns="5">
+  <image source="../../images/tiles/Dirt.jpg" width="259" height="194"/>
+ </tileset>
+ <tileset firstgid="295" name="Blue" tilewidth="48" tileheight="48" tilecount="15" columns="5">
+  <image source="../../images/tiles/Blue.jpg" width="287" height="176"/>
+ </tileset>
+ <tileset firstgid="310" name="Forest" tilewidth="48" tileheight="48" tilecount="256" columns="16">
+  <image source="../../images/tiles/Forest.png" width="768" height="768"/>
+ </tileset>
+ <layer name="Background" width="22" height="15">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA3WTa26EMAyE1yxhIQkhcI/e/3ot0jdiGrU/rJjEnhk/yPF6fQ3Wh++33e9Y/Sf2ts+Pbfhh+Y5zYs5x2ffCOYMn3Gp+xs8DTrdc3ZchthruZDnud8uZTNPK28y943bz26Bt1DJ+Jzi69e+v/Bnr1Fs4M+cMt/AKdoGrniZqaYaj2oR9z/ogZqfexNvGWwKvMdNE7Axn5/1Czx0XxrkRn4it+Cd80rfHswMXuZPhZuO74D/BXyy34e/ELtaToAeTaUrkrFgx/LfVo9lVcjdyMzoyuYvhlnj2JIGpmNXqlubD5iHNu81ddysaq2FNmHoiPRk8743mrbgORpjOzLnB1eL3TmqG0vaBP6gh4BBOIb5ab694dk242qHV+iZd2t9i8z7Ib6bxhFsz1f9wxLOr3tNvZhJY+CgFAAA=
+  </data>
+ </layer>
+ <layer name="road" width="22" height="15">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA2NgGAWjYOgCSUbaYHQ7aOX2wW4uvnAZSQAARxsMkSgFAAA=
+  </data>
+ </layer>
+ <layer name="inout" width="22" height="15">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA2NgGAWjYOgCRRqYWUEDM4cqoEX4DkUAALxWzdgoBQAA
+  </data>
+ </layer>
+</map>
