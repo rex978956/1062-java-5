@@ -2,9 +2,9 @@ package sql;
 
 import java.sql.*;
 
-public class UpdatwJdbc {
+public class UpdateJdbc {
 
-    public UpdatwJdbc(String mapName, String userName, int score) {
+    public UpdateJdbc(String mapName, String userName, int score) {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();

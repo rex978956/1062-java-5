@@ -38,7 +38,7 @@ public class InsertJdbc {
                 //System.out.println(mapName+userName+score);
                 stmt.executeUpdate(sql);
             } else {
-                new UpdatwJdbc(mapName, userName, score);
+                new UpdateJdbc(mapName, userName, score);
             }
 
         } catch (SQLException ex) {
