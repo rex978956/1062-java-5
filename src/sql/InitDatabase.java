@@ -21,7 +21,7 @@ public class InitDatabase {
             conn = DriverManager.getConnection(DB_URL, USER, PASSWD);
             stmt = conn.createStatement();
 
-            sql = "CREATE DATABASE TD";
+            sql = "CREATE DATABASE G05";
             stmt.executeUpdate(sql);
             System.out.println("Creating database…");
         } catch (SQLException se) {

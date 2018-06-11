@@ -21,7 +21,7 @@ public class InsertJdbc {
         Connection conn = null;
         Statement stmt = null;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/TD", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/G05", "root", "");
 
             stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("select u.username, score from " + mapName + " u");
@@ -61,5 +61,3 @@ public class InsertJdbc {
 
     }
 }
-
-//    select s.student_id, student_name, java_teacher , teacher_name from student_table s , teacher_table t where t.teacher_id = s.java_teacher;
