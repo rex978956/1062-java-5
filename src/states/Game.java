@@ -19,7 +19,7 @@ import towers.*;
 import java.util.ArrayList;
 
 public class Game extends BasicGameState {
-
+    private Sound nyanCatSound;
 
     private Image sidebarBackground, info;
 
@@ -49,7 +49,7 @@ public class Game extends BasicGameState {
     private int wave;
     private int lastSpawn;
     private String mapName;
-    private int score=0, dieNum=0;
+    private int score = 0, dieNum = 0;
     private int gold;
     private int baseHealth, currentHealth;
 
@@ -78,8 +78,8 @@ public class Game extends BasicGameState {
 
         this.selectedFill = new Color(41, 136, 255, 40);
         this.selectedRing = new Color(41, 136, 255, 180);
-        this.selectedUpFill =  new Color(255,136,41,40);
-        this.selectedUpRing =  new Color(255,136,41,180);
+        this.selectedUpFill = new Color(255, 136, 41, 40);
+        this.selectedUpRing = new Color(255, 136, 41, 180);
     }
 
     public Map getMap() {
@@ -107,31 +107,36 @@ public class Game extends BasicGameState {
         this.gold = gold;
     }
 
-    public int getScore(){
+    public int getScore() {
         return score;
     }
-    public void setScore(int score){
+
+    public void setScore(int score) {
         this.score = score;
     }
-    public int getDieNum(){
+
+    public int getDieNum() {
         return dieNum;
     }
-    public void setDieNum(int dieNum){
+
+    public void setDieNum(int dieNum) {
         this.dieNum = dieNum;
     }
-    public String getMapName(){
+
+    public String getMapName() {
         return mapName;
     }
 
     @Override
-    public void init(GameContainer gc, final StateBasedGame sbg) {
+    public void init(GameContainer gc, final StateBasedGame sbg) throws SlickException {
+        nyanCatSound = new Sound("res/sound/NyanCat.ogg");
+
         buttonUpgrade = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_UPGRADE),
                 1168 - ImageManager.getImage(ImageManager.GAME_BUTTON_UPGRADE).getWidth() / 2, 570);
         buttonSell = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_SELL),
                 1168 - ImageManager.getImage(ImageManager.GAME_BUTTON_SELL).getWidth() / 2, 600);
         buttonStartWave = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_STARTWAVE),
                 1168 - ImageManager.getImage(ImageManager.GAME_BUTTON_STARTWAVE).getWidth() / 2, 705);
-
 
         buttonNormalTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.NORMAL_TOWER), 1100, 50);
         buttonGroundTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GROUND_TOWER), 1180, 50);
@@ -141,7 +146,6 @@ public class Game extends BasicGameState {
         buttonArtilleryTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.ARTILLERY_TOWER), 1180, 150);
         buttonAntiaircraftTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.ANTIAIRCRAFA_TOWER), 1100, 200);
         buttonRadiationTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.RADIATION_TOWER), 1180, 200);
-
 
         buttonQuitGame = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_QUITGAME),
                 640 + 35 - ImageManager.getImage(ImageManager.GAME_BUTTON_QUITGAME).getWidth() / 2, 287);
@@ -228,6 +232,7 @@ public class Game extends BasicGameState {
         buttonQuitGame.addListener(arg0 -> {
             map.resetTowerList();
             sbg.enterState(1, new FadeOutTransition(), new FadeInTransition());
+            nyanCatSound.stop();
         });
 
         buttonCancel.addListener(arg0 -> pause = false);
@@ -235,6 +240,9 @@ public class Game extends BasicGameState {
 
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
+        while (!nyanCatSound.playing()) {
+            nyanCatSound.play();
+        }
 
         if (lost) {
             Result result = new Result(this, false);
@@ -244,6 +252,7 @@ public class Game extends BasicGameState {
             sbg.addState(result);
             sbg.addState(rank);
             sbg.enterState(4, new FadeOutTransition(), new FadeInTransition());
+            nyanCatSound.stop();
         }
 
         Input input = gc.getInput();
@@ -272,6 +281,7 @@ public class Game extends BasicGameState {
                     sbg.addState(result);
                     sbg.addState(rank);
                     sbg.enterState(4, new FadeOutTransition(), new FadeInTransition());
+                    nyanCatSound.stop();
                 }
             }
 
@@ -309,7 +319,6 @@ public class Game extends BasicGameState {
                     buyTower.setPosition(new Point(towerPosX, towerPosY));
                 }
             }
-
 
             if (input.isMousePressed(0)) {
 
@@ -430,9 +439,9 @@ public class Game extends BasicGameState {
         if (selectedTower != null) {
             Point position = selectedTower.getPosition();
             Circle rangeCircle = new Circle(position.getX(), position.getY(), selectedTower.getRange());
-            Circle gradeRangeCircle = new Circle(position.getX(),position.getY(),selectedTower.getUpgradeRange());
+            Circle gradeRangeCircle = new Circle(position.getX(), position.getY(), selectedTower.getUpgradeRange());
 
-            if(isClickedTower){
+            if (isClickedTower) {
                 g.setColor(selectedUpFill);
                 g.fill(gradeRangeCircle);
 
@@ -445,7 +454,7 @@ public class Game extends BasicGameState {
                 g.setColor(selectedRing);
                 g.draw(rangeCircle);
 
-            }else{
+            } else {
                 g.setColor(selectedFill);
                 g.fill(rangeCircle);
 
@@ -453,75 +462,74 @@ public class Game extends BasicGameState {
                 g.draw(rangeCircle);
             }
 
-
             info.draw(1168 - info.getWidth() / 2, 270);
 
-            if(selectedTower instanceof ShootingTower) {
+            if (selectedTower instanceof ShootingTower) {
                 ShootingTower shTower = (ShootingTower) selectedTower;
                 FontSet.drawAkrobat("Damage: " + shTower.getDamage(), 1085, 300, 18);
-                FontSet.drawAkrobat("Range: " + shTower.getRange(),1085, 320, 18);
-                FontSet.drawAkrobat("Atk Speed: " + Math.round(1000f/shTower.getShootInterval()*100)/100f, 1085, 340, 18);
-                if(shTower.getType() == 1){
+                FontSet.drawAkrobat("Range: " + shTower.getRange(), 1085, 320, 18);
+                FontSet.drawAkrobat("Atk Speed: " + Math.round(1000f / shTower.getShootInterval() * 100) / 100f, 1085, 340, 18);
+                if (shTower.getType() == 1) {
                     FontSet.drawAkrobat("Cheap towers allow you ", 1085, 370, 18);
                     FontSet.drawAkrobat("to quickly deploy.", 1085, 390, 18);
-                }else if(shTower.getType() == 2){
-                    FontSet.drawAkrobat("It can cause more damage to" , 1085, 370, 18);
-                    FontSet.drawAkrobat("enemies on the ground but " , 1085, 390, 18);
-                    FontSet.drawAkrobat("can't attack the air enemies." , 1085, 410, 18);
-                }else if(shTower.getType() == 3){
+                } else if (shTower.getType() == 2) {
+                    FontSet.drawAkrobat("It can cause more damage to", 1085, 370, 18);
+                    FontSet.drawAkrobat("enemies on the ground but ", 1085, 390, 18);
+                    FontSet.drawAkrobat("can't attack the air enemies.", 1085, 410, 18);
+                } else if (shTower.getType() == 3) {
                     FontSet.drawAkrobat("It can cause more damage to", 1085, 370, 18);
                     FontSet.drawAkrobat("enemies in the air but can't", 1085, 390, 18);
                     FontSet.drawAkrobat("attack the ground enemies.", 1085, 410, 18);
-                }else if(shTower.getType() == 4){
+                } else if (shTower.getType() == 4) {
                     FontSet.drawAkrobat("It can cause a lot of", 1085, 370, 18);
                     FontSet.drawAkrobat("damage to the entire area of", 1085, 390, 18);
                     FontSet.drawAkrobat("the enemy.", 1085, 410, 18);
-                }else if(shTower.getType() == 5){
+                } else if (shTower.getType() == 5) {
                     FontSet.drawAkrobat("It can quickly attack the", 1085, 370, 18);
                     FontSet.drawAkrobat("enemies on the ground,", 1085, 390, 18);
                     FontSet.drawAkrobat("causing heavy damage to", 1085, 410, 18);
                     FontSet.drawAkrobat("the enemy.", 1085, 430, 18);
-                }else if(shTower.getType() == 6) {
+                } else if (shTower.getType() == 6) {
                     FontSet.drawAkrobat("Accurate antiaircraft tower", 1085, 370, 18);
                     FontSet.drawAkrobat("can very easily shoot down", 1085, 390, 18);
                     FontSet.drawAkrobat("the enemy in the air", 1085, 410, 18);
                 }
 
-                if(selectedTower == buyTower){
-                    ImageManager.getImage(ImageManager.GAME_GEM).draw(1080,450);
-                    FontSet.drawAkrobat("Cost: " + buyTower.getCost(),1120, 457, 26);
+                if (selectedTower == buyTower) {
+                    ImageManager.getImage(ImageManager.GAME_GEM).draw(1080, 450);
+                    FontSet.drawAkrobat("Cost: " + buyTower.getCost(), 1120, 457, 26);
                 }
-            } else if(selectedTower instanceof SlowTower) {
+            } else if (selectedTower instanceof SlowTower) {
                 SlowTower slowTower = (SlowTower) selectedTower;
-                FontSet.drawAkrobat("Range: "+slowTower.getRange(),1085, 300, 18);
-                FontSet.drawAkrobat("Slow Value: "+(int)((1-slowTower.getSlowValue())*100)+"%",1085, 320, 18);
+                FontSet.drawAkrobat("Range: " + slowTower.getRange(), 1085, 300, 18);
+                FontSet.drawAkrobat("Slow Value: " + (int) ((1 - slowTower.getSlowValue()) * 100) + "%", 1085, 320, 18);
 
                 FontSet.drawAkrobat("It can reduce the speed of", 1085, 350, 18);
                 FontSet.drawAkrobat("enemy movement on the", 1085, 370, 18);
                 FontSet.drawAkrobat("ground.", 1085, 390, 18);
-                if(selectedTower == buyTower){
-                    ImageManager.getImage(ImageManager.GAME_GEM).draw(1080,450);
-                    FontSet.drawAkrobat("Cost: " + buyTower.getCost(),1120, 457, 26);
+                if (selectedTower == buyTower) {
+                    ImageManager.getImage(ImageManager.GAME_GEM).draw(1080, 450);
+                    FontSet.drawAkrobat("Cost: " + buyTower.getCost(), 1120, 457, 26);
                 }
 
-            } else if(selectedTower instanceof RadiationTower) {
+            } else if (selectedTower instanceof RadiationTower) {
                 RadiationTower radiationTower = (RadiationTower) selectedTower;
-                FontSet.drawAkrobat("Range: "+radiationTower.getRange(),1085, 300, 18);
-                FontSet.drawAkrobat("Slow Value: "+(int)((1-radiationTower.getSlowValue())*100)+"%",1085, 320, 18);
+                FontSet.drawAkrobat("Range: " + radiationTower.getRange(), 1085, 300, 18);
+                FontSet.drawAkrobat("Slow Value: " + (int) ((1 - radiationTower.getSlowValue()) * 100) + "%", 1085, 320, 18);
 
                 FontSet.drawAkrobat("Powerful radiation slows", 1085, 350, 18);
                 FontSet.drawAkrobat("down the movement of all the enemy", 1085, 370, 18);
                 FontSet.drawAkrobat("all the enemy.", 1085, 390, 18);
-                if(selectedTower == buyTower){
-                    ImageManager.getImage(ImageManager.GAME_GEM).draw(1080,450);
-                    FontSet.drawAkrobat("Cost: " + buyTower.getCost(),1120, 457, 26);
+                if (selectedTower == buyTower) {
+                    ImageManager.getImage(ImageManager.GAME_GEM).draw(1080, 450);
+                    FontSet.drawAkrobat("Cost: " + buyTower.getCost(), 1120, 457, 26);
                 }
             }
 
             if (selectedTower != buyTower && selectedTower != null) {
                 if (selectedTower.getUpgradeLevel() < 2) {
-                    ImageManager.getImage(ImageManager.GAME_GEM).draw(1080,450);
-                    FontSet.drawAkrobat("Upgrade: "+selectedTower.getUpgradeCost(),1120, 457, 26);
+                    ImageManager.getImage(ImageManager.GAME_GEM).draw(1080, 450);
+                    FontSet.drawAkrobat("Upgrade: " + selectedTower.getUpgradeCost(), 1120, 457, 26);
                     buttonUpgrade.render(gc, g);
                 }
                 buttonSell.render(gc, g);
@@ -561,7 +569,6 @@ public class Game extends BasicGameState {
         if (health > 0) {
             currentHealth = health;
         } else {
-
             lost = true;
         }
     }
@@ -573,7 +580,6 @@ public class Game extends BasicGameState {
     public void removeEntity(Enemy entity) {
 
         entityRemovalList.add(entity);
-
 
         for (Tower t : towerList) {
             if (t instanceof ShootingTower) {

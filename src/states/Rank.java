@@ -1,9 +1,9 @@
 package states;
 
 import main.ImageManager;
-
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -35,7 +35,11 @@ public class Rank extends BasicGameState {
         retryButton.addListener(cmp -> {
             game.getMap().resetTowerList();
             game = new Game(game.getMap());
-            game.init(gc, sbg);
+            try {
+                game.init(gc, sbg);
+            } catch (SlickException e) {
+                e.printStackTrace();
+            }
             sbg.addState(game);
             sbg.enterState(3,new FadeOutTransition(), new FadeInTransition());
         });

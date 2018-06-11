@@ -3,9 +3,7 @@ package states;
 import main.ImageManager;
 import misc.Map;
 import misc.MapLoader;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Input;
+import org.newdawn.slick.*;
 import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.GameState;
@@ -23,6 +21,7 @@ public class MapMenu extends BasicGameState {
 //    private Image cursor;
 //    private Image cursorTail;
 //    private Image cursorMiddle;
+    // TODO: Add Choose Map Image
 
     private MouseOverArea prevBtn, nextBtn;
     private MouseOverArea mapPreview;
@@ -30,6 +29,8 @@ public class MapMenu extends BasicGameState {
     private ArrayList<Map> mapList;
 
     private int selectedMap;
+
+    private Music sevenMusic;
 
     private void selectPrevMap() {
         if (selectedMap > 0) {
@@ -67,9 +68,14 @@ public class MapMenu extends BasicGameState {
         mapPreview = new MouseOverArea(container, mapList.get(selectedMap).getPreview(), previewX, previewY);
         mapPreview.addListener(source -> {
             Game game2 = new Game(mapList.get(selectedMap));
-            game2.init(container, game);
+            try {
+                game2.init(container, game);
+            } catch (SlickException e) {
+                e.printStackTrace();
+            }
             game.addState(game2);
             game.enterState(3, new FadeOutTransition(), new FadeInTransition());
+            sevenMusic.stop();
         });
     }
 
@@ -80,10 +86,11 @@ public class MapMenu extends BasicGameState {
      * @param game      The game holding this state
      */
     @Override
-    public void init(GameContainer container, StateBasedGame game) {
+    public void init(GameContainer container, StateBasedGame game) throws SlickException {
 
 
         mapList = MapLoader.loadMaps();
+        sevenMusic = new Music("res/sound/Seven.ogg");
 
 //        cursor = new Image("res/cursor.png");
 //        cursorMiddle = new Image("res/cursorMiddle.png");
@@ -140,6 +147,7 @@ public class MapMenu extends BasicGameState {
         Input input = container.getInput();
         if (input.isKeyPressed(Input.KEY_ESCAPE)) {
             game.enterState(1, new FadeOutTransition(), new FadeInTransition());
+            sevenMusic.stop();
         }
 
         if (input.isKeyPressed(Input.KEY_LEFT)) {
@@ -153,6 +161,10 @@ public class MapMenu extends BasicGameState {
         if (input.isKeyPressed(Input.KEY_F11)) {
             clickButtons(container);
             clickSelectGame(container, game);
+        }
+
+        while (!sevenMusic.playing()) {
+            sevenMusic.play();
         }
     }
 
