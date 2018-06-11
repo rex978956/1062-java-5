@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="2018.04.18" orientation="orthogonal" renderorder="right-down" width="22" height="15" tilewidth="48" tileheight="48" infinite="0" nextobjectid="1">
+ <tileset firstgid="1" name="入口" tilewidth="48" tileheight="48" tilecount="256" columns="16">
+  <image source="RPG Marker VX Ace自带-地图-rpg_marker 游戏素材 - 爱给网_files/入口.png" width="768" height="768"/>
+ </tileset>
+ <tileset firstgid="257" name="草地" tilewidth="48" tileheight="48" tilecount="18" columns="6">
+  <image source="RPG Marker VX Ace自带-地图-rpg_marker 游戏素材 - 爱给网_files/草地.jpg" width="295" height="171"/>
+ </tileset>
+ <tileset firstgid="275" name="土" tilewidth="48" tileheight="48" tilecount="20" columns="5">
+  <image source="RPG Marker VX Ace自带-地图-rpg_marker 游戏素材 - 爱给网_files/土.jpg" width="259" height="194"/>
+ </tileset>
+ <tileset firstgid="295" name="藍色" tilewidth="48" tileheight="48" tilecount="15" columns="5">
+  <image source="RPG Marker VX Ace自带-地图-rpg_marker 游戏素材 - 爱给网_files/藍色.jpg" width="287" height="176"/>
+ </tileset>
+ <tileset firstgid="310" name="VX森林整合-pic2197_VX森林素材整合_爱给网_aigei_com_gaitubao_com_768x768" tilewidth="48" tileheight="48" tilecount="256" columns="16">
+  <image source="RPG Marker VX Ace自带-地图-rpg_marker 游戏素材 - 爱给网_files/VX森林整合-pic2197_VX森林素材整合_爱给网_aigei_com_gaitubao_com_768x768.png" width="768" height="768"/>
+ </tileset>
+ <layer name="Background" width="22" height="15">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACt2UzRKDIAyE3dKCttPfB8n7P55xSma2kaDjsYe9JLsfiARgGE6qpDqrLio4WT/Vfu54mOFrhWS5tOHZw72TODcFnh5XGnp2ckv9UT3cn6p8RlzmFXBz9YnrS3AO/8CVhucINzu2NHJHuCCuUE2wvhN7uXbnjZuIzT4Q12trLpgLYsOtHc0F1/kM+L8VYhe3dvTN/H6UgGszXbC+M0ttxHfOrqqb8/t9GPet+uD3TeB+yz8DWMAUxCgFAAA=
+  </data>
+ </layer>
+ <layer name="路線" width="22" height="15">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACmNgGHpAgRE3ptRcUsSxuYccPiH34KJxqSMEKDEXX9hTai657qanuaSkNVzhQorbiAHYzCXXncTqJSVcSQHUMpcUvxCjBwAJQhzaKAUAAA==
+  </data>
+ </layer>
+ <layer name="裝飾" width="22" height="15">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACmNgwA4iGBkYIoF4JZB9Cg2vRpInFWQA9WQC8U4g+xeQ5gTSXFD2biR5cgHI3KdALAnEUlD2bvKNQzH3KxL/K5XMPckACVMYALFPU8FcEHiGgz0SwB5gGtpLQToaLOAeI0PDXSAmpG4O0K9zaeDfNUAz1wLxLKjZs0i04yFQ/QMg/oCkD5m9CshezYigiQUfkcz8QId4BgAAQCZCKAUAAA==
+  </data>
+ </layer>
+ <layer name="入口&amp;出口(建築物)" width="22" height="15">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACmNgGAWDAewD4v00MPccEJ+ngbmjYBRQAnKAOJeK5uUBcT4Q1wBxLRXNrQPieiAGAHrmuywoBQAA
+  </data>
+ </layer>
+</map>
