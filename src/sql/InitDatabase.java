@@ -9,7 +9,7 @@ public class InitDatabase {
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     static final String DB_URL = "jdbc:mysql://localhost:3306/";
     static final String USER = "root";
-    static final String PASSWD = "0000";
+    static final String PASSWD = "";
     static String sql;
 
     public InitDatabase() {
@@ -21,7 +21,7 @@ public class InitDatabase {
             conn = DriverManager.getConnection(DB_URL, USER, PASSWD);
             stmt = conn.createStatement();
 
-            sql = "CREATE DATABASE G05";
+            sql = "CREATE DATABASE TD";
             stmt.executeUpdate(sql);
             System.out.println("Creating database…");
         } catch (SQLException se) {
