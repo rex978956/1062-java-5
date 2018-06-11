@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class Game extends BasicGameState {
     private Sound nyanCatSound;
 
-    private Image sidebarBackground, info;
+    private Image sidebarBackground, info, itemlist;
 
     private MouseOverArea buttonUpgrade, buttonSell, buttonStartWave,
             buttonNormalTower, buttonAirTower, buttonGroundTower, buttonSlowTower,
@@ -130,6 +130,7 @@ public class Game extends BasicGameState {
     @Override
     public void init(GameContainer gc, final StateBasedGame sbg) throws SlickException {
         nyanCatSound = new Sound("res/sound/NyanCat.ogg");
+        itemlist = ImageManager.getImage(ImageManager.GAME_ITEMLIST);
 
         buttonUpgrade = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_UPGRADE),
                 1168 - ImageManager.getImage(ImageManager.GAME_BUTTON_UPGRADE).getWidth() / 2, 500);
@@ -419,8 +420,8 @@ public class Game extends BasicGameState {
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) {
 
         map.getMap().render(0, 0);
-
         sidebarBackground.draw(0, 0);
+        itemlist.draw(1097, 50);
         FontSet.drawStylus("gold: " + gold, 40, 771 ,18, Color.decode("#730000"));
         FontSet.drawStylus(currentHealth + "/" + baseHealth, 180, 771, 18, Color.decode("#730000"));
         FontSet.drawStylus("Wave " + wave + "/" + map.getWaveList().size(), 960, 770, 18, Color.decode("#730000"));

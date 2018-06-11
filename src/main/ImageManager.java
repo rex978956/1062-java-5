@@ -46,6 +46,8 @@ public class ImageManager {
     public static final int RESULT_LOSE = 32;
     public static final int RESULT_SCOREBG = 33;
     public static final int RESULT_TEXTFIELD_BG = 34;
+    public static final int GAME_ITEMLIST = 35;
+    public static final int RESULT_RANKBG = 36;
 
 
     /*Emeny*/
@@ -114,6 +116,8 @@ public class ImageManager {
             imageList.add(new Image("res/images/menus/lose.png")); //32
             imageList.add(new Image("res/images/menus/scorebg.png")); //33
             imageList.add(new Image("res/images/menus/textfield_bg_active.png")); //34
+            imageList.add(new Image("res/images/menus/itemlist.png")); //35
+            imageList.add(new Image("res/images/menus/rankbg.png")); //36
 
         } catch (SlickException e) {
             e.printStackTrace();

@@ -15,7 +15,7 @@ public class Rank extends BasicGameState {
 
     private Game game;
 
-    private Image scoreboard, background;
+    private Image scoreboard, background, rankbg;
     private MouseOverArea retryButton, quitButton;
     ReadJdbc read;
 
@@ -27,6 +27,7 @@ public class Rank extends BasicGameState {
     public void init(final GameContainer gc, final StateBasedGame sbg) {
         scoreboard = ImageManager.getImage(ImageManager.GAME_SCORE_BOARD);
         background = ImageManager.getImage(ImageManager.MENU_BACKGROUND);
+        rankbg = ImageManager.getImage(ImageManager.RESULT_RANKBG);
         read = new ReadJdbc(game.getMapName());
         retryButton = new MouseOverArea(gc,ImageManager.getImage(ImageManager.GAME_BUTTON_RETRY),
                 440 - ImageManager.getImage(ImageManager.GAME_BUTTON_RETRY).getWidth()/2,
@@ -61,6 +62,7 @@ public class Rank extends BasicGameState {
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) {
         background.draw(0,0);
+        rankbg.draw(640 - rankbg.getWidth()/2,8);
         for (int i=0 ; i<read.getUsername().size() && i<10 ; i++){
             FontSet.drawButterScotch(""+(i+1),400,130+i*45,34, Color.decode("#deb008"));
             FontSet.drawButterScotch("User: "+read.getUsername().get(i),442,130+i*45,34, Color.decode("#deb008"));
