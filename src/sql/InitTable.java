@@ -12,7 +12,7 @@ public class InitTable {
         Statement stmt = null;
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/G05", "root", "000");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/G05", "root", "0000");
             System.out.println("connected to the database...");
 
             stmt = conn.createStatement();
