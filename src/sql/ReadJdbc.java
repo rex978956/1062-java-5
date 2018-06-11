@@ -17,7 +17,7 @@ public class ReadJdbc {
 		Connection conn = null;
         Statement stmt = null;
         try {
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/td", "root","");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/TD", "root", "");
 
 			stmt= conn.createStatement();
 

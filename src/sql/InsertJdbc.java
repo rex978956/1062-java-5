@@ -20,7 +20,7 @@ public class InsertJdbc {
          Connection conn = null;
          Statement stmt = null;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/td", "root","");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/TD", "root", "");
 
             stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("select u.username, score from "+mapName+" u");

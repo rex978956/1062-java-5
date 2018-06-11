@@ -1,6 +1,9 @@
 package sql;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 public class InitTable {
 
     public InitTable(){
@@ -8,7 +11,7 @@ public class InitTable {
         Statement stmt = null;
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/td", "root","");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/TD", "root", "");
             System.out.println("connected to the database...");
 
             stmt = conn.createStatement();
@@ -36,7 +39,7 @@ public class InitTable {
             }catch(SQLException se){
             }
         }
-        System.out.println("Tableinit!");
+        System.out.println("Table Init!");
     }
 
 }

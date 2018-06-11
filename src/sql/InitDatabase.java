@@ -1,6 +1,9 @@
 package sql;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class InitDatabase {
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
@@ -36,6 +39,6 @@ public class InitDatabase {
             }catch(SQLException se){
             }
         }
-        System.out.println("Databaseinit!");
+        System.out.println("Database Init!");
     }
 }
