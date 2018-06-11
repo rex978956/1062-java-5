@@ -17,9 +17,8 @@ public class InitTable {
             stmt = conn.createStatement();
             System.out.println("Inserting records");
 
-            stmt.executeUpdate("CREATE TABLE Hard_Rock " + "(username VARCHAR(15), score INT)");
-            stmt.executeUpdate("CREATE TABLE Murica " + "(username VARCHAR(15), score INT)");
-            stmt.executeUpdate("CREATE TABLE Worm " + "(username VARCHAR(15), score INT)");
+            stmt.executeUpdate("CREATE TABLE DEMO " + "(username VARCHAR(15), score INT)");
+            stmt.executeUpdate("CREATE TABLE TKU " + "(username VARCHAR(15), score INT)");
             System.out.println("Tables are init!");
             stmt.close();
             conn.close();
