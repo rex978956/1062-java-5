@@ -12,10 +12,6 @@ public class FontTest extends StateBasedGame {
         super(name);
     }
 
-    public void initStatesList(GameContainer gc) {
-        addState(new FontDemo());
-    }
-
     public static void main(String[] args) {
         try {
             System.setProperty("org.newdawn.slick.pngloader", "false");
@@ -29,5 +25,9 @@ public class FontTest extends StateBasedGame {
         } catch (SlickException e) {
             e.printStackTrace();
         }
+    }
+
+    public void initStatesList(GameContainer gc) {
+        addState(new FontDemo());
     }
 }

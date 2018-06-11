@@ -13,21 +13,17 @@ import org.newdawn.slick.util.pathfinding.Path.Step;
 import states.Game;
 
 public class Enemy implements Mover {
+    int[] duration;
+    int angle;
     private Game game;
-
     private Vector2f position;
-
     private int tileposx, tileposy;
-
     private int health, maxhp, radius;
     private float speed;
     private boolean isFlying, isBoss;
     private float slowValue;
     private Image[] texture;
     private Animation enemy, movingUp, movingDown, movingLeft, movingRight;
-    int[] duration;
-    int angle;
-
     private AStarPathFinder pathfinder;
     private Point targetPoint;
 

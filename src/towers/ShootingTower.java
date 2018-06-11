@@ -38,9 +38,9 @@ public abstract class ShootingTower extends Tower {
 
             int index = -1;
 
-            for(int i = 0; i < entitiesInRange.size();i++) {
-                if(canTarget(entitiesInRange.get(i))) {
-                    if(index == -1 || entitiesInRange.get(i).getHealth() < entitiesInRange.get(index).getHealth()){
+            for (int i = 0; i < entitiesInRange.size(); i++) {
+                if (canTarget(entitiesInRange.get(i))) {
+                    if (index == -1 || entitiesInRange.get(i).getHealth() < entitiesInRange.get(index).getHealth()) {
                         index = i;
                     }
                 }
@@ -119,8 +119,8 @@ public abstract class ShootingTower extends Tower {
 
                 if (t.getHealth() <= 0) {
                     game.removeEntity(t);
-                    game.setDieNum(game.getDieNum()+1);
-                    game.setScore(game.getScore()+game.getDieNum());
+                    game.setDieNum(game.getDieNum() + 1);
+                    game.setScore(game.getScore() + game.getDieNum());
                     game.setGold(game.getGold() + game.getMap().getKillMoney());
                 }
 

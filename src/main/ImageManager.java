@@ -48,6 +48,7 @@ public class ImageManager {
     public static final int RESULT_TEXTFIELD_BG = 34;
     public static final int GAME_ITEMLIST = 35;
     public static final int RESULT_RANKBG = 36;
+    public static final int MAP_MENU_FRAME = 37;
 
 
     /*Emeny*/
@@ -118,6 +119,8 @@ public class ImageManager {
             imageList.add(new Image("res/images/menus/textfield_bg_active.png")); //34
             imageList.add(new Image("res/images/menus/itemlist.png")); //35
             imageList.add(new Image("res/images/menus/rankbg.png")); //36
+
+            imageList.add(new Image("res/images/menus/frame.png")); //34
 
         } catch (SlickException e) {
             e.printStackTrace();

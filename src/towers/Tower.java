@@ -55,7 +55,7 @@ public abstract class Tower {
     }
 
     public int getUpgradeRange() {
-        return range[(upgradeLevel < 2)? (upgradeLevel+1) : upgradeLevel];
+        return range[(upgradeLevel < 2) ? (upgradeLevel + 1) : upgradeLevel];
     }
 
     public int getCost() {

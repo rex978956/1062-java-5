@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class UpdatwJdbc {
 
-    public UpdatwJdbc(String mapName, String userName, int score){
+    public UpdatwJdbc(String mapName, String userName, int score) {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
@@ -17,7 +17,7 @@ public class UpdatwJdbc {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/TD", "root", "");
 
             stmt = conn.createStatement();
-            PreparedStatement sql = conn.prepareStatement("UPDATE "+mapName+" SET username = ?, score = ? WHERE username = ? ;");
+            PreparedStatement sql = conn.prepareStatement("UPDATE " + mapName + " SET username = ?, score = ? WHERE username = ? ;");
             sql.setString(1, userName);
             sql.setInt(2, score);
             sql.setString(3, userName);
@@ -28,16 +28,16 @@ public class UpdatwJdbc {
             System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
             System.out.println("VendorError: " + ex.getErrorCode());
-        }finally{
-            try{
-                if(stmt!=null)
+        } finally {
+            try {
+                if (stmt != null)
                     stmt.close();
-            }catch(SQLException se2){
+            } catch (SQLException se2) {
             }
-            try{
-                if(conn!=null)
+            try {
+                if (conn != null)
                     conn.close();
-            }catch(SQLException se){
+            } catch (SQLException se) {
             }
         }
 

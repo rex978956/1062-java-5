@@ -1,10 +1,9 @@
 package states;
 
 import main.ImageManager;
-
 import misc.FontSet;
-import org.newdawn.slick.*;
 import org.newdawn.slick.Color;
+import org.newdawn.slick.*;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.gui.MouseOverArea;
@@ -17,7 +16,6 @@ import org.newdawn.slick.util.ResourceLoader;
 import sql.InsertJdbc;
 
 import java.awt.*;
-import java.awt.Font;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -27,8 +25,9 @@ public class Result extends BasicGameState {
     private boolean isWin;
     private MouseOverArea nextButton;
     private Image background, sb, win, lose, scorebg;
+    private Sound winSound, loseSound;
 
-    private String username ;
+    private String username;
     private TextField textField;
     private Image textbg;
     private MouseOverArea submit;
@@ -40,7 +39,10 @@ public class Result extends BasicGameState {
     }
 
     @Override
-    public void init(final GameContainer gc, final StateBasedGame sbg) {
+    public void init(final GameContainer gc, final StateBasedGame sbg) throws SlickException {
+        winSound = new Sound("res/sound/win.ogg");
+        loseSound = new Sound("res/sound/lose.ogg");
+
         username = "Anonymous";
         background = ImageManager.getImage(ImageManager.MENU_BACKGROUND);
         win = ImageManager.getImage(ImageManager.RESULT_WIN);
@@ -68,45 +70,48 @@ public class Result extends BasicGameState {
 
         sb = ImageManager.getImage(ImageManager.GAME_SUBMIT);
 
-        submit = new MouseOverArea(gc, sb, 839 - sb.getWidth(),  590);
+        submit = new MouseOverArea(gc, sb, 839 - sb.getWidth(), 590);
         submit.addListener(cmp -> {
             username = textField.getText();
             new InsertJdbc(game.getMapName(), username, game.getScore());
-            System.out.println("user: "+username);
+            System.out.println("user: " + username);
         });
 
 
-
-        nextButton = new MouseOverArea(gc,ImageManager.getImage(ImageManager.MENU_BUTTON_RARROW),
-                1100 - ImageManager.getImage(ImageManager.MENU_BUTTON_RARROW).getWidth()/2, 650);
+        nextButton = new MouseOverArea(gc, ImageManager.getImage(ImageManager.MENU_BUTTON_RARROW),
+                1100 - ImageManager.getImage(ImageManager.MENU_BUTTON_RARROW).getWidth() / 2, 650);
 
         nextButton.addListener(cmp -> {
-            sbg.enterState(5,new FadeOutTransition(Color.black,600), new FadeInTransition(Color.black,600));
+            sbg.enterState(5, new FadeOutTransition(Color.black, 600), new FadeInTransition(Color.black, 600));
+            winSound.stop();
+            loseSound.stop();
         });
     }
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) {
-        background.draw(0,0);
-        scorebg.draw(640 - scorebg.getWidth()/2, 350);
-        if(isWin) {
-            win.draw(640 - win.getWidth()/2, 40);
-            FontSet.drawButterScotch("MapName: "+game.getMapName()+"   Score: "+game.getScore(), 380,360, 42,Color.decode("#deb008"));
+        background.draw(0, 0);
+        scorebg.draw(640 - scorebg.getWidth() / 2, 350);
+        if (isWin) {
+            win.draw(640 - win.getWidth() / 2, 40);
+            FontSet.drawButterScotch("MapName: " + game.getMapName() + "   Score: " + game.getScore(), 380, 360, 42, Color.decode("#deb008"));
         } else {
-            lose.draw(640 - lose.getWidth()/2, 40);
-            FontSet.drawButterScotch("MapName: "+game.getMapName()+"   Score: "+game.getScore(), 380,360 ,42 ,Color.decode("#deb008"));
+            lose.draw(640 - lose.getWidth() / 2, 40);
+            FontSet.drawButterScotch("MapName: " + game.getMapName() + "   Score: " + game.getScore(), 380, 360, 42, Color.decode("#deb008"));
         }
         nextButton.render(gc, g);
         textField.render(gc, g);
-        textbg.draw(441,520);
+        textbg.draw(441, 520);
         submit.render(gc, g);
-
-
     }
 
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int delta) {
-
+        if (isWin && !winSound.playing() && !loseSound.playing()) {
+            winSound.play();
+        } else if (!winSound.playing() && !loseSound.playing()) {
+            loseSound.play();
+        }
     }
 
     @Override

@@ -3,41 +3,42 @@ package sql;
 import java.sql.*;
 
 public class InsertJdbc {
-     private int id=0;
-     private String userName, mapName;
-     private int score;
-//     private boolean isFind = false;
-     public InsertJdbc(String mapName, String userName, int score){
-         this.userName = userName;
-         this.score = score;
-         this.mapName = mapName;
+    private int id = 0;
+    private String userName, mapName;
+    private int score;
+
+    //     private boolean isFind = false;
+    public InsertJdbc(String mapName, String userName, int score) {
+        this.userName = userName;
+        this.score = score;
+        this.mapName = mapName;
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
         } catch (Exception ex) {
         }
 
-         Connection conn = null;
-         Statement stmt = null;
+        Connection conn = null;
+        Statement stmt = null;
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/TD", "root", "");
 
             stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("select u.username, score from "+mapName+" u");
+            ResultSet rs = stmt.executeQuery("select u.username, score from " + mapName + " u");
             boolean isFind = false;
             while (rs.next()) {
-                String sss= rs.getString(1);
-                if(sss.matches(userName)){
+                String sss = rs.getString(1);
+                if (sss.matches(userName)) {
                     isFind = true;
                     break;
                 }
             }
-            if(!isFind){
-                String sql = "INSERT INTO "+mapName+" VALUES ('"+userName+"','"+score+"');";
+            if (!isFind) {
+                String sql = "INSERT INTO " + mapName + " VALUES ('" + userName + "','" + score + "');";
                 //System.out.println(mapName+userName+score);
                 stmt.executeUpdate(sql);
-            }else{
-                new UpdatwJdbc(mapName,userName, score);
+            } else {
+                new UpdatwJdbc(mapName, userName, score);
             }
 
         } catch (SQLException ex) {
@@ -45,16 +46,16 @@ public class InsertJdbc {
             System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
             System.out.println("VendorError: " + ex.getErrorCode());
-        }finally{
-            try{
-                if(stmt!=null)
+        } finally {
+            try {
+                if (stmt != null)
                     stmt.close();
-            }catch(SQLException se2){
+            } catch (SQLException se2) {
             }
-            try{
-                if(conn!=null)
+            try {
+                if (conn != null)
                     conn.close();
-            }catch(SQLException se){
+            } catch (SQLException se) {
             }
         }
 

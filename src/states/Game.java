@@ -240,7 +240,7 @@ public class Game extends BasicGameState {
     }
 
     @Override
-    public void update(GameContainer gc, StateBasedGame sbg, int delta) {
+    public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
         while (!nyanCatSound.playing()) {
             nyanCatSound.play();
         }

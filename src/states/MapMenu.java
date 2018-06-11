@@ -23,7 +23,7 @@ public class MapMenu extends BasicGameState {
 //    private Image cursorMiddle;
     // TODO: Add Choose Map Image
 
-    private Image title;
+    private Image title, frame;
 
     private MouseOverArea prevBtn, nextBtn;
     private MouseOverArea mapPreview;
@@ -91,6 +91,7 @@ public class MapMenu extends BasicGameState {
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         title = ImageManager.getImage(ImageManager.MENU_TEXT_CHOOSEMAP);
+        frame = ImageManager.getImage(ImageManager.MAP_MENU_FRAME);
 
         background = ImageManager.getImage(ImageManager.MENU_BACKGROUND);
         mapList = MapLoader.loadMaps();
@@ -115,9 +116,15 @@ public class MapMenu extends BasicGameState {
      */
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) {
-        background.draw(0,0);
+        background.draw(0, 0);
 
         title.draw(640 - title.getWidth() / 2, 150);
+
+//        int frameX = container.getWidth() / 2 ;
+//        int frameY = container.getHeight() / 2;
+        frame.drawCentered(container.getWidth() / 2, container.getHeight() / 2);
+        frame.draw((0 - frame.getHeight() * 3 / 4) - 75, 195);
+        frame.draw((container.getWidth() - frame.getWidth() / 4) - 10, 195);
 
         mapPreview.render(container, g);
         mapList.get(selectedMap).getPreview().drawCentered(container.getWidth() / 2, container.getHeight() / 2);

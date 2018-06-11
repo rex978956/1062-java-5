@@ -27,12 +27,6 @@ public class TKUTD extends StateBasedGame {
         super(name);
     }
 
-    public void initStatesList(GameContainer gc) {
-        this.container = (AppGameContainer) gc;
-        addState(new MainMenu());
-        addState(new MapMenu());
-    }
-
     public static void main(String[] args) {
         new InitDatabase();
         new InitTable();
@@ -50,22 +44,6 @@ public class TKUTD extends StateBasedGame {
             game.start();
         } catch (SlickException | IllegalAccessException | NoSuchFieldException e) {
             e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void keyPressed(int key, char c) {
-        super.keyPressed(key, c);
-        if (key == Input.KEY_F11) {
-            try {
-                if (container.isFullscreen()) {
-                    container.setDisplayMode(WINDOWED_WIDTH, WINDOWED_HEIGHT, false);
-                } else {
-                    container.setDisplayMode(container.getScreenWidth(), container.getScreenHeight(), true);
-                }
-            } catch (SlickException e) {
-                e.printStackTrace();
-            }
         }
     }
 
@@ -198,5 +176,27 @@ public class TKUTD extends StateBasedGame {
             }
         }
         new File(zip).delete();
+    }
+
+    public void initStatesList(GameContainer gc) {
+        this.container = (AppGameContainer) gc;
+        addState(new MainMenu());
+        addState(new MapMenu());
+    }
+
+    @Override
+    public void keyPressed(int key, char c) {
+        super.keyPressed(key, c);
+        if (key == Input.KEY_F11) {
+            try {
+                if (container.isFullscreen()) {
+                    container.setDisplayMode(WINDOWED_WIDTH, WINDOWED_HEIGHT, false);
+                } else {
+                    container.setDisplayMode(container.getScreenWidth(), container.getScreenHeight(), true);
+                }
+            } catch (SlickException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
