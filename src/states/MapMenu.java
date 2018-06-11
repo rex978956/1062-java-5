@@ -1,6 +1,7 @@
 package states;
 
 import main.ImageManager;
+import misc.FontSet;
 import misc.Map;
 import misc.MapLoader;
 import org.newdawn.slick.*;
@@ -136,6 +137,9 @@ public class MapMenu extends BasicGameState {
         if (selectedMap < mapList.size() - 1) {
             mapList.get(selectedMap + 1).getPreview().draw(container.getWidth() - mapList.get(selectedMap).getPreview().getWidth() / 4, 225);
         }
+
+        Map map2 = mapList.get(selectedMap);
+        FontSet.drawStylus(map2.getName(), 480, 490, 22, Color.decode("#FFAA00"));
 
         prevBtn.render(container, g);
         nextBtn.render(container, g);
