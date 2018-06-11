@@ -39,6 +39,8 @@ public class ImageManager {
     public static final int GAME_BUTTON_CANCEL = 26;
     public static final int GAME_BUTTON_RETRY = 27;
     public static final int GAME_GEM = 28;
+    public static final int GAME_SCORE_BOARD = 29;
+    public static final int GAME_SUBMIT = 30;
 
 
     /*Emeny*/
@@ -101,6 +103,8 @@ public class ImageManager {
             imageList.add(new Image("res/images/menus/button-cancel.png")); //26
             imageList.add(new Image("res/images/menus/button-retry.png")); //27
             imageList.add(new Image("res/images/menus/gem.png")); //28
+            imageList.add(new Image("res/images/menus/score_board.png")); //29
+            imageList.add(new Image("res/images/menus/button-submit.png")); //30
 
 
         } catch (SlickException e) {

@@ -61,6 +61,7 @@ public class Result extends BasicGameState {
         textField.setBorderColor(null);
         textField.setConsumeEvents(true);
         textField.setCursorPos(9);
+        textField.setMaxLength(13);
         textField.setCursorVisible(true);
 
         Image ig = null;

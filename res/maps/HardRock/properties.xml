@@ -38,7 +38,7 @@
     </Base>
     <Waves>
         <Wave>
-            <BlueSoldier>1</BlueSoldier>
+            <BlueSoldier>0</BlueSoldier>
             <GreenSoldier>0</GreenSoldier>
             <PurpleSoldier>0</PurpleSoldier>
             <YellowElephant>0</YellowElephant>
@@ -50,7 +50,7 @@
             <Demon>0</Demon>
             <OrangeDragon>0</OrangeDragon>
             <Bee>1</Bee>
-            <Phoenix>1</Phoenix>
+            <Phoenix>0</Phoenix>
             <BlueDragon>1</BlueDragon>
             <SkeletonDragon>1</SkeletonDragon>
             <DragonDriver>1</DragonDriver>

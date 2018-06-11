@@ -132,11 +132,11 @@ public class Game extends BasicGameState {
         nyanCatSound = new Sound("res/sound/NyanCat.ogg");
 
         buttonUpgrade = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_UPGRADE),
-                1168 - ImageManager.getImage(ImageManager.GAME_BUTTON_UPGRADE).getWidth() / 2, 570);
+                1168 - ImageManager.getImage(ImageManager.GAME_BUTTON_UPGRADE).getWidth() / 2, 500);
         buttonSell = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_SELL),
-                1168 - ImageManager.getImage(ImageManager.GAME_BUTTON_SELL).getWidth() / 2, 600);
+                1168 - ImageManager.getImage(ImageManager.GAME_BUTTON_SELL).getWidth() / 2, 550);
         buttonStartWave = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_STARTWAVE),
-                1168 - ImageManager.getImage(ImageManager.GAME_BUTTON_STARTWAVE).getWidth() / 2, 705);
+                1168 - ImageManager.getImage(ImageManager.GAME_BUTTON_STARTWAVE).getWidth() / 2, 750);
 
         buttonNormalTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.NORMAL_TOWER), 1100, 50);
         buttonGroundTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GROUND_TOWER), 1180, 50);
@@ -421,9 +421,9 @@ public class Game extends BasicGameState {
         map.getMap().render(0, 0);
 
         sidebarBackground.draw(0, 0);
-        g.drawString("gold: " + gold, 66, 763);
-        g.drawString(currentHealth + "/" + baseHealth, 215, 763);
-        g.drawString("Wave " + wave + "/" + map.getWaveList().size(), 960, 763);
+        FontSet.drawStylus("gold: " + gold, 40, 771 ,18, Color.decode("#730000"));
+        FontSet.drawStylus(currentHealth + "/" + baseHealth, 180, 771, 18, Color.decode("#730000"));
+        FontSet.drawStylus("Wave " + wave + "/" + map.getWaveList().size(), 960, 770, 18, Color.decode("#730000"));
 
         buttonStartWave.render(gc, g);
 
@@ -466,70 +466,70 @@ public class Game extends BasicGameState {
 
             if (selectedTower instanceof ShootingTower) {
                 ShootingTower shTower = (ShootingTower) selectedTower;
-                FontSet.drawAkrobat("Damage: " + shTower.getDamage(), 1085, 300, 18);
-                FontSet.drawAkrobat("Range: " + shTower.getRange(), 1085, 320, 18);
-                FontSet.drawAkrobat("Atk Speed: " + Math.round(1000f / shTower.getShootInterval() * 100) / 100f, 1085, 340, 18);
-                if (shTower.getType() == 1) {
-                    FontSet.drawAkrobat("Cheap towers allow you ", 1085, 370, 18);
-                    FontSet.drawAkrobat("to quickly deploy.", 1085, 390, 18);
-                } else if (shTower.getType() == 2) {
-                    FontSet.drawAkrobat("It can cause more damage to", 1085, 370, 18);
-                    FontSet.drawAkrobat("enemies on the ground but ", 1085, 390, 18);
-                    FontSet.drawAkrobat("can't attack the air enemies.", 1085, 410, 18);
-                } else if (shTower.getType() == 3) {
-                    FontSet.drawAkrobat("It can cause more damage to", 1085, 370, 18);
-                    FontSet.drawAkrobat("enemies in the air but can't", 1085, 390, 18);
-                    FontSet.drawAkrobat("attack the ground enemies.", 1085, 410, 18);
-                } else if (shTower.getType() == 4) {
-                    FontSet.drawAkrobat("It can cause a lot of", 1085, 370, 18);
-                    FontSet.drawAkrobat("damage to the entire area of", 1085, 390, 18);
-                    FontSet.drawAkrobat("the enemy.", 1085, 410, 18);
-                } else if (shTower.getType() == 5) {
-                    FontSet.drawAkrobat("It can quickly attack the", 1085, 370, 18);
-                    FontSet.drawAkrobat("enemies on the ground,", 1085, 390, 18);
-                    FontSet.drawAkrobat("causing heavy damage to", 1085, 410, 18);
-                    FontSet.drawAkrobat("the enemy.", 1085, 430, 18);
-                } else if (shTower.getType() == 6) {
-                    FontSet.drawAkrobat("Accurate antiaircraft tower", 1085, 370, 18);
-                    FontSet.drawAkrobat("can very easily shoot down", 1085, 390, 18);
-                    FontSet.drawAkrobat("the enemy in the air", 1085, 410, 18);
+                FontSet.drawAkrobat("Damage: " + shTower.getDamage(), 1085, 310, 18 ,Color.decode("#730000"));
+                FontSet.drawAkrobat("Range: " + shTower.getRange(),1085, 330, 18,Color.decode("#730000"));
+                FontSet.drawAkrobat("Atk Speed: " + Math.round(1000f/shTower.getShootInterval()*100)/100f, 1085, 350, 18,Color.decode("#730000"));
+                if(shTower.getType() == 1){
+                    FontSet.drawAkrobat("Cheap towers allow you ", 1085, 380, 18,Color.decode("#730000"));
+                    FontSet.drawAkrobat("to quickly deploy.", 1085, 400, 18,Color.decode("#730000"));
+                }else if(shTower.getType() == 2){
+                    FontSet.drawAkrobat("It can cause more damage to" , 1085, 380, 18,Color.decode("#730000"));
+                    FontSet.drawAkrobat("enemies on the ground but " , 1085, 400, 18,Color.decode("#730000"));
+                    FontSet.drawAkrobat("can't attack the air enemies." , 1085, 420, 18,Color.decode("#730000"));
+                }else if(shTower.getType() == 3){
+                    FontSet.drawAkrobat("It can cause more damage to", 1085, 380, 18,Color.decode("#730000"));
+                    FontSet.drawAkrobat("enemies in the air but can't", 1085, 400, 18,Color.decode("#730000"));
+                    FontSet.drawAkrobat("attack the ground enemies.", 1085, 420, 18,Color.decode("#730000"));
+                }else if(shTower.getType() == 4){
+                    FontSet.drawAkrobat("It can cause a lot of", 1085, 380, 18,Color.decode("#730000"));
+                    FontSet.drawAkrobat("damage to the entire area of", 1085, 400, 18,Color.decode("#730000"));
+                    FontSet.drawAkrobat("the enemy.", 1085, 420, 18,Color.decode("#730000"));
+                }else if(shTower.getType() == 5){
+                    FontSet.drawAkrobat("It can quickly attack the", 1085, 380, 18,Color.decode("#730000"));
+                    FontSet.drawAkrobat("enemies on the ground,", 1085, 400, 18,Color.decode("#730000"));
+                    FontSet.drawAkrobat("causing heavy damage to", 1085, 420, 18,Color.decode("#730000"));
+                    FontSet.drawAkrobat("the enemy.", 1085, 440, 18,Color.decode("#730000"));
+                }else if(shTower.getType() == 6) {
+                    FontSet.drawAkrobat("Accurate antiaircraft tower", 1085, 380, 18,Color.decode("#730000"));
+                    FontSet.drawAkrobat("can very easily shoot down", 1085, 400, 18,Color.decode("#730000"));
+                    FontSet.drawAkrobat("the enemy in the air", 1085, 420, 18,Color.decode("#730000"));
                 }
 
-                if (selectedTower == buyTower) {
-                    ImageManager.getImage(ImageManager.GAME_GEM).draw(1080, 450);
-                    FontSet.drawAkrobat("Cost: " + buyTower.getCost(), 1120, 457, 26);
+                if(selectedTower == buyTower){
+                    ImageManager.getImage(ImageManager.GAME_GEM).draw(1080,460);
+                    FontSet.drawAkrobat("Cost: " + buyTower.getCost(),1120, 467, 26,Color.decode("#730000"));
                 }
-            } else if (selectedTower instanceof SlowTower) {
+            } else if(selectedTower instanceof SlowTower) {
                 SlowTower slowTower = (SlowTower) selectedTower;
-                FontSet.drawAkrobat("Range: " + slowTower.getRange(), 1085, 300, 18);
-                FontSet.drawAkrobat("Slow Value: " + (int) ((1 - slowTower.getSlowValue()) * 100) + "%", 1085, 320, 18);
+                FontSet.drawAkrobat("Range: "+slowTower.getRange(),1085, 310, 18,Color.decode("#730000"));
+                FontSet.drawAkrobat("Slow Value: "+(int)((1-slowTower.getSlowValue())*100)+"%",1085, 330, 18,Color.decode("#730000"));
 
-                FontSet.drawAkrobat("It can reduce the speed of", 1085, 350, 18);
-                FontSet.drawAkrobat("enemy movement on the", 1085, 370, 18);
-                FontSet.drawAkrobat("ground.", 1085, 390, 18);
-                if (selectedTower == buyTower) {
-                    ImageManager.getImage(ImageManager.GAME_GEM).draw(1080, 450);
-                    FontSet.drawAkrobat("Cost: " + buyTower.getCost(), 1120, 457, 26);
+                FontSet.drawAkrobat("It can reduce the speed of", 1085, 360, 18,Color.decode("#730000"));
+                FontSet.drawAkrobat("enemy movement on the", 1085, 380, 18,Color.decode("#730000"));
+                FontSet.drawAkrobat("ground.", 1085, 400, 18,Color.decode("#730000"));
+                if(selectedTower == buyTower){
+                    ImageManager.getImage(ImageManager.GAME_GEM).draw(1080,460);
+                    FontSet.drawAkrobat("Cost: " + buyTower.getCost(),1120, 467, 26,Color.decode("#730000"));
                 }
 
-            } else if (selectedTower instanceof RadiationTower) {
+            } else if(selectedTower instanceof RadiationTower) {
                 RadiationTower radiationTower = (RadiationTower) selectedTower;
-                FontSet.drawAkrobat("Range: " + radiationTower.getRange(), 1085, 300, 18);
-                FontSet.drawAkrobat("Slow Value: " + (int) ((1 - radiationTower.getSlowValue()) * 100) + "%", 1085, 320, 18);
+                FontSet.drawAkrobat("Range: "+radiationTower.getRange(),1085, 310, 18,Color.decode("#730000"));
+                FontSet.drawAkrobat("Slow Value: "+(int)((1-radiationTower.getSlowValue())*100)+"%",1085, 330, 18,Color.decode("#730000"));
 
-                FontSet.drawAkrobat("Powerful radiation slows", 1085, 350, 18);
-                FontSet.drawAkrobat("down the movement of all the enemy", 1085, 370, 18);
-                FontSet.drawAkrobat("all the enemy.", 1085, 390, 18);
-                if (selectedTower == buyTower) {
-                    ImageManager.getImage(ImageManager.GAME_GEM).draw(1080, 450);
-                    FontSet.drawAkrobat("Cost: " + buyTower.getCost(), 1120, 457, 26);
+                FontSet.drawAkrobat("Powerful radiation slows", 1085, 360, 18,Color.decode("#730000"));
+                FontSet.drawAkrobat("down the movement of all the enemy", 1085, 380, 18,Color.decode("#730000"));
+                FontSet.drawAkrobat("all the enemy.", 1085, 400, 18,Color.decode("#730000"));
+                if(selectedTower == buyTower){
+                    ImageManager.getImage(ImageManager.GAME_GEM).draw(1080,460);
+                    FontSet.drawAkrobat("Cost: " + buyTower.getCost(),1120, 467, 26,Color.decode("#730000"));
                 }
             }
 
             if (selectedTower != buyTower && selectedTower != null) {
                 if (selectedTower.getUpgradeLevel() < 2) {
-                    ImageManager.getImage(ImageManager.GAME_GEM).draw(1080, 450);
-                    FontSet.drawAkrobat("Upgrade: " + selectedTower.getUpgradeCost(), 1120, 457, 26);
+                    ImageManager.getImage(ImageManager.GAME_GEM).draw(1080,450);
+                    FontSet.drawAkrobat("Upgrade: "+selectedTower.getUpgradeCost(),1120, 457, 26,Color.decode("#730000"));
                     buttonUpgrade.render(gc, g);
                 }
                 buttonSell.render(gc, g);

@@ -7,11 +7,11 @@ import java.awt.Font;
 import org.newdawn.slick.util.ResourceLoader;
 
 public class FontSet {
-    private static TrueTypeFont Akrobat18, Akrobat26, Akrobat34, Akrobat42, Akrobat58, Akrobat73;
+    private static TrueTypeFont Akrobat18, Akrobat22,Akrobat26, Akrobat34, Akrobat42, Akrobat58, Akrobat73;
     private static TrueTypeFont Lucinda18, Lucinda26, Lucinda34, Lucinda42, Lucinda58, Lucinda73;
     private static TrueTypeFont Fontaine18, Fontaine26, Fontaine34, Fontaine42, Fontaine58, Fontaine73;
     private static TrueTypeFont ButterScotch18, ButterScotch26, ButterScotch34, ButterScotch42, ButterScotch58, ButterScotch73;
-    private static TrueTypeFont Stylus18, Stylus26, Stylus34, Stylus42, Stylus58, Stylus73;
+    private static TrueTypeFont Stylus18, Stylus22, Stylus26, Stylus34, Stylus42, Stylus58, Stylus73;
     private static Color color;
     static{
         try {
@@ -19,11 +19,13 @@ public class FontSet {
 
             Font awtFont2 = Font.createFont(Font.TRUETYPE_FONT, inputStream);
             Akrobat18 = new TrueTypeFont(awtFont2.deriveFont(18F),true);
+            Akrobat22 = new TrueTypeFont(awtFont2.deriveFont(22F),true);
             Akrobat26 = new TrueTypeFont(awtFont2.deriveFont(26F),true);
             Akrobat34 = new TrueTypeFont(awtFont2.deriveFont(34F),true);
             Akrobat42 = new TrueTypeFont(awtFont2.deriveFont(42F),true);
             Akrobat58 = new TrueTypeFont(awtFont2.deriveFont(58F),true);
             Akrobat73 = new TrueTypeFont(awtFont2.deriveFont(73F),true);
+
 
 
             InputStream inputStream2= ResourceLoader.getResourceAsStream("res/fonts/Lucinda.ttf");
@@ -63,13 +65,14 @@ public class FontSet {
 
             Font awtFont6 = Font.createFont(Font.TRUETYPE_FONT, inputStream5);
             Stylus18 = new TrueTypeFont(awtFont6.deriveFont(18F),true);
+            Stylus22 = new TrueTypeFont(awtFont6.deriveFont(22F),true);
             Stylus26 = new TrueTypeFont(awtFont6.deriveFont(26F),true);
             Stylus34 = new TrueTypeFont(awtFont6.deriveFont(34F),true);
             Stylus42 = new TrueTypeFont(awtFont6.deriveFont(42F),true);
             Stylus58 = new TrueTypeFont(awtFont6.deriveFont(58F),true);
             Stylus73 = new TrueTypeFont(awtFont6.deriveFont(73F),true);
 
-            color = Color.decode("#2988ff");
+            color = Color.decode("#c71585");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -79,9 +82,11 @@ public class FontSet {
     public static void drawAkrobat(String str, int x, int y, int size) {
         drawAkrobat(str,x,y,size,color);
     }
-    private static void drawAkrobat(String str, int x, int y, int size, Color color) {
+    public static void drawAkrobat(String str, int x, int y, int size, Color color) {
         if(size == 18) {
             Akrobat18.drawString(x, y, str, color);
+        } else if(size == 22) {
+            Akrobat22.drawString(x, y, str, color);
         } else if(size == 26) {
             Akrobat26.drawString(x, y, str, color);
         } else if(size == 34) {
@@ -97,7 +102,7 @@ public class FontSet {
     public static void drawLucinda(String str, int x, int y, int size) {
         drawLucinda(str,x,y,size,color);
     }
-    private static void drawLucinda(String str, int x, int y, int size, Color color) {
+    public static void drawLucinda(String str, int x, int y, int size, Color color) {
         if(size == 18) {
             Lucinda18.drawString(x, y, str, color);
         } else if(size == 26) {
@@ -115,7 +120,7 @@ public class FontSet {
     public static void drawFontaine(String str, int x, int y, int size) {
         drawFontaine(str,x,y,size,color);
     }
-    private static void drawFontaine(String str, int x, int y, int size, Color color) {
+    public static void drawFontaine(String str, int x, int y, int size, Color color) {
         if(size == 18) {
             Fontaine18.drawString(x, y, str, color);
         } else if(size == 26) {
@@ -133,7 +138,7 @@ public class FontSet {
     public static void drawButterScotch(String str, int x, int y, int size) {
         drawButterScotch(str,x,y,size,color);
     }
-    private static void drawButterScotch(String str, int x, int y, int size, Color color) {
+    public static void drawButterScotch(String str, int x, int y, int size, Color color) {
         if(size == 18) {
             ButterScotch18.drawString(x, y, str, color);
         } else if(size == 26) {
@@ -151,9 +156,11 @@ public class FontSet {
     public static void drawStylus(String str, int x, int y, int size) {
         drawStylus(str,x,y,size,color);
     }
-    private static void drawStylus(String str, int x, int y, int size, Color color) {
+    public static void drawStylus(String str, int x, int y, int size, Color color) {
         if(size == 18) {
             Stylus18.drawString(x, y, str, color);
+        } else if(size == 22) {
+            Stylus22.drawString(x, y, str, color);
         } else if(size == 26) {
             Stylus26.drawString(x, y, str, color);
         } else if(size == 34) {
