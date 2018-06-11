@@ -10,10 +10,10 @@ public class AntiaircraftTower extends ShootingTower {
 
     public AntiaircraftTower(Point position, Game game) {
         super(position, 6,
-                new int[]{7, 8, 9},
-                new int[]{600, 500, 400},
-                new int[]{150, 200, 250},
-                new int[]{150, 200, 300},
+                new int[]{35, 40, 45},
+                new int[]{1500, 1400, 1300},
+                new int[]{250, 300, 350},
+                new int[]{200, 300, 400},
                 new Image[]{
                         ImageManager.getImage(ImageManager.ANTIAIRCRAFA_TOWER),
                         ImageManager.getImage(ImageManager.ANTIAIRCRAFA_TOWER),

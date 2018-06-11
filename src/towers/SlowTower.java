@@ -14,7 +14,7 @@ public class SlowTower extends Tower {
 
     public SlowTower(Point position, Game game) {
         super(position,
-                new int[]{1000, 1000, 1000},
+                new int[]{100, 150, 200},
                 new int[]{150, 200, 300},
                 new Image[]{
                         ImageManager.getImage(ImageManager.SLOW_TOWER),

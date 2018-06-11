@@ -14,14 +14,14 @@ public class RadiationTower extends Tower {
 
     public RadiationTower(Point position, Game game) {
         super(position,
-                new int[]{1000, 1000, 1000},
-                new int[]{150, 200, 300},
+                new int[]{110, 170, 230},
+                new int[]{200, 250, 350},
                 new Image[]{
                         ImageManager.getImage(ImageManager.RADIATION_TOWER),
                         ImageManager.getImage(ImageManager.RADIATION_TOWER),
                         ImageManager.getImage(ImageManager.RADIATION_TOWER)
                 }, game);
-        slowValues = new float[]{0.7f, 0.6f, 0.5f};
+        slowValues = new float[]{0.6f, 0.5f, 0.4f};
     }
 
     public float getSlowValue() {
