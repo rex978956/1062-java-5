@@ -42,6 +42,11 @@ public class ImageManager {
     public static final int GAME_SCORE_BOARD = 29;
     public static final int GAME_SUBMIT = 30;
 
+    public static final int RESULT_WIN = 31;
+    public static final int RESULT_LOSE = 32;
+    public static final int RESULT_SCOREBG = 33;
+    public static final int RESULT_TEXTFIELD_BG = 34;
+
 
     /*Emeny*/
     public static final int BLUESOLDIER = 0;
@@ -105,7 +110,10 @@ public class ImageManager {
             imageList.add(new Image("res/images/menus/gem.png")); //28
             imageList.add(new Image("res/images/menus/score_board.png")); //29
             imageList.add(new Image("res/images/menus/button-submit.png")); //30
-
+            imageList.add(new Image("res/images/menus/victory.png")); //31
+            imageList.add(new Image("res/images/menus/lose.png")); //32
+            imageList.add(new Image("res/images/menus/scorebg.png")); //33
+            imageList.add(new Image("res/images/menus/textfield_bg_active.png")); //34
 
         } catch (SlickException e) {
             e.printStackTrace();

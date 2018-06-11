@@ -2,6 +2,7 @@ package states;
 
 import main.ImageManager;
 
+import misc.FontSet;
 import org.newdawn.slick.*;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
@@ -25,6 +26,7 @@ public class Result extends BasicGameState {
     private Game game;
     private boolean isWin;
     private MouseOverArea nextButton;
+    private Image background, sb, win, lose, scorebg;
 
     private String username ;
     private TextField textField;
@@ -40,12 +42,12 @@ public class Result extends BasicGameState {
     @Override
     public void init(final GameContainer gc, final StateBasedGame sbg) {
         username = "Anonymous";
-//        background = new Image("images/world.png");
-        try {
-            textbg = new Image("res/images/menus/textfield_bg_active.png");
-        } catch (SlickException e) {
-            e.printStackTrace();
-        }
+        background = ImageManager.getImage(ImageManager.MENU_BACKGROUND);
+        win = ImageManager.getImage(ImageManager.RESULT_WIN);
+        lose = ImageManager.getImage(ImageManager.RESULT_LOSE);
+        scorebg = ImageManager.getImage(ImageManager.RESULT_SCOREBG);
+        textbg = ImageManager.getImage(ImageManager.RESULT_TEXTFIELD_BG);
+
         InputStream inputStream = ResourceLoader.getResourceAsStream("res/fonts/gnyrwn.ttf");
 
 
@@ -55,33 +57,28 @@ public class Result extends BasicGameState {
             e.printStackTrace();
         }
         TrueTypeFont font35 = new TrueTypeFont(awtFont.deriveFont(45f), true);
-        textField = new TextField(gc, font35, 441, 450, 398, 58);
+        textField = new TextField(gc, font35, 441, 520, 398, 58);
         textField.setText(username);
-        textField.setTextColor(org.newdawn.slick.Color.green);
+        textField.setTextColor(Color.decode("#90ee90"));
         textField.setBorderColor(null);
         textField.setConsumeEvents(true);
         textField.setCursorPos(9);
         textField.setMaxLength(13);
         textField.setCursorVisible(true);
 
-        Image ig = null;
-        try {
-            ig = new Image("res/images/menus/button-arrow-left.png");
-        } catch (SlickException e) {
-            e.printStackTrace();
-        }
-        submit = new MouseOverArea(gc, ig, 454, 600);
+        sb = ImageManager.getImage(ImageManager.GAME_SUBMIT);
+
+        submit = new MouseOverArea(gc, sb, 839 - sb.getWidth(),  590);
         submit.addListener(cmp -> {
             username = textField.getText();
             new InsertJdbc(game.getMapName(), username, game.getScore());
-            System.out.println("!!!!!!!!!!!!");
+            System.out.println("user: "+username);
         });
 
 
 
-        nextButton = new MouseOverArea(gc,ImageManager.getImage(ImageManager.GAME_BUTTON_RETRY),
-                1000 - ImageManager.getImage(ImageManager.GAME_BUTTON_RETRY).getWidth()/2,
-                600 - ImageManager.getImage(ImageManager.GAME_BUTTON_RETRY).getHeight()/2);
+        nextButton = new MouseOverArea(gc,ImageManager.getImage(ImageManager.MENU_BUTTON_RARROW),
+                1100 - ImageManager.getImage(ImageManager.MENU_BUTTON_RARROW).getWidth()/2, 650);
 
         nextButton.addListener(cmp -> {
             sbg.enterState(5,new FadeOutTransition(Color.black,600), new FadeInTransition(Color.black,600));
@@ -90,20 +87,20 @@ public class Result extends BasicGameState {
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) {
-
+        background.draw(0,0);
+        scorebg.draw(640 - scorebg.getWidth()/2, 350);
         if(isWin) {
-            g.drawString("WIN", 100,100);
-            g.drawString("mapID: "+game.getMapName()+"   Score: "+game.getScore(), 300,300);
+            win.draw(640 - win.getWidth()/2, 40);
+            FontSet.drawButterScotch("MapName: "+game.getMapName()+"   Score: "+game.getScore(), 380,360, 42,Color.decode("#deb008"));
         } else {
-            g.drawString("LOSE", 100,100);
-            g.drawString("mapID: "+game.getMapName()+"   Score: "+game.getScore(), 300,300);
+            lose.draw(640 - lose.getWidth()/2, 40);
+            FontSet.drawButterScotch("MapName: "+game.getMapName()+"   Score: "+game.getScore(), 380,360 ,42 ,Color.decode("#deb008"));
         }
-
         nextButton.render(gc, g);
-
         textField.render(gc, g);
-        textbg.draw(441,450);
+        textbg.draw(441,520);
         submit.render(gc, g);
+
 
     }
 

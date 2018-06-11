@@ -31,6 +31,7 @@ public class MapMenu extends BasicGameState {
     private int selectedMap;
 
     private Music sevenMusic;
+    private Image background;
 
     private void selectPrevMap() {
         if (selectedMap > 0) {
@@ -88,7 +89,7 @@ public class MapMenu extends BasicGameState {
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
 
-
+        background = ImageManager.getImage(ImageManager.MENU_BACKGROUND);
         mapList = MapLoader.loadMaps();
         sevenMusic = new Music("res/sound/Seven.ogg");
 
@@ -111,7 +112,7 @@ public class MapMenu extends BasicGameState {
      */
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) {
-
+        background.draw(0,0);
         //g.setBackground(Color.red);
         mapPreview.render(container, g);
         mapList.get(selectedMap).getPreview().drawCentered(container.getWidth() / 2, container.getHeight() / 2);

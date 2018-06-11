@@ -3,10 +3,7 @@ package states;
 import main.ImageManager;
 
 import misc.FontSet;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -18,7 +15,7 @@ public class Rank extends BasicGameState {
 
     private Game game;
 
-    private Image scoreboard;
+    private Image scoreboard, background;
     private MouseOverArea retryButton, quitButton;
     ReadJdbc read;
 
@@ -29,6 +26,7 @@ public class Rank extends BasicGameState {
     @Override
     public void init(final GameContainer gc, final StateBasedGame sbg) {
         scoreboard = ImageManager.getImage(ImageManager.GAME_SCORE_BOARD);
+        background = ImageManager.getImage(ImageManager.MENU_BACKGROUND);
         read = new ReadJdbc(game.getMapName());
         retryButton = new MouseOverArea(gc,ImageManager.getImage(ImageManager.GAME_BUTTON_RETRY),
                 440 - ImageManager.getImage(ImageManager.GAME_BUTTON_RETRY).getWidth()/2,
@@ -62,10 +60,11 @@ public class Rank extends BasicGameState {
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) {
+        background.draw(0,0);
         for (int i=0 ; i<read.getUsername().size() && i<10 ; i++){
-            FontSet.drawButterScotch(""+(i+1),400,130+i*45,34);
-            FontSet.drawButterScotch("User: "+read.getUsername().get(i),442,130+i*45,34);
-            FontSet.drawButterScotch("Score: "+read.getScore().get(i),730,130+i*45,34);
+            FontSet.drawButterScotch(""+(i+1),400,130+i*45,34, Color.decode("#deb008"));
+            FontSet.drawButterScotch("User: "+read.getUsername().get(i),442,130+i*45,34, Color.decode("#deb008"));
+            FontSet.drawButterScotch("Score: "+read.getScore().get(i),730,130+i*45,34 ,Color.decode("#deb008"));
         }
         quitButton.render(gc, g);
         retryButton.render(gc, g);
