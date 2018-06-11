@@ -126,21 +126,21 @@ public class Game extends BasicGameState {
     @Override
     public void init(GameContainer gc, final StateBasedGame sbg) {
         buttonUpgrade = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_UPGRADE),
-                1192 - ImageManager.getImage(ImageManager.GAME_BUTTON_UPGRADE).getWidth() / 2, 270);
+                1168 - ImageManager.getImage(ImageManager.GAME_BUTTON_UPGRADE).getWidth() / 2, 570);
         buttonSell = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_SELL),
-                1192 - ImageManager.getImage(ImageManager.GAME_BUTTON_SELL).getWidth() / 2, 320);
+                1168 - ImageManager.getImage(ImageManager.GAME_BUTTON_SELL).getWidth() / 2, 600);
         buttonStartWave = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_STARTWAVE),
-                1192 - ImageManager.getImage(ImageManager.GAME_BUTTON_STARTWAVE).getWidth() / 2, 705);
+                1168 - ImageManager.getImage(ImageManager.GAME_BUTTON_STARTWAVE).getWidth() / 2, 705);
 
 
-        buttonNormalTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.NORMAL_TOWER), 1120, 50);
-        buttonGroundTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GROUND_TOWER), 1200, 50);
-        buttonAirTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.AIR_TOWER), 1120, 100);
-        buttonSlowTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.SLOW_TOWER), 1200, 100);
-        buttonMachineTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.MACHINE_TOWER), 1120, 150);
-        buttonArtilleryTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.ARTILLERY_TOWER), 1200, 150);
-        buttonAntiaircraftTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.ANTIAIRCRAFA_TOWER), 1120, 200);
-        buttonRadiationTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.RADIATION_TOWER), 1200, 200);
+        buttonNormalTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.NORMAL_TOWER), 1100, 50);
+        buttonGroundTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GROUND_TOWER), 1180, 50);
+        buttonAirTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.AIR_TOWER), 1100, 100);
+        buttonSlowTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.SLOW_TOWER), 1180, 100);
+        buttonMachineTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.MACHINE_TOWER), 1100, 150);
+        buttonArtilleryTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.ARTILLERY_TOWER), 1180, 150);
+        buttonAntiaircraftTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.ANTIAIRCRAFA_TOWER), 1100, 200);
+        buttonRadiationTower = new MouseOverArea(gc, ImageManager.getImage(ImageManager.RADIATION_TOWER), 1180, 200);
 
 
         buttonQuitGame = new MouseOverArea(gc, ImageManager.getImage(ImageManager.GAME_BUTTON_QUITGAME),
@@ -418,17 +418,6 @@ public class Game extends BasicGameState {
 
         buttonStartWave.render(gc, g);
 
-        Integer[] nextWave = map.getWaveUnits(wave + 1);
-        if (nextWave != null) {
-            g.drawString("Next Wave:", 1105, 660);
-            g.drawString("Ground: " + nextWave[0], 1105, 680);
-            g.drawString("Air: " + nextWave[1], 1105, 700);
-            g.drawString("GroundBoss: " + nextWave[2], 1105, 720);
-        } else {
-            g.drawString("Last Wave!", 1105, 720);
-        }
-
-
         buttonNormalTower.render(gc, g);
         buttonAirTower.render(gc, g);
         buttonSlowTower.render(gc, g);
@@ -469,40 +458,70 @@ public class Game extends BasicGameState {
 
             if(selectedTower instanceof ShootingTower) {
                 ShootingTower shTower = (ShootingTower) selectedTower;
-                FontSet.drawAkrobat("Damage: " + shTower.getDamage(), 1105, 220, 18);
-                FontSet.drawAkrobat("Range: " + shTower.getRange(),1105, 240, 18);
-                FontSet.drawAkrobat("Atk Speed: " + Math.round(1000f/shTower.getShootInterval()*100)/100f, 1105, 260, 18);
+                FontSet.drawAkrobat("Damage: " + shTower.getDamage(), 1085, 300, 18);
+                FontSet.drawAkrobat("Range: " + shTower.getRange(),1085, 320, 18);
+                FontSet.drawAkrobat("Atk Speed: " + Math.round(1000f/shTower.getShootInterval()*100)/100f, 1085, 340, 18);
                 if(shTower.getType() == 1){
-                    FontSet.drawAkrobat("info1", 1105, 240, 18);
+                    FontSet.drawAkrobat("Cheap towers allow you ", 1085, 370, 18);
+                    FontSet.drawAkrobat("to quickly deploy.", 1085, 390, 18);
                 }else if(shTower.getType() == 2){
-                    FontSet.drawAkrobat("info2" , 1105, 240, 18);
+                    FontSet.drawAkrobat("It can cause more damage to" , 1085, 370, 18);
+                    FontSet.drawAkrobat("enemies on the ground but " , 1085, 390, 18);
+                    FontSet.drawAkrobat("can't attack the air enemies." , 1085, 410, 18);
                 }else if(shTower.getType() == 3){
-                    FontSet.drawAkrobat("info3", 1105, 240, 18);
+                    FontSet.drawAkrobat("It can cause more damage to", 1085, 370, 18);
+                    FontSet.drawAkrobat("enemies in the air but can't", 1085, 390, 18);
+                    FontSet.drawAkrobat("attack the ground enemies.", 1085, 410, 18);
+                }else if(shTower.getType() == 4){
+                    FontSet.drawAkrobat("It can cause a lot of", 1085, 370, 18);
+                    FontSet.drawAkrobat("damage to the entire area of", 1085, 390, 18);
+                    FontSet.drawAkrobat("the enemy.", 1085, 410, 18);
+                }else if(shTower.getType() == 5){
+                    FontSet.drawAkrobat("It can quickly attack the", 1085, 370, 18);
+                    FontSet.drawAkrobat("enemies on the ground,", 1085, 390, 18);
+                    FontSet.drawAkrobat("causing heavy damage to", 1085, 410, 18);
+                    FontSet.drawAkrobat("the enemy.", 1085, 430, 18);
+                }else if(shTower.getType() == 6) {
+                    FontSet.drawAkrobat("Accurate antiaircraft tower", 1085, 370, 18);
+                    FontSet.drawAkrobat("can very easily shoot down", 1085, 390, 18);
+                    FontSet.drawAkrobat("the enemy in the air", 1085, 410, 18);
                 }
 
                 if(selectedTower == buyTower){
-                    FontSet.drawAkrobat("Cost: " + buyTower.getCost(),1105, 300, 18);
+                    ImageManager.getImage(ImageManager.GAME_GEM).draw(1080,450);
+                    FontSet.drawAkrobat("Cost: " + buyTower.getCost(),1120, 457, 26);
                 }
             } else if(selectedTower instanceof SlowTower) {
                 SlowTower slowTower = (SlowTower) selectedTower;
-                FontSet.drawAkrobat("Range: "+slowTower.getRange(),1105, 220, 18);
-                FontSet.drawAkrobat("Slow Value: "+(int)((1-slowTower.getSlowValue())*100)+"%",1105, 240, 18);
+                FontSet.drawAkrobat("Range: "+slowTower.getRange(),1085, 300, 18);
+                FontSet.drawAkrobat("Slow Value: "+(int)((1-slowTower.getSlowValue())*100)+"%",1085, 320, 18);
+
+                FontSet.drawAkrobat("It can reduce the speed of", 1085, 350, 18);
+                FontSet.drawAkrobat("enemy movement on the", 1085, 370, 18);
+                FontSet.drawAkrobat("ground.", 1085, 390, 18);
                 if(selectedTower == buyTower){
-                    FontSet.drawAkrobat("Cost: " + buyTower.getCost(),1105, 260, 18);
+                    ImageManager.getImage(ImageManager.GAME_GEM).draw(1080,450);
+                    FontSet.drawAkrobat("Cost: " + buyTower.getCost(),1120, 457, 26);
                 }
 
             } else if(selectedTower instanceof RadiationTower) {
                 RadiationTower radiationTower = (RadiationTower) selectedTower;
-                FontSet.drawAkrobat("Range: "+radiationTower.getRange(),1105, 220, 18);
-                FontSet.drawAkrobat("Slow Value: "+(int)((1-radiationTower.getSlowValue())*100)+"%",1105, 240, 18);
+                FontSet.drawAkrobat("Range: "+radiationTower.getRange(),1085, 300, 18);
+                FontSet.drawAkrobat("Slow Value: "+(int)((1-radiationTower.getSlowValue())*100)+"%",1085, 320, 18);
+
+                FontSet.drawAkrobat("Powerful radiation slows", 1085, 350, 18);
+                FontSet.drawAkrobat("down the movement of all the enemy", 1085, 370, 18);
+                FontSet.drawAkrobat("all the enemy.", 1085, 390, 18);
                 if(selectedTower == buyTower){
-                    FontSet.drawAkrobat("Cost: " + buyTower.getCost(),1105, 260, 18);
+                    ImageManager.getImage(ImageManager.GAME_GEM).draw(1080,450);
+                    FontSet.drawAkrobat("Cost: " + buyTower.getCost(),1120, 457, 26);
                 }
             }
 
             if (selectedTower != buyTower && selectedTower != null) {
                 if (selectedTower.getUpgradeLevel() < 2) {
-                    FontSet.drawAkrobat(""+selectedTower.getUpgradeCost(),1170, 339, 26);
+                    ImageManager.getImage(ImageManager.GAME_GEM).draw(1080,450);
+                    FontSet.drawAkrobat("Upgrade: "+selectedTower.getUpgradeCost(),1120, 457, 26);
                     buttonUpgrade.render(gc, g);
                 }
                 buttonSell.render(gc, g);

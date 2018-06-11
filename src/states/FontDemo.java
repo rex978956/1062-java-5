@@ -15,12 +15,27 @@ public class FontDemo extends BasicGameState {
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) {
-        FontSet.drawAkrobat("Demo58", 550, 100, 73);
-        FontSet.drawAkrobat("Demo50", 550, 200, 58);
-        FontSet.drawAkrobat("Demo42", 550, 300, 42);
-        FontSet.drawAkrobat("Demo34", 550, 400, 34);
-        FontSet.drawAkrobat("Demo16", 550, 500, 26);
-        FontSet.drawAkrobat("Demo18", 550, 600, 18);
+        FontSet.drawAkrobat("Demo58", 0, 100, 73);
+        FontSet.drawAkrobat("Demo50", 0, 200, 58);
+        FontSet.drawAkrobat("Demo42", 0, 300, 42);
+        FontSet.drawAkrobat("Demo34", 0, 400, 34);
+        FontSet.drawAkrobat("Demo16", 0, 500, 26);
+        FontSet.drawAkrobat("Demo18", 0, 600, 18);
+
+        FontSet.drawButterScotch("Demo16", 250, 500, 26);
+        FontSet.drawButterScotch("Demo18", 250, 600, 18);
+
+        FontSet.drawFontaine("Demo16", 500, 500, 26);
+        FontSet.drawFontaine("Demo18", 500, 600, 18);
+
+        FontSet.drawLucinda("Demo16", 750, 500, 26);
+        FontSet.drawLucinda("Demo18", 750, 600, 18);
+
+
+        FontSet.drawStylus("Demo16", 1000, 500, 26);
+        FontSet.drawStylus("Demo18", 1000, 600, 18);
+
+
     }
 
     @Override

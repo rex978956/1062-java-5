@@ -9,7 +9,7 @@ import states.Game;
 public class AntiaircraftTower extends ShootingTower {
 
     public AntiaircraftTower(Point position, Game game) {
-        super(position, 3,
+        super(position, 6,
                 new int[]{7, 8, 9},
                 new int[]{600, 500, 400},
                 new int[]{150, 200, 250},

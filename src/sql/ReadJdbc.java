@@ -11,7 +11,6 @@ public class ReadJdbc {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 		} catch (Exception ex) {
-			// handle the error
 		}
 
 		Connection conn = null;
@@ -21,12 +20,9 @@ public class ReadJdbc {
 
 			stmt= conn.createStatement();
 
-//			ResultSet rs = stmt.executeQuery("select s.student_id, student_name, java_teacher , teacher_name" + " from student_table s , teacher_table t"
-//					+ " where t.teacher_id = s.java_teacher");
 			ResultSet rs = stmt.executeQuery("select map.username, map.score from "+mapName+" map"+
 					" ORDER BY score DESC");
 			while (rs.next()||username.size()>10) {
-//			    System.out.println(rs.getString(1)+"   "+rs.getInt(2));
 				        username.add(rs.getString(1));
 						score.add(rs.getInt(2));
 			}

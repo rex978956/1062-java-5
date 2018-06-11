@@ -38,6 +38,7 @@ public class ImageManager {
     public static final int GAME_BUTTON_QUITGAME = 25;
     public static final int GAME_BUTTON_CANCEL = 26;
     public static final int GAME_BUTTON_RETRY = 27;
+    public static final int GAME_GEM = 28;
 
 
     /*Emeny*/
@@ -99,6 +100,7 @@ public class ImageManager {
             imageList.add(new Image("res/images/menus/button-quitgame.png")); //25
             imageList.add(new Image("res/images/menus/button-cancel.png")); //26
             imageList.add(new Image("res/images/menus/button-retry.png")); //27
+            imageList.add(new Image("res/images/menus/gem.png")); //28
 
 
         } catch (SlickException e) {
