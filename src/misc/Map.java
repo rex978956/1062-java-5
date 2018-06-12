@@ -15,9 +15,6 @@ import towers.Tower;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-/**
- * Map instance
- */
 public class Map implements TileBasedMap {
 
     /* Settings */
@@ -188,95 +185,6 @@ public class Map implements TileBasedMap {
     public void setWaveHealthMultiplier(int waveHealthMultiplier) {
         this.waveHealthMultiplier = waveHealthMultiplier;
     }
-
-   /* public int getStartHpBlueSolider() {
-        return startHpBlueSolider;
-    }
-
-    public void setStartHpBlueSolider(int startHpBlueSolider) {
-        this.startHpBlueSolider = startHpBlueSolider;
-    }
-
-    public int getStartHpGreenSolider() {
-        return startHpGreenSolider;
-    }
-
-    public void setStartHpGreenSolider(int startHpGreenSolider) {
-        this.startHpBlueSolider = startHpGreenSolider;
-    }
-
-    public int getStartHpPurpleSolider() {
-        return startHpPurpleSolider;
-    }
-
-    public void setStartHpPurpleSolider(int startHpPurpleSolider) {
-        this.startHpPurpleSolider = startHpPurpleSolider;
-    }
-
-    public int getStartHpYellowElephant() {
-        return startHpYellowElephant;
-    }
-
-    public void setStartHpYellowElephant(int startHpYellowElephant) {
-        this.startHpYellowElephant = startHpYellowElephant;
-    }
-
-    public int getStartRedElephant() {
-        return startRedElephant;
-    }
-
-    public void setStartRedElephant(int startRedElephant) {
-        this.startRedElephant = startRedElephant;
-    }
-
-    public int getStartHpBlueTiger() {
-        return startHpBlueTiger;
-    }
-
-    public void setStartHpBlueTiger(int startHpBlueTiger) {
-        this.startHpBlueTiger = startHpBlueTiger;
-    }
-
-    public int getStartHpYellowTiger() {
-        return startHpYellowTiger;
-    }
-
-    public void setStartHpYellowTiger(int startHpYellowTiger) {
-        this.startHpYellowTiger = startHpYellowTiger;
-    }
-
-    public int getStartHpFat() {
-        return startHpFat;
-    }
-
-    public void setStartHpFat(int startHpFat) {
-        this.startHpFat = startHpFat;
-    }
-
-    public int getStartHpSkeleton() {
-        return startHpSkeleton;
-    }
-
-    public void setStartHpSkeleton(int startHpSkeleton) {
-        this.startHpSkeleton = startHpSkeleton;
-    }
-
-    public int getStartHpDemon() {
-        return startHpDemon;
-    }
-
-    public void setStartHpDemon(int startHpDemon) {
-        this.startHpDemon = startHpDemon;
-    }
-
-    public int getStartHpOrangeDragon() {
-        return startHpOrangeDragon;
-    }
-
-    public void setStartHpOrangeDragon(int startHpOrangeDragon) {
-        this.startHpOrangeDragon = startHpOrangeDragon;
-    }
-*/
 
     /**
      * Check if the given location is blocked, i.e. blocks movement of

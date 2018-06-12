@@ -10,10 +10,10 @@ public class NormalTower extends ShootingTower {
 
     public NormalTower(Point position, Game game) {
         super(position, 1,
-                new int[]{7, 8, 9},
-                new int[]{800, 650, 500},
+                new int[]{8, 9, 10},
+                new int[]{750, 600, 550},
                 new int[]{150, 200, 250},
-                new int[]{100, 150, 200},
+                new int[]{50, 100, 150},
                 new Image[]{
                         ImageManager.getImage(ImageManager.NORMAL_TOWER),
                         ImageManager.getImage(ImageManager.NORMAL_TOWER),

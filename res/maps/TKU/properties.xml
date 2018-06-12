@@ -165,7 +165,7 @@
         </Wave>
         <Wave>
             <BlueSoldier>0</BlueSoldier>
-            <GreenSoldier>0</GreenSoldier>
+            <GreenSoldier>3</GreenSoldier>
             <PurpleSoldier>5</PurpleSoldier>
             <YellowElephant>10</YellowElephant>
             <RedElephant>10</RedElephant>
@@ -183,7 +183,7 @@
         </Wave>
         <Wave>
             <BlueSoldier>0</BlueSoldier>
-            <GreenSoldier>0</GreenSoldier>
+            <GreenSoldier>3</GreenSoldier>
             <PurpleSoldier>5</PurpleSoldier>
             <YellowElephant>10</YellowElephant>
             <RedElephant>10</RedElephant>
@@ -198,6 +198,24 @@
             <BlueDragon>10</BlueDragon>
             <SkeletonDragon>15</SkeletonDragon>
             <DragonDriver>10</DragonDriver>
+        </Wave>
+        <Wave>
+            <BlueSoldier>1</BlueSoldier>
+            <GreenSoldier>1</GreenSoldier>
+            <PurpleSoldier>1</PurpleSoldier>
+            <YellowElephant>1</YellowElephant>
+            <RedElephant>1</RedElephant>
+            <BlueTiger>5</BlueTiger>
+            <YellowTiger>10</YellowTiger>
+            <Fat>10</Fat>
+            <Skeleton>10</Skeleton>
+            <Demon>15</Demon>
+            <OrangeDragon>15</OrangeDragon>
+            <Bee>1</Bee>
+            <Phoenix>5</Phoenix>
+            <BlueDragon>10</BlueDragon>
+            <SkeletonDragon>15</SkeletonDragon>
+            <DragonDriver>20</DragonDriver>
         </Wave>
     </Waves>
 </Map>

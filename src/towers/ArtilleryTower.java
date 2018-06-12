@@ -10,7 +10,7 @@ public class ArtilleryTower extends ShootingTower {
 
     public ArtilleryTower(Point position, Game game) {
         super(position, 5,
-                new int[]{8, 10, 12},
+                new int[]{4, 7, 10},
                 new int[]{200, 150, 100},
                 new int[]{200, 250, 300},
                 new int[]{200, 300, 400},
