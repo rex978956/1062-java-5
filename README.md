@@ -6,36 +6,9 @@
 406414028  
 406410562  
 
-## 架構
-- main
-    - main TD
-        - state
-            - MainMenu
-            - MapMenu
-            - Credits
-    - ImageManager 
-    - ParameterManager
-- states
-    - Game
-    - MainMenu
-    - MapMenu
-    - Result
-    - Credits
-    - login (new)
-- towers
-    - tower
-            - NormalTower
-            - AirTower
-            - GroundTower
-        - SlowTower
-        - IceTower
-        - 其他功能塔
-- enemy
-- misc
-    - 地圖處理
-    - 文字
-    - 子彈
-- res
-    - 圖片
-    - 地圖
-    - 字型
+## 說明
+0.為塔防遊戲
+1.此檔案是用intellij編寫
+2.libs 請引用 /natives/[選擇你的OS能使用的] 與 /lib/classes/
+3.使用 FinalPro.jar 請打開sql服務 帳號root 密碼0000 就能連接到 sql
+
