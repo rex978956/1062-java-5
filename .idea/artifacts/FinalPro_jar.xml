@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="FinalPro:jar">
+  <artifact type="jar" build-on-make="true" name="FinalPro:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/FinalPro_jar</output-path>
     <root id="archive" name="FinalPro.jar">
       <element id="module-output" name="FinalPro" />
@@ -12,11 +12,8 @@
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/classes/lwjgl_util.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/classes/tinylinepp.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/classes/Pack200Task.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/lib/classes/natives-mac.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/classes/jorbis-0.0.15.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/lib/classes/natives-linux.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/classes/slick-examples.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/lib/classes/natives-windows.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/classes/lwjgl_util_applet.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/classes/mysql-connector-java-5.1.30-bin.jar" path-in-jar="/" />
       <element id="dir-copy" path="$PROJECT_DIR$/zip" />
