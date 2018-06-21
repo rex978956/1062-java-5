@@ -8,15 +8,17 @@
 
 ## 遊戲說明  
 - 塔防遊戲  
-- 此遊戲使用 IntelliJ IDE 編輯
-## 專案 Lib 引入
-- 預設由 IntelliJ 引入
-- 手動引入  
-./natives 裡對應系統之資源檔  
-./lib/classes/ 所有檔案
-### MySQL 設定
-- 帳號：root
-- 密碼：0000
+- 此遊戲使用 IntelliJ IDE 編輯  
+## 專案使用  
+- main檔為 ./src/main/TKUTD.java  
+    - Lib 引入  
+        - 預設由 IntelliJ 引入  
+        - 或手動引入  
+         ./natives 裡對應系統之資源檔  
+         ./lib/classes/ 所有檔案  
+    - MySQL 設定
+        - 帳號：root  
+        - 密碼：0000  
 ## 執行遊戲
 - Linux 類系統
 ```
